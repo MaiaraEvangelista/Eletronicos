@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Share&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share&family=Staatliches&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.main-lg{
+    /* background-color: aquamarine; */
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+}
+
+.dois-lg{
+    background-color: rgb(255, 127, 223);
+
+    line-height:0; /* correção para IE (arg!) */
+    width:0;
+    height:0;
+    border: solid;
+    border-color: #fff #fff #2B3542 #2B3542;
+    border-width: 0vh 270px 100vh;
+    padding-left: 100px;
+}
+
+.triangulo-lg{
+    /* background-color: rgb(55, 0, 255); */
+
+    width: 1px;
+    height: 1px;
+    border: solid 420px transparent;
+    border-bottom: solid 320px #00DEA2;
+    border-right-width: 117.5px;
+    border-top: none;
+    transform: rotate(180deg);
+
+    position: relative;
+    right: 277.5px;
+
+}
+
+.login-lg{
+    position: relative;
+    right: 150px;
+
+    height: 100vh;
+    /* background-color: #f00;  */
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.h1-lg{
+    font-size: 45px;
+    text-transform: uppercase;
+    font-weight: normal;
+    font-family: staatliches;
+}
+
+.form-lg{
+    height: 100%;
+    width: 100%;
+    /* background-color: rgb(0, 246, 131); */
+    margin-top: 30px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input-lg{
+    height: 15%;
+    width: 130%;
+    border: 3px solid #00DEA2;
+    border-radius: 20px;
+
+    padding-left: 30px;
+    opacity: 100;
+    font-size: 24px;
+    font-family: share;
+}
+
+.input-lg::placeholder{
+    color: black;
+}
+
+.btn-lg{
+    height: 13%;
+    width: 50%;
+
+    border-radius: 10px;
+    border: 4px solid #2B3542;
+    background-color: white;
+
+    font-size: 20px;
+    font-family: share;
+
+    transition: 0.3s;
+}
+
+.btn-lg:hover{
+    border-color: #00DEA2;
+    color: #00DEA2;
+}
+
+.lg{
+    height: 50%;
+    width: 100%;
+    /* background-color: green; */
+}
+
+.cad-lg{
+    margin-top: 30px;
+    height: 10%;
+    width: 100%;
+    /* background-color: violet; */
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    position: relative;
+    right: 470px;
+}
+
+.linha-lg{
+    width: 13%;
+    border: 2px solid #2B3542;
+    background-color: #2B3542;
+}
+
+.p-cad{
+    margin-left: 10px;
+    font-family: share;
+    font-size: 18px;
+}
+
+.destacado-lg{
+    font-family: share;
+    font-style: normal;
+    text-decoration: underline;
+    color: #038b67;
+}
