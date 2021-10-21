@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\49938281877\\Desktop\\Projetos_Senai\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj": {}
+    "C:\\Users\\jhony\\Documents\\Senai\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\49938281877\\Desktop\\Projetos_Senai\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj": {
+    "C:\\Users\\jhony\\Documents\\Senai\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\49938281877\\Desktop\\Projetos_Senai\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\jhony\\Documents\\Senai\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
         "projectName": "eletronicos_WebAPI",
-        "projectPath": "C:\\Users\\49938281877\\Desktop\\Projetos_Senai\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
-        "packagesPath": "C:\\Users\\49938281877\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\49938281877\\Desktop\\Projetos_Senai\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\obj\\",
+        "projectPath": "C:\\Users\\jhony\\Documents\\Senai\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
+        "packagesPath": "C:\\Users\\jhony\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jhony\\Documents\\Senai\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\49938281877\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jhony\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -66,6 +66,10 @@
               "target": "Package",
               "version": "[5.0.11, )"
             },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -101,7 +105,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
         }
       }
     }
