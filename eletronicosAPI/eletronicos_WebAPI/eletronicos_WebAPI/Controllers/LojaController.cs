@@ -1,6 +1,7 @@
 ﻿using eletronicos_WebAPI.Domains;
 using eletronicos_WebAPI.Interfaces;
 using eletronicos_WebAPI.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,9 @@ using System.Threading.Tasks;
 
 namespace eletronicos_WebAPI.Controllers
 {
+    [Produces("application/json")]
+    [Route("api/[controller]")]
+    [ApiController]
     public class LojaController : ControllerBase
     {
         private ILojaRepository lojaRepository { get; set; }
@@ -81,7 +85,7 @@ namespace eletronicos_WebAPI.Controllers
         /// <param name="id">Identificador da loja</param>
         /// <returns>Loja atualizada com suas informações</returns>
         [HttpPut("{id}")]
-        public IActionResult Put( Loja lojaAtualizada, int id)
+        public IActionResult Put(Loja lojaAtualizada, int id)
         {
             try
             {

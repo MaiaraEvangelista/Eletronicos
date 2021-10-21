@@ -99,10 +99,10 @@ namespace eletronicos_WebAPI.Repositories
         /// <returns>Lojas com suas informações</returns>
         public List<Loja> Listar()
         {
-            return ctx.Lojas
-                .Include(l => l.IdEspecialidadeNavigation)
-                .Include(l => l.IdUsuariosNavigation)
-                .ToList();
+            return ctx.Lojas.ToList();
+                //.Include(l => l.IdEspecialidadeNavigation)
+                //.Include(l => l.IdUsuariosNavigation)
+                //.ToList();
             
         }
     }

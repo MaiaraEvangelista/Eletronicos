@@ -22,6 +22,6 @@ VALUES             (1,'maiara@email.com', '111111', 'Maiara Evangelista de Souza
                    (2,'higor@email.com', '444444', 'Higor Henrique', 'R.Malagueta Pimpa', '200', '13', '01503-001', '11942203147');
 go
 
-INSERT INTO loja(idEspecialidade, nomeComercio, cidade, rua, Nº, CEP, telefone)
-VALUES            (4, 'JohnnyStore', 'São Paulo', 'R. Barão de Limeira', '539', '06343340', '11940023451');
+INSERT INTO loja(idUsuarios,idEspecialidade, nomeComercio, cidade, rua, Nº, CEP, telefone)
+VALUES            (2,4, 'JohnnyStore', 'São Paulo', 'R. Barão de Limeira', '539', '06343340', '11940023451');
 go
