@@ -9470,11 +9470,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jhony\\Documents\\Senai\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\jhony\\Desktop\\teste\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
       "projectName": "eletronicos_WebAPI",
-      "projectPath": "C:\\Users\\jhony\\Documents\\Senai\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
+      "projectPath": "C:\\Users\\jhony\\Desktop\\teste\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
       "packagesPath": "C:\\Users\\jhony\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jhony\\Documents\\Senai\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\obj\\",
+      "outputPath": "C:\\Users\\jhony\\Desktop\\teste\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jhony\\AppData\\Roaming\\NuGet\\NuGet.Config",

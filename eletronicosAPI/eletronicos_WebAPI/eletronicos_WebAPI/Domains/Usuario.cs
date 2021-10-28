@@ -9,6 +9,7 @@ namespace eletronicos_WebAPI.Domains
     {
         public Usuario()
         {
+            Comentarios = new HashSet<Comentario>();
             Lojas = new HashSet<Loja>();
         }
 
@@ -16,6 +17,7 @@ namespace eletronicos_WebAPI.Domains
         public int? IdTiposUsuario { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
+        public string Cpf { get; set; }
         public string NomeCompleto { get; set; }
         public string Rua { get; set; }
         public string Nº { get; set; }
@@ -24,6 +26,7 @@ namespace eletronicos_WebAPI.Domains
         public string Celular { get; set; }
 
         public virtual TiposUsuario IdTiposUsuarioNavigation { get; set; }
+        public virtual ICollection<Comentario> Comentarios { get; set; }
         public virtual ICollection<Loja> Lojas { get; set; }
     }
 }
