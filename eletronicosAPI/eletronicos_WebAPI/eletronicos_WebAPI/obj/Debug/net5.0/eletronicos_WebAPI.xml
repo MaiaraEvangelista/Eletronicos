@@ -39,6 +39,27 @@
             <param name="id">Identificador da especialidade deletada</param>
             <returns>A especialidade deletada</returns>
         </member>
+        <member name="M:eletronicos_WebAPI.Controllers.FormularioController.Get">
+            <summary>
+            Faz a listagem
+            </summary>
+            <returns>Lista com os formulários</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.FormularioController.Cadastrar(eletronicos_WebAPI.Domains.Formulario)">
+            <summary>
+            Faz o cadastro 
+            </summary>
+            <param name="formularioCriado">Formulário cadastrado</param>
+            <returns>Novo formulário com suas informações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.FormularioController.Atualizar(System.Int32,eletronicos_WebAPI.Domains.Formulario)">
+            <summary>
+            Faz atualização
+            </summary>
+            <param name="id">Identificador</param>
+            <param name="novoFormulario">Formulário atualizado</param>
+            <returns>Formulário atualizado com suas infrmações</returns>
+        </member>
         <member name="M:eletronicos_WebAPI.Controllers.LoginController.#ctor">
             <summary>
             Instancia este objeto para que haja a referência aos métodos no repositório
@@ -111,6 +132,25 @@
             <summary>
             Deleta um tipo de especialidade existente
             </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IFormularioRepository.Atualizar(System.Int32,eletronicos_WebAPI.Domains.Formulario)">
+            <summary>
+            Faz a atualização dos formulários existentes
+            </summary>
+            <param name="id">Identificador do formulário</param>
+            <param name="novoFormulario">Formulário atualizado com suas informações</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IFormularioRepository.Create(eletronicos_WebAPI.Domains.Formulario)">
+            <summary>
+            Faz o cadastro de um formulário
+            </summary>
+            <param name="formularioCriado">Novo formulário criado com suas informações</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IFormularioRepository.Listar">
+            <summary>
+            Faz a listagem dos formulários
+            </summary>
+            <returns>Lista dos formulários com suas informações</returns>
         </member>
         <member name="M:eletronicos_WebAPI.Interfaces.ILojaRepository.Listar">
             <summary>
@@ -236,6 +276,25 @@
             Faz a listagem das especialidades
             </summary>
             <returns>Especialidades listadas com suas informações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.FormularioRepository.Atualizar(System.Int32,eletronicos_WebAPI.Domains.Formulario)">
+            <summary>
+            Faz a atuaização dos formulários
+            </summary>
+            <param name="id">Identificador do formulário</param>
+            <param name="novoFormulario">Formulário atualizado com suas informações</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.FormularioRepository.Create(eletronicos_WebAPI.Domains.Formulario)">
+            <summary>
+            Faz a criação do formulário
+            </summary>
+            <param name="formularioCriado">Novo formulário com suas informações</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.FormularioRepository.Listar">
+            <summary>
+            Faz a listagem dos formulários
+            </summary>
+            <returns>Listagem dos formulários com suas informações</returns>
         </member>
         <member name="M:eletronicos_WebAPI.Repositories.LojaRepository.Atualizar(eletronicos_WebAPI.Domains.Loja,System.Int32)">
             <summary>
