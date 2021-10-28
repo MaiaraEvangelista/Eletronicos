@@ -21,7 +21,15 @@ namespace eletronicos_WebAPI.Repositories
         /// <param name="novoFormulario">Formulário atualizado com suas informações</param>
         public void Atualizar(int id, Formulario novoFormulario)
         {
-            ctx.Formularios.Update(novoFormulario);
+            Formulario FormularioBuscado = ctx.Formularios.Find(id);
+
+            if (novoFormulario.Status != null)
+            {
+                FormularioBuscado.Status = novoFormulario.Status;
+            }
+
+            ctx.Formularios.Update(FormularioBuscado);
+
             ctx.SaveChanges();
         }
 
@@ -32,6 +40,15 @@ namespace eletronicos_WebAPI.Repositories
         public void Create(Formulario formularioCriado)
         {
             ctx.Add(formularioCriado);
+
+            ctx.SaveChanges();
+        }
+
+        public void Deletar(int id)
+        {
+            Formulario formularioBuscado = ctx.Formularios.Find(id);
+
+            ctx.Formularios.Remove(formularioBuscado);
 
             ctx.SaveChanges();
         }

@@ -89,5 +89,20 @@ namespace eletronicos_WebAPI.Controllers
                 return BadRequest(ex);
             }
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                formulariorepository.Deletar(id);
+
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
     }
 }

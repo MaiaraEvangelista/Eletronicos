@@ -26,5 +26,7 @@ namespace eletronicos_WebAPI.Interfaces
         /// </summary>
         /// <returns>Lista dos formulários com suas informações</returns>
         List<Formulario> Listar();
+
+        void Deletar(int id);
     }
 }
