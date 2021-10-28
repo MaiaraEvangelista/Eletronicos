@@ -108,6 +108,21 @@
             <param name="id">Identificador da loja</param>
             <returns>Loja deletada</returns>
         </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IComentarioRepository.Listar">
+            <summary>
+            Lista todos os tipos de usuários
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IComentarioRepository.Cadastrar(eletronicos_WebAPI.Domains.Comentario)">
+            <summary>
+            Cadastra um novo tipo de usuário
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IComentarioRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um tipo de usuário existente
+            </summary>
+        </member>
         <member name="M:eletronicos_WebAPI.Interfaces.IEspecialidadeRepository.Listar">
             <summary>
             Lista todos os tipos de especialidades
