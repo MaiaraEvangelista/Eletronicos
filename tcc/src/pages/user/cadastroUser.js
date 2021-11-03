@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { Component } from "react";
 import { View, Text, StyleSheet, Style, TouchableOpacity, ImageBackground, Image } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
@@ -13,9 +14,25 @@ export default class cadastroUser extends Component{
         {
             celular: '',
             CEP: '',
+            endereco: []
         }
+        
     }
 
+    buscarCep = () => {
+      axios(`https://viacep.com.br/ws/${this.state.CEP}/json/`)
+      .then(resposta => {
+        this.setState({endereco: resposta.data})
+        console.log(resposta.data)
+      })
+
+      .catch(erro => console.log(erro))
+    }
+
+    componentDidMount(){
+      this.buscarCep();
+    }
+    
     render()
     {
         return(
@@ -94,14 +111,17 @@ export default class cadastroUser extends Component{
                   })
                 }}
                     style={styles.TxtInput}
-                    placeholder="CEP"
-                    placeholderTextColor="black"
+                    placeholder=' CEP' onChangeText={(CEP) => this.setState({ CEP: CEP })}
+                    onBlur={this.buscarCep}
+                    value={this.state.CEP} id="cep" name="cep"
+                    placeholderTextColor="black"                   
                   />
 
                   <TextInput
                     style={styles.TxtInput}
                     placeholder="Rua"
                     placeholderTextColor="black"
+                    // value={this.state.endereco.logradouro}
                   />
                 </View>
 
@@ -111,11 +131,13 @@ export default class cadastroUser extends Component{
                     style={styles.TxtInput}
                     placeholder="Endereço"
                     placeholderTextColor="black"
+                    value={this.state.endereco.logradouro}
                   />
                    <TextInput
                     style={styles.TxtInput}
                     placeholder="Complemento"
                     placeholderTextColor="black"
+                    value={this.state.endereco.complemento}
                   />
                 </View>
 
@@ -133,7 +155,6 @@ export default class cadastroUser extends Component{
         )
     }
 }
-
 const styles = StyleSheet.create({
     container: {
     flex: 1,
