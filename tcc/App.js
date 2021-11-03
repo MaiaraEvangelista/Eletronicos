@@ -20,9 +20,9 @@ export default function Stack() {
       >
 
         <AuthSatck.Screen name = 'lista' component={lista}/>
+        <AuthSatck.Screen name = 'login' component={Login} />
         <AuthSatck.Screen name = 'drawer' component={Drawer}/>
         <AuthSatck.Screen name = 'edicao' component={edicao}/>
-        <AuthSatck.Screen name = 'login' component={Login} />
         <AuthSatck.Screen name = 'formCad' component={formCad}/>
         <AuthSatck.Screen name = 'cadastroLoja' component={cadastroLoja}/>
         <AuthSatck.Screen name = 'cadastroUser' component={cadastroUser} />

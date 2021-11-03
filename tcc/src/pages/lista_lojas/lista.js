@@ -17,26 +17,32 @@ export default class Lista extends Component {
          <View style={styles.container}>
 
              <View style={styles.listaCtn}>
-
-                <View style={styles.ImgCtn}>
-                    <View style={styles.Img}>
+                 
+                <View style={styles.imgCtn}>
+                    <View style={styles.img}>
                     </View>
                 </View>
 
                 <View style={styles.arrow}>
-                    <Image></Image>
+
+                    <TouchableOpacity style={styles.arrowCtn}>
+                        <Image style={styles.arrowDown} source={require('../../../assets/flecha_baixo.svg')}/>
+                    </TouchableOpacity>
+
                 </View>
 
-                <View style={styles.lista}>
-                    <View style={styles.h1Lista}>
-                        <Text style={styles.h1}>Nome da loja</Text>
-                    </View>
-
-                    <View style={styles.infsLista}>
-
+                <View style={styles.infsCtn}>
+                    <View style={styles.img}>
+                        <View style={styles.h1Ctn}>
+                            <Text style={styles.h1}>Nome da loja</Text>
+                        </View>
+                        <View style={styles.txtCtn}>
+                            <Text style={styles.txt}>3,5 estrelas</Text>
+                            <Text style={styles.txt}>Https://siteEx.com.br</Text>
+                            <Text style={styles.txt}>(11)98764-1243</Text>
+                        </View>
                     </View>
                 </View>
-
              </View>
 
          </View>   
@@ -53,58 +59,83 @@ const styles = StyleSheet.create({
     },
 
     listaCtn: {
-        width: '85%',
-        height: '20%',
+        width: '80%',
+        height: '22%',
         backgroundColor: 'green',
 
-        borderRadius: 10,
-
         flexDirection: 'row',
+
+        borderRadius: 10,
     },
 
-    ImgCtn: {
-        width: '40%',
+    imgCtn: {
+        width: '45%',
         height: '100%',
-        // backgroundColor: 'gray',
+        // backgroundColor: 'red',
 
         justifyContent: 'center',
-        alignItems: 'center',
-    },
-    
-    Img: {
-        width: '90%',
-        height: '80%',
-        backgroundColor: 'gray',
+        alignItems: 'flex-end',
     },
 
-    lista: {
-        width: '55%',
-        height: '100%',
-        backgroundColor: 'red',
+    img: {
+        width: '85%',
+        height: '70%',
+        // backgroundColor: 'gray',
 
-        justifyContent: 'flex-end'
+        marginBottom: '15%'
     },
 
     arrow: {
-        width: '5%',
+        width: '10%',
         height: '100%',
-        backgroundColor: 'orange',
+        // backgroundColor: 'orange',
+        
+        justifyContent: 'flex-end',
     },
 
-    h1Lista: {
+    arrowCtn: {
         width: '100%',
-        height: '15%',
-        backgroundColor: 'blue'
+        height: '25%',
+    },
+
+    arrowDown: {
+        width: '100%',
+        height: '100%',
+    },
+
+    infsCtn: {
+        width: '45%',
+        height: '100%',
+        // backgroundColor: 'pink',
+
+        justifyContent: 'center',
+        alignItems: 'flex-start',
+    },
+
+    h1Ctn: {
+        width: '100%',
+        height: '20%',
+        // backgroundColor: 'red',
     },
 
     h1: {
-        textTransform: 'uppercase',
+        fontSize: '100%',
+        color: 'white',
         fontWeight: 'bold',
     },
-
-    infsLista: {
-        height: '75%',
+    
+    txtCtn: {
         width: '100%',
-        backgroundColor: 'purple'
+        height: '80%',
+
+        justifyContent: 'space-around',
+
+        flexWrap: 'wrap '  
+
     },
+
+    txt: {
+        fontSize: '85%',
+        color: 'white',
+    },  
 })
