@@ -119,9 +119,9 @@ export default class cadastroUser extends Component{
 
                   <TextInput
                     style={styles.TxtInput}
-                    placeholder="Rua"
+                    placeholder="UF"
                     placeholderTextColor="black"
-                    // value={this.state.endereco.logradouro}
+                    value={this.state.endereco.uf}
                   />
                 </View>
 
@@ -148,7 +148,7 @@ export default class cadastroUser extends Component{
                     <Text style={styles.txtBtn}>Cadastrar</Text>
                   </TouchableOpacity>
             </View>
-                </View>
+                </View>|
               </View>
 
             </View>
