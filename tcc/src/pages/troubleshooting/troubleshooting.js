@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { View, Text, StyleSheet,ImageBackground} from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { View, Text, StyleSheet,ImageBackground, TouchableOpacity} from "react-native";
 
 
 export default class Trouble extends Component{
@@ -9,7 +8,8 @@ export default class Trouble extends Component{
     {
         super(props);
         this.state = {
-
+            tempBat : 0,
+            tempCPU : 0,
         }
     }
 
@@ -25,9 +25,46 @@ export default class Trouble extends Component{
 
                 <View style={styles.btnCtnVerif}>
                     <TouchableOpacity style={styles.btnVerif}>
-
+                        <Text style={styles.btnTxt}>Verificação</Text>
                     </TouchableOpacity>
                 </View>
+
+                <View style={styles.InfsCtn}>
+                    <View style={styles.meioInfs}>
+                        <View style={styles.infs1}>
+                            <View style={styles.numInfs}>
+                                <Text style={styles.h3}>{this.state.tempBat} °C - temperatura da bateria</Text>
+                            </View>
+
+                            <View style={styles.corInfs}>
+                                <View style={styles.temp}>
+                                </View>
+                            </View>
+                        </View>
+                        <View style={styles.infs1}>
+                            <View style={styles.numInfs}>
+                                <Text style={styles.h3}>{this.state.tempCPU} °C - temperatura da bateria</Text>
+                            </View>
+
+                            <View style={styles.corInfs}>
+                                <View style={styles.temp}>
+                                </View>
+                            </View>
+                        </View>
+                        
+                    </View>
+                </View>
+
+                <View style={styles.txtCtn}>
+                    <View style={styles.meioTxt}>
+                        <View style={styles.txt}>
+
+                        </View>
+                    </View>
+                    <View style={styles.meioImg}>
+
+                    </View>
+                </View> 
             </View>
         );
     }
@@ -42,10 +79,6 @@ const styles = StyleSheet.create({
         height: '25%',
         width: '100%',
         backgroundColor: 'black',
-    },
-
-    bannerView: {
-
     },
 
     bannerImg: {
@@ -63,19 +96,112 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: 'white',
         fontSize: 15,
+        
+        position: 'absolute',
+        zIndex: 1,
     },
 
     btnCtnVerif: {
         width: '100%',
         height: '15%',
-        backgroundColor: 'black'
+        // backgroundColor: 'red',
+
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 
     btnVerif: {
-        width: '30%',
+        width: '25%',
+        height:'35%',
+
+        borderWidth: 2,
+        borderColor: 'black',
+        borderRadius: 6,
+
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    btnTxt: {
+        fontSize: '80%',
+    },
+
+    InfsCtn: {
+        width: '100%',
+        height: '20%',
+        backgroundColor: '#00873B',
+
+        justifyContent: 'center',
+
+        borderRadius: 13,
+    },
+
+    meioInfs: {
+        width: '100%',
         height: '50%',
 
-        borderWidth: '2',
-        borderColor: 'red',
+        // backgroundColor: 'red',
+
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexDirection: 'row'
+    },
+
+    infs1: {
+        width: '45%',
+        height: '100%',
+        // backgroundColor: 'orange',
+    },
+
+    numInfs: {
+        width: '100%',
+        height: '50%',
+        // backgroundColor: 'green',
+
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    
+    corInfs: {
+        width: '100%',
+        height: '50%',
+        // backgroundColor: 'pink',
+
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    h3: {
+        fontSize: '80%',
+        color: 'white',
+    },
+
+    temp: {
+        width: '85%',
+        height: '27%',
+        backgroundColor: 'white',
+
+        borderRadius: 25,
+    },
+
+    txtCtn: {
+        height: '40%',
+        width: '100%',
+        // backgroundColor: 'red',
+    },
+
+    meioTxt: {
+        height: '100%',
+        width: '60%',
+        // backgroundColor: 'orange',
+
+        justifyContent: 'flex-end',
+        flexDirection: 'column',
+    },
+
+    txt: {
+        height: '30%',
+        width: '100%',
+        // backgroundColor: 'green',
     },
 })
