@@ -9,8 +9,7 @@ export default class Edicao extends Component {
         super(props);
         this.state = {
             celular : '',
-            font : 0,
-            opacity : 0,
+            opacity : '30%',
             input : false,
             disable : true,
         }
@@ -72,7 +71,6 @@ export default class Edicao extends Component {
                             onPress={() => 
                                 this.setState
                                 ({  opacity : 100,
-                                    font : 17,
                                     input : true,
                                     disable: false,
                                 })}
@@ -83,8 +81,7 @@ export default class Edicao extends Component {
                             <TouchableOpacity style={styles.btnSalvar}
                                 onPress={() => 
                                     this.setState
-                                    ({  opacity : 0,
-                                        font : 0,
+                                    ({  opacity : '30%',
                                         input : false,
                                     })}
                                 
@@ -93,6 +90,7 @@ export default class Edicao extends Component {
                                 borderColor : '#008763',
                                 width: '30%',
                                 height: '50%',
+                                fontSize: '100%',
                                 
                                 opacity: this.state.opacity,
                                 borderWidth: 3,
@@ -102,7 +100,7 @@ export default class Edicao extends Component {
                                 justifyContent: 'center',}}
                             >
                                 <Text style={styles.btnTxt}
-                                    style={{ fontSize : this.state.font}}
+                                    style={{ opacity : this.state.opacity}}
                                 >Salvar</Text>
                             </TouchableOpacity>
                         </View>
@@ -209,7 +207,7 @@ const styles = StyleSheet.create({
     },  
 
     btnTxt: {
-        fontSize: 17,
+        fontSize: '100%',
         fontFamily: 'Arial',
     },
 });

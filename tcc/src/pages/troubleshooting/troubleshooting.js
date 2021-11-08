@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { View, Text, StyleSheet,ImageBackground, TouchableOpacity} from "react-native";
+import { View, Text, StyleSheet,ImageBackground, TouchableOpacity, Image} from "react-native";
 
 
 export default class Trouble extends Component{
@@ -58,11 +58,18 @@ export default class Trouble extends Component{
                 <View style={styles.txtCtn}>
                     <View style={styles.meioTxt}>
                         <View style={styles.txt}>
-
+                            <Text style={styles.txtEdit}>Veja todas as nossas soluções para um futuro ao seu smartphone !</Text>
+                        </View>
+                        <View style={styles.btnCtnTxt}>
+                            <TouchableOpacity style={styles.btnCtn}>
+                                <Text style={styles.btn}>Soluções</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
-                    <View style={styles.meioImg}>
-
+                    <View style={styles.imgTxtCtn}>
+                        <View style={styles.imgTxt}>
+                            <Image style={styles.ideia} source={require('../../../assets/ideia.svg')}/>
+                        </View> 
                     </View>
                 </View> 
             </View>
@@ -188,6 +195,25 @@ const styles = StyleSheet.create({
         height: '40%',
         width: '100%',
         // backgroundColor: 'red',
+
+        flexDirection: 'row',
+    },
+
+    btnCtn: {
+        height: '40%',
+        width: '50%',
+        borderWidth: 3,
+        borderRadius: 10,
+
+        justifyContent: 'center',
+        alignItems: 'center',
+
+        marginBottom: '5%',
+    },
+
+    btn: {
+        fontFamily: 'Arial',
+        fontSize: '90%',
     },
 
     meioTxt: {
@@ -199,9 +225,53 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
     },
 
-    txt: {
+    btnCtnTxt: {
         height: '30%',
         width: '100%',
-        // backgroundColor: 'green',
+        // backgroundColor: 'red',
+
+        justifyContent: 'center',
+        alignItems: 'center',
+
+    },
+
+    txt: {
+        height: '35%',
+        width: '100%',
+        // backgroundColor: 'blue',
+
+        justifyContent: 'center',
+        alignItems: 'center',
+        textAlign: 'center',
+    },
+
+    txtEdit: {
+        fontSize: '85%',
+        fontFamily: 'Arial',
+        margin: '5%',
+    },
+
+    imgTxtCtn: {
+        width: '40%',
+        height: '100%',
+        // backgroundColor: 'pink',
+
+        justifyContent: 'flex-end',
+    },
+
+    imgTxt: {
+        width: '100%',
+        height: '60%',
+        backgroundColor: '#008763',
+        borderRadius: 10,
+        marginBottom: '10%',
+
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    ideia: {
+        width: '90%',
+        height: '90%',
     },
 })

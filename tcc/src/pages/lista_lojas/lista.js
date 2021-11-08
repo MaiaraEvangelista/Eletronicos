@@ -184,7 +184,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
 
         color: 'white',
-        fontSize: 9,
+        fontSize: '70%',
     },
 
     tchDesc: {

@@ -14,15 +14,17 @@ export default class drawer extends Component{
     constructor(props)
     {
         super(props);
-        this.state = {}
+        this.state = {
+            nomePag : ''
+        }
     }
 
     render()
     {
         return(
             <Drawer.Navigator
+            options={({ route }) => ({ title: route.params.name })}
             screenOptions={{
-                headerTitle : 'Bem vindo',
                 headerTintColor: 'white',
                 headerTitleAlign: 'center',
                 headerStyle : {
@@ -41,10 +43,10 @@ export default class drawer extends Component{
                   width: '50%',
                 },
             }}>
-                <Drawer.Screen name="Lista" component={Lista}/>
-                <Drawer.Screen name="Edição" component={Edicao}/>
                 <Drawer.Screen name="Home" component={Home}/>
                 <Drawer.Screen name="Login" component={Login}/>
+                <Drawer.Screen name="Lista" component={Lista}/>
+                <Drawer.Screen name="Edição" component={Edicao}/>
             </Drawer.Navigator>
         )
     }
