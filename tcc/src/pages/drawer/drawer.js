@@ -19,6 +19,7 @@ export default class drawer extends Component{
         }
     }
 
+
     render()
     {
         return(
@@ -44,7 +45,7 @@ export default class drawer extends Component{
                 },
             }}>
                 <Drawer.Screen name="Home" component={Home}/>
-                <Drawer.Screen name="Login" component={Login}/>
+                <Drawer.Screen  options={({headerShown : false})} name="Login" component={Login}/>
                 <Drawer.Screen name="Lista" component={Lista}/>
                 <Drawer.Screen name="Edição" component={Edicao}/>
             </Drawer.Navigator>

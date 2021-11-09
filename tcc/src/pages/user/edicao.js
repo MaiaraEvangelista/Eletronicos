@@ -90,7 +90,7 @@ export default class Edicao extends Component {
                                 borderColor : '#008763',
                                 width: '30%',
                                 height: '50%',
-                                fontSize: '100%',
+                                fontSize: '100%',   
                                 
                                 opacity: this.state.opacity,
                                 borderWidth: 3,

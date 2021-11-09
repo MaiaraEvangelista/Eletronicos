@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Modal, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View,} from 'react-native';
+import Modal from "react-native-modal";
 
 export default class form extends Component {
   constructor(props)
@@ -14,11 +15,7 @@ export default class form extends Component {
   {
     return(
       <View style={styles.container}>
-          <Text style={styles.txt}>teste</Text>
-
-          <Modal>
-              <Text>Teste</Text>
-          </Modal>
+        
       </View>
     )
   }
@@ -27,13 +24,9 @@ export default class form extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'red',
+    backgroundColor: 'gray',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-
-  txt: {
-    fontSize: 80,
   },
   
 });

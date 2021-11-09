@@ -13,13 +13,23 @@ export default class Login extends Component {
         }
     }
 
+    navegacao = () =>
+    {
+        this.props.navigation.navigate('Home')
+    }
+
+    navegacaoCad = () => 
+    {
+      this.props.navigation.navigate('cadastroUser')
+    }
+
     render()
     {
         return (
-          <View style={styles.container}>
+          <View style={styles.container} >
 
                <View style={styles.ctnH1}>
-                <TouchableOpacity style={styles.TouchH1}>
+                <TouchableOpacity style={styles.TouchH1} onPress={this.navegacao}>
                   <Image style={styles.imgH1} source={require('../../../assets/Arrow.svg')}/>
                 </TouchableOpacity>
                 <Text style={styles.txtH1}>Login</Text>
@@ -48,7 +58,7 @@ export default class Login extends Component {
                     <Text style={styles.textBtn}>Login</Text>
                   </TouchableOpacity>
 
-                <TouchableOpacity style={styles.ctnCadastro}>
+                <TouchableOpacity style={styles.ctnCadastro} onPress={this.navegacaoCad}>
                   <Text style={styles.textCadastro}>Não tem uma conta? cadastre-se</Text>
                 </TouchableOpacity>
               </View>
