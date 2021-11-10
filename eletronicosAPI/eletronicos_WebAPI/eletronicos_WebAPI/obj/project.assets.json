@@ -9732,19 +9732,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Gigio\\.nuget\\packages\\": {}
+    "C:\\Users\\jhony\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Gigio\\Desktop\\SENAI\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\jhony\\Desktop\\repositório\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
       "projectName": "eletronicos_WebAPI",
-      "projectPath": "C:\\Users\\Gigio\\Desktop\\SENAI\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
-      "packagesPath": "C:\\Users\\Gigio\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Gigio\\Desktop\\SENAI\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\obj\\",
+      "projectPath": "C:\\Users\\jhony\\Desktop\\repositório\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
+      "packagesPath": "C:\\Users\\jhony\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jhony\\Desktop\\repositório\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Gigio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jhony\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -9839,12 +9839,16 @@
             "privateAssets": "all"
           }
         },
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.208\\RuntimeIdentifierGraph.json"
->>>>>>> df90703eabf0ba4b148e48e0641e3b9446d77d33
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problema ao ler o arquivo de cache C:\\Users\\jhony\\Desktop\\repositório\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

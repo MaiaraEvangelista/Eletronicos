@@ -18,6 +18,7 @@ namespace eletronicos_WebAPI.Domains
         public string Email { get; set; }
         public string Senha { get; set; }
         public string Cpf { get; set; }
+        public string Cnpj { get; set; }
         public string NomeCompleto { get; set; }
         public string Rua { get; set; }
         public string Nº { get; set; }

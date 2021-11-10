@@ -29,9 +29,8 @@ namespace eletronicos_WebAPI.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-G7BQL8U\\SQLEXPRESS; initial catalog=Eletronicos; user Id=sa; pwd=senai@132;");
-                //optionsBuilder.UseSqlServer("Data Source=DESKTOP-BOQR1F0; initial catalog=Eletronicos; user Id=sa; pwd=6829ma648;");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+                optionsBuilder.UseSqlServer("Data Source=LAPTOP-II7UP0KL; initial catalog=Eletronicos; user Id=sa; pwd=Senai@132;");
             }
         }
 
@@ -42,7 +41,7 @@ namespace eletronicos_WebAPI.Contexts
             modelBuilder.Entity<Comentario>(entity =>
             {
                 entity.HasKey(e => e.IdComentario)
-                    .HasName("PK__Comentar__C74515DA46BFEFEE");
+                    .HasName("PK__Comentar__C74515DAD7C93C29");
 
                 entity.ToTable("Comentario");
 
@@ -59,13 +58,13 @@ namespace eletronicos_WebAPI.Contexts
                 entity.HasOne(d => d.IdUsuariosNavigation)
                     .WithMany(p => p.Comentarios)
                     .HasForeignKey(d => d.IdUsuarios)
-                    .HasConstraintName("FK__Comentari__idUsu__681373AD");
+                    .HasConstraintName("FK__Comentari__idUsu__4C364F0E");
             });
 
             modelBuilder.Entity<Especialidade>(entity =>
             {
                 entity.HasKey(e => e.IdEspecialidade)
-                    .HasName("PK__Especial__409698058855F8C4");
+                    .HasName("PK__Especial__409698058C6E8BD7");
 
                 entity.ToTable("Especialidade");
 
@@ -81,7 +80,7 @@ namespace eletronicos_WebAPI.Contexts
             modelBuilder.Entity<Formulario>(entity =>
             {
                 entity.HasKey(e => e.IdFormulario)
-                    .HasName("PK__Formular__3215A82B7C95B3B7");
+                    .HasName("PK__Formular__3215A82B6028D934");
 
                 entity.ToTable("Formulario");
 
@@ -97,7 +96,7 @@ namespace eletronicos_WebAPI.Contexts
             modelBuilder.Entity<Loja>(entity =>
             {
                 entity.HasKey(e => e.IdLoja)
-                    .HasName("PK__Loja__1B95BE17C357499A");
+                    .HasName("PK__Loja__1B95BE17F5FA9604");
 
                 entity.ToTable("Loja");
 
@@ -159,28 +158,28 @@ namespace eletronicos_WebAPI.Contexts
                 entity.HasOne(d => d.IdComentarioNavigation)
                     .WithMany(p => p.Lojas)
                     .HasForeignKey(d => d.IdComentario)
-                    .HasConstraintName("FK__Loja__idComentar__6DCC4D03");
+                    .HasConstraintName("FK__Loja__idComentar__53D770D6");
 
                 entity.HasOne(d => d.IdEspecialidadeNavigation)
                     .WithMany(p => p.Lojas)
                     .HasForeignKey(d => d.IdEspecialidade)
-                    .HasConstraintName("FK__Loja__idEspecial__6BE40491");
+                    .HasConstraintName("FK__Loja__idEspecial__51EF2864");
 
                 entity.HasOne(d => d.IdFormularioNavigation)
                     .WithMany(p => p.Lojas)
                     .HasForeignKey(d => d.IdFormulario)
-                    .HasConstraintName("FK__Loja__idFormular__6CD828CA");
+                    .HasConstraintName("FK__Loja__idFormular__52E34C9D");
 
                 entity.HasOne(d => d.IdUsuariosNavigation)
                     .WithMany(p => p.Lojas)
                     .HasForeignKey(d => d.IdUsuarios)
-                    .HasConstraintName("FK__Loja__idUsuarios__6AEFE058");
+                    .HasConstraintName("FK__Loja__idUsuarios__50FB042B");
             });
 
             modelBuilder.Entity<TiposUsuario>(entity =>
             {
                 entity.HasKey(e => e.IdTiposUsuario)
-                    .HasName("PK__TiposUsu__E45DC1B55C1037B5");
+                    .HasName("PK__TiposUsu__E45DC1B5E31E3542");
 
                 entity.ToTable("TiposUsuario");
 
@@ -196,17 +195,17 @@ namespace eletronicos_WebAPI.Contexts
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuarios)
-                    .HasName("PK__Usuario__3940559A1430549A");
+                    .HasName("PK__Usuario__3940559A7F70FC13");
 
                 entity.ToTable("Usuario");
 
-                entity.HasIndex(e => e.Celular, "UQ__Usuario__2E4973E72D1FB5ED")
+                entity.HasIndex(e => e.Celular, "UQ__Usuario__2E4973E7DBB20C7F")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Email, "UQ__Usuario__AB6E6164B7356DB8")
+                entity.HasIndex(e => e.Email, "UQ__Usuario__AB6E616477050DF6")
                     .IsUnique();
 
-                entity.HasIndex(e => e.Cpf, "UQ__Usuario__C1F8973129EFCCEF")
+                entity.HasIndex(e => e.Cpf, "UQ__Usuario__C1F8973142048374")
                     .IsUnique();
 
                 entity.Property(e => e.IdUsuarios).HasColumnName("idUsuarios");
@@ -222,6 +221,11 @@ namespace eletronicos_WebAPI.Contexts
                     .HasMaxLength(22)
                     .IsUnicode(false)
                     .HasColumnName("CEP");
+
+                entity.Property(e => e.Cnpj)
+                    .HasMaxLength(18)
+                    .IsUnicode(false)
+                    .HasColumnName("CNPJ");
 
                 entity.Property(e => e.Complemento)
                     .HasMaxLength(100)
@@ -267,7 +271,7 @@ namespace eletronicos_WebAPI.Contexts
                 entity.HasOne(d => d.IdTiposUsuarioNavigation)
                     .WithMany(p => p.Usuarios)
                     .HasForeignKey(d => d.IdTiposUsuario)
-                    .HasConstraintName("FK__Usuario__idTipos__65370702");
+                    .HasConstraintName("FK__Usuario__idTipos__4959E263");
             });
 
             OnModelCreatingPartial(modelBuilder);
