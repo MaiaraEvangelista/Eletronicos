@@ -7,6 +7,7 @@ import Home from '../Home/home'
 import Login from '../user/login'
 import Edicao from '../user/edicao'
 import Lista from '../lista_lojas/lista';
+import Trouble from '../troubleshooting/troubleshooting'
 
 const Drawer = createDrawerNavigator()
 
@@ -48,6 +49,7 @@ export default class drawer extends Component{
                 <Drawer.Screen  options={({headerShown : false})} name="Login" component={Login}/>
                 <Drawer.Screen name="Lista" component={Lista}/>
                 <Drawer.Screen name="Edição" component={Edicao}/>
+                <Drawer.Screen name ="Verificação" component={Trouble}/>
             </Drawer.Navigator>
         )
     }

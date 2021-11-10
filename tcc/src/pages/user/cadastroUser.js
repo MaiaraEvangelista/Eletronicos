@@ -12,11 +12,43 @@ export default class cadastroUser extends Component{
         super(props);
         this.state =
         {
+            nomeCompleto : '',
             celular: '',
+            email : '',
+            senha : '',
+            UF : '',
+            endereco : '',
+            complemento : '',
+
             CEP: '',
             endereco: []
         }
         
+    }
+
+    cadastrarUser = () =>
+    {
+      try {
+
+        fetch('',
+        {
+          method : 'POST',
+  
+          body : JSON.stringify({
+            nomeCompleto  : this.state.nomeCompleto,
+            celular       : this.state.celular,
+            email         : this.state.email,
+            senha         : this.state.senha,
+            UF            : this.state.UF,
+            endereco      : this.state.endereco,
+            complemento   : this.state.complemento,
+          }),
+        })
+
+      } catch (error) {
+        console.warn(error)
+      }
+    
     }
 
     buscarCep = () => {
@@ -151,7 +183,7 @@ export default class cadastroUser extends Component{
                 
 
                 <View style={styles.btnInput}>
-                  <TouchableOpacity style={styles.btnCtn}>
+                  <TouchableOpacity style={styles.btnCtn} onPress={this.cadastrarUser}>
                     <Text style={styles.txtBtn}>Cadastrar</Text>
                   </TouchableOpacity>
             </View>

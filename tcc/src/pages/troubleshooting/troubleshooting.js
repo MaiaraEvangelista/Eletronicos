@@ -43,7 +43,7 @@ export default class Trouble extends Component{
                         </View>
                         <View style={styles.infs1}>
                             <View style={styles.numInfs}>
-                                <Text style={styles.h3}>{this.state.tempCPU} °C - temperatura da bateria</Text>
+                                <Text style={styles.h3}>{this.state.tempCPU} °C - temperatura da CPU</Text>
                             </View>
 
                             <View style={styles.corInfs}>

@@ -1,7 +1,10 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { StatusBar } from 'expo-status-bar';
+import jwtDecode from 'jwt-decode';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
 import { max } from 'react-native-reanimated';
+import api from '../../Services/api';
 
 export default class Login extends Component {
     constructor(props)
@@ -11,6 +14,43 @@ export default class Login extends Component {
             email : '',
             senha : '',
         }
+    }
+
+    login = async () =>
+    {
+      try {
+        
+        const resp = await api.post('/Login', {
+          email : this.state.email,
+          senha : this.state.senha
+        });
+
+        console.warn(this.state.email);
+        console.warn(this.state.senha);
+
+        const token = resp.data.token;
+
+        console.warn(token);
+
+        await AsyncStorage.setItem('userToken', token)
+
+        var decoded = jwtDecode(token).role;
+
+        console.warn(decoded)
+
+        if (decoded === 2) {
+
+          this.props.navigation.navigate('Home')
+
+        }
+
+        if (decoded === 1) {
+          
+        }
+
+      } catch (error) {
+        console.warn(error)
+      }
     }
 
     navegacao = () =>
@@ -54,7 +94,7 @@ export default class Login extends Component {
                     onChangeText={senha => this.setState({senha})}
                   />
 
-                  <TouchableOpacity style={styles.btnLogin}>
+                  <TouchableOpacity style={styles.btnLogin} onPress={this.login}>
                     <Text style={styles.textBtn}>Login</Text>
                   </TouchableOpacity>
 
