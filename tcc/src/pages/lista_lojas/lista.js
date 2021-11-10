@@ -8,6 +8,7 @@ export default class Lista extends Component {
         super(props);
         this.state={
             lista : [],
+            display: 'flex',
         }
     }
 
@@ -16,8 +17,10 @@ export default class Lista extends Component {
         return(
          <View style={styles.container}>
 
+             <View style={styles.listaDesc}>
+
              <View style={styles.listaCtn}>
-                 
+
                 <View style={styles.imgCtn}>
                     <View style={styles.img}>
                     </View>
@@ -26,7 +29,7 @@ export default class Lista extends Component {
                 <View style={styles.arrow}>
 
                     <TouchableOpacity style={styles.arrowCtn}>
-                        <Image style={styles.arrowDown} source={require('../../../assets/flecha_baixo.svg')}/>
+                        <Image style={styles.arrowDown} source={require('../../../assets/flecha_baixo.png')}/>
                     </TouchableOpacity>
 
                 </View>
@@ -43,9 +46,19 @@ export default class Lista extends Component {
                         </View>
                     </View>
                 </View>
+
+             </View>
+                <View style={styles.ctnDesc}>
+                    <Text style={styles.txtDesc}>Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</Text>
+
+                    <TouchableOpacity style={styles.tchDesc}>
+                        <Text style={styles.txtBtnDesc}>Localização</Text>
+                    </TouchableOpacity>
+                </View>
              </View>
 
-         </View>   
+
+         </View>
         )
     }
 }
@@ -56,12 +69,21 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'space-around',
+    },
+
+    listaDesc: {
+        width: '80%',
+        height: '35%',
+        // backgroundColor: 'gray',
+
+        alignItems: 'center',
     },
 
     listaCtn: {
-        width: '80%',
-        height: '22%',
-        backgroundColor: 'green',
+        width: '100%',
+        height: '63%',
+        backgroundColor: '#00873B',
 
         flexDirection: 'row',
 
@@ -89,18 +111,21 @@ const styles = StyleSheet.create({
         width: '10%',
         height: '100%',
         // backgroundColor: 'orange',
-        
+
         justifyContent: 'flex-end',
     },
 
     arrowCtn: {
         width: '100%',
-        height: '25%',
+        height: '30%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        // backgroundColor: 'blue',
     },
 
     arrowDown: {
-        width: '100%',
-        height: '100%',
+        width: '50%',
+        height: '50%',
     },
 
     infsCtn: {
@@ -108,8 +133,9 @@ const styles = StyleSheet.create({
         height: '100%',
         // backgroundColor: 'pink',
 
+        marginTop: '3%',
         justifyContent: 'center',
-        alignItems: 'flex-start',
+        alignItems: 'center',
     },
 
     h1Ctn: {
@@ -123,19 +149,58 @@ const styles = StyleSheet.create({
         color: 'white',
         fontWeight: 'bold',
     },
-    
+
     txtCtn: {
         width: '100%',
         height: '80%',
 
         justifyContent: 'space-around',
-
-        flexWrap: 'wrap '  
+        // backgroundColor: 'orange',
+        flexWrap: 'wrap ',
 
     },
 
     txt: {
         fontSize: '85%',
         color: 'white',
-    },  
+    },
+
+    ctnDesc: {
+        width: '85%',
+        height: '50%',
+        backgroundColor: '#004F22',
+
+        borderBottomEndRadius: 10,
+        borderBottomLeftRadius: 10,
+
+        alignItems: 'center',
+        justifyContent: 'space-around'
+    },
+
+    txtDesc: {
+        width: '80%',
+        height: '50%',
+
+        textAlign: 'center',
+
+        color: 'white',
+        fontSize: '70%',
+    },
+
+    tchDesc: {
+       width: '35%',
+       height: '25%',
+    //    backgroundColor: 'red',
+
+       borderColor: 'white',
+       borderRadius: 5,
+       borderWidth: 2,
+
+       justifyContent: 'center',
+       alignItems: 'center',
+    },
+
+    txtBtnDesc: {
+        color: 'white',
+    },
 })

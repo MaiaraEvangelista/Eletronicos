@@ -12,11 +12,43 @@ export default class cadastroUser extends Component{
         super(props);
         this.state =
         {
+            nomeCompleto : '',
             celular: '',
+            email : '',
+            senha : '',
+            UF : '',
+            endereco : '',
+            complemento : '',
+
             CEP: '',
             endereco: []
         }
         
+    }
+
+    cadastrarUser = () =>
+    {
+      try {
+
+        fetch('',
+        {
+          method : 'POST',
+  
+          body : JSON.stringify({
+            nomeCompleto  : this.state.nomeCompleto,
+            celular       : this.state.celular,
+            email         : this.state.email,
+            senha         : this.state.senha,
+            UF            : this.state.UF,
+            endereco      : this.state.endereco,
+            complemento   : this.state.complemento,
+          }),
+        })
+
+      } catch (error) {
+        console.warn(error)
+      }
+    
     }
 
     buscarCep = () => {
@@ -29,6 +61,11 @@ export default class cadastroUser extends Component{
       .catch(erro => console.log(erro))
     }
 
+    navegacao = () => 
+    {
+      this.props.navigation.navigate('Login')
+    }
+
     componentDidMount(){
       this.buscarCep();
     }
@@ -39,7 +76,7 @@ export default class cadastroUser extends Component{
             <View style={styles.container}>
 
               <View style={styles.ctnH1}>
-                <TouchableOpacity style={styles.TouchH1}>
+                <TouchableOpacity style={styles.TouchH1} onPress={this.navegacao}>
                   <Image style={styles.imgH1} source={require('../../../assets/Arrow.svg')}/>
                 </TouchableOpacity>
                 <Text style={styles.txtH1}>Cadastro</Text>
@@ -119,9 +156,10 @@ export default class cadastroUser extends Component{
 
                   <TextInput
                     style={styles.TxtInput}
-                    placeholder="Rua"
+                    placeholder="UF"
+                    editable={false}
                     placeholderTextColor="black"
-                    // value={this.state.endereco.logradouro}
+                    value={this.state.endereco.uf}
                   />
                 </View>
 
@@ -130,6 +168,7 @@ export default class cadastroUser extends Component{
                 <TextInput
                     style={styles.TxtInput}
                     placeholder="Endereço"
+                    editable={false}
                     placeholderTextColor="black"
                     value={this.state.endereco.logradouro}
                   />
@@ -137,18 +176,18 @@ export default class cadastroUser extends Component{
                     style={styles.TxtInput}
                     placeholder="Complemento"
                     placeholderTextColor="black"
-                    value={this.state.endereco.complemento}
+                    
                   />
                 </View>
 
                 
 
                 <View style={styles.btnInput}>
-                  <TouchableOpacity style={styles.btnCtn}>
+                  <TouchableOpacity style={styles.btnCtn} onPress={this.cadastrarUser}>
                     <Text style={styles.txtBtn}>Cadastrar</Text>
                   </TouchableOpacity>
             </View>
-                </View>
+                </View>|
               </View>
 
             </View>
