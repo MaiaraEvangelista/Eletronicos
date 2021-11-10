@@ -78,7 +78,7 @@ namespace eletronicos_WebAPI
                         IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("eletronicos-chave-autenticacao")),
 
 
-                        ClockSkew = TimeSpan.FromMinutes(30),
+                        ClockSkew = TimeSpan.FromMinutes(59),
 
 
                         ValidIssuer = "eletronicos.WebApi",

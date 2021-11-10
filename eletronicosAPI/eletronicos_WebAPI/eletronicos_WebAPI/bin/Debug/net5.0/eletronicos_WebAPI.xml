@@ -4,6 +4,26 @@
         <name>eletronicos_WebAPI</name>
     </assembly>
     <members>
+        <member name="M:eletronicos_WebAPI.Controllers.ComentarioController.Get">
+            <summary>
+            Método get para a listagem de todos os comentários de uma loja 
+            </summary>
+            <returns>uma lista de comentarios</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.ComentarioController.Post(eletronicos_WebAPI.Domains.Comentario)">
+            <summary>
+            método uitilizado para postar um comentário
+            </summary>
+            <param name="novoComentario">objeto que irá armazenar os dados do comentário</param>
+            <returns></returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.ComentarioController.Delete(System.Int32)">
+            <summary>
+            deleta um comentário passando um id pela url
+            </summary>
+            <param name="id">id do comentário que será excluido</param>
+            <returns></returns>
+        </member>
         <member name="M:eletronicos_WebAPI.Controllers.EspecialidadeController.Get">
             <summary>
             Faz a listagem das entidades
@@ -49,7 +69,7 @@
             <summary>
             Faz o cadastro 
             </summary>
-            <param name="formularioCriado">Formulário cadastrado</param>
+            <param name="formularioCriado"> objeto que irá carregar a descrição do Formulário cadastrado</param>
             <returns>Novo formulário com suas informações</returns>
         </member>
         <member name="M:eletronicos_WebAPI.Controllers.FormularioController.Atualizar(System.Int32,eletronicos_WebAPI.Domains.Formulario)">
@@ -107,6 +127,48 @@
             </summary>
             <param name="id">Identificador da loja</param>
             <returns>Loja deletada</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.TiposUsuarioController.Get">
+            <summary>
+            método utilizado para listar os tipos de usuário do banco de dados
+            </summary>
+            <returns>StatusCode 200 - ok</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.TiposUsuarioController.BuscarPorId(System.Int32)">
+            <summary>
+            Método utilizado para buscar um tipo de usuário atravez do seu id na URL da requisição  
+            </summary>
+            <param name="id">id do tipo de usuário que será utilizado</param>
+            <returns></returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.TiposUsuarioController.Cadastrar(eletronicos_WebAPI.Domains.TiposUsuario)">
+            <summary>
+            
+            </summary>
+            <param name="novoTipoUsuario"></param>
+            <returns></returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.UsuarioController.Post(eletronicos_WebAPI.Domains.Usuario)">
+            <summary>
+            método para cadastrar usuário
+            </summary>
+            <param name="novoUsuario">objeto que irá armazenar as informações do novo usuário</param>
+            <returns></returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.UsuarioController.Put(System.Int32,eletronicos_WebAPI.Domains.Usuario)">
+            <summary>
+            método para atualizar o usuário passando seu id pela URL
+            </summary>
+            <param name="id">id do usuário que será atualizado</param>
+            <param name="usuarioAtualizado">objeto que irá armazenar as novas informações do usuário</param>
+            <returns>StatusCode204- no content</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.UsuarioController.Delete(System.Int32)">
+            <summary>
+            Método utilizado para deletar um usuário passando seu id pela URL da requisição
+            </summary>
+            <param name="id">id do usuário que será deletado</param>
+            <returns>statusCode 204 - no content</returns>
         </member>
         <member name="M:eletronicos_WebAPI.Interfaces.IComentarioRepository.Listar">
             <summary>

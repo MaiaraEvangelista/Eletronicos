@@ -21,6 +21,10 @@ namespace eletronicos_WebAPI.Controllers
             comentariosRepository = new ComentarioRepository();
         }
 
+        /// <summary>
+        /// Método get para a listagem de todos os comentários de uma loja 
+        /// </summary>
+        /// <returns>uma lista de comentarios</returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -34,6 +38,11 @@ namespace eletronicos_WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// método uitilizado para postar um comentário
+        /// </summary>
+        /// <param name="novoComentario">objeto que irá armazenar os dados do comentário</param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post(Comentario novoComentario)
         {
@@ -49,6 +58,11 @@ namespace eletronicos_WebAPI.Controllers
             }
         }
 
+        /// <summary>
+        /// deleta um comentário passando um id pela url
+        /// </summary>
+        /// <param name="id">id do comentário que será excluido</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

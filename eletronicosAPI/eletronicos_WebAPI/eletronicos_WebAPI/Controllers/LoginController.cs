@@ -79,7 +79,7 @@ namespace eletronicos_WebAPI.Controllers
                     issuer: "eletronicos.WebApi",                 // emissor do token
                     audience: "eletronicos.WebApi",               // destinatário do token
                     claims: claims,                        // dados definidos acima
-                    expires: DateTime.Now.AddMinutes(30),  // tempo de expiração
+                    expires: DateTime.Now.AddMinutes(59),  // tempo de expiração
                     signingCredentials: creds              // credenciais do token
                 );
 

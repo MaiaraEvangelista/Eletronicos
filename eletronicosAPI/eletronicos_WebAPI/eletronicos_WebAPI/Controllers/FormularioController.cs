@@ -51,7 +51,7 @@ namespace eletronicos_WebAPI.Controllers
         /// <summary>
         /// Faz o cadastro 
         /// </summary>
-        /// <param name="formularioCriado">Formulário cadastrado</param>
+        /// <param name="formularioCriado"> objeto que irá carregar a descrição do Formulário cadastrado</param>
         /// <returns>Novo formulário com suas informações</returns>
         [HttpPost]
         public IActionResult Cadastrar(Formulario formularioCriado)

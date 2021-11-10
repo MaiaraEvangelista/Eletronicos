@@ -51,7 +51,11 @@ namespace eletronicos_WebAPI.Controllers
             }
         }
 
-        //Cadastrar
+        /// <summary>
+        /// método para cadastrar usuário
+        /// </summary>
+        /// <param name="novoUsuario">objeto que irá armazenar as informações do novo usuário</param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post(Usuario novoUsuario)
         {
@@ -67,7 +71,12 @@ namespace eletronicos_WebAPI.Controllers
             }
         }
 
-        //Atualizar
+        /// <summary>
+        /// método para atualizar o usuário passando seu id pela URL
+        /// </summary>
+        /// <param name="id">id do usuário que será atualizado</param>
+        /// <param name="usuarioAtualizado">objeto que irá armazenar as novas informações do usuário</param>
+        /// <returns>StatusCode204- no content</returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, Usuario usuarioAtualizado)
         {
@@ -83,7 +92,11 @@ namespace eletronicos_WebAPI.Controllers
             }
         }
 
-        //Deletar
+        /// <summary>
+        /// Método utilizado para deletar um usuário passando seu id pela URL da requisição
+        /// </summary>
+        /// <param name="id">id do usuário que será deletado</param>
+        /// <returns>statusCode 204 - no content</returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

@@ -24,6 +24,10 @@ namespace eletronicos_WebAPI.Controllers
         }
 
         // GET: api/<TiposUsuarioController>
+        /// <summary>
+        /// método utilizado para listar os tipos de usuário do banco de dados
+        /// </summary>
+        /// <returns>StatusCode 200 - ok</returns>
         [HttpGet]
         public IActionResult Get()
         {
@@ -38,6 +42,11 @@ namespace eletronicos_WebAPI.Controllers
         }
 
         // GET api/<TiposUsuarioController>/5
+        /// <summary>
+        /// Método utilizado para buscar um tipo de usuário atravez do seu id na URL da requisição  
+        /// </summary>
+        /// <param name="id">id do tipo de usuário que será utilizado</param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(int id)
         {
@@ -52,6 +61,11 @@ namespace eletronicos_WebAPI.Controllers
         }
 
         // POST api/<TiposUsuarioController>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="novoTipoUsuario"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Cadastrar(TiposUsuario novoTipoUsuario)
         {
