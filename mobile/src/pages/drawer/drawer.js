@@ -8,6 +8,9 @@ import Login from '../user/login'
 import Edicao from '../user/edicao'
 import Lista from '../lista/lista';
 import Trouble from '../troubleshooting/troubleshooting'
+import Solucao from '../solucao/solucao'
+import SaibaMais from '../saiba/saibaMais';
+import perfilCm from '../user/perfilCm';
 
 const Drawer = createDrawerNavigator()
 
@@ -44,12 +47,15 @@ export default class drawer extends Component{
                   height: '50%',
                   width: '50%',
                 },
-            }}>
+            }}> 
                 <Drawer.Screen name="Home" component={Home}/>
                 <Drawer.Screen  options={({headerShown : false})} name="Login" component={Login}/>
-                <Drawer.Screen name="Lista" component={Lista}/>
-                <Drawer.Screen name="Edição" component={Edicao}/>
+                <Drawer.Screen  options={({headerShown : true})}  name ="Soluções" component={Solucao}/>
                 <Drawer.Screen name ="Verificação" component={Trouble}/>
+                <Drawer.Screen name="Lojas" component={Lista}/>
+                <Drawer.Screen name="Editar Perfil" component={Edicao}/>
+                <Drawer.Screen name="Perfil comerciante" component={perfilCm}/>
+                <Drawer.Screen name="Saiba" component={SaibaMais}/>
             </Drawer.Navigator>
         )
     }

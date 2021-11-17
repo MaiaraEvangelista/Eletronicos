@@ -12,6 +12,11 @@ export default class Trouble extends Component{
         }
     }
 
+    nav = () => 
+    {
+        this.props.navigation.navigate('Solucao')
+    }
+
     render()
     {
         return(
@@ -60,7 +65,7 @@ export default class Trouble extends Component{
                             <Text style={styles.txtEdit}>Veja todas as nossas soluções para um futuro ao seu smartphone !</Text>
                         </View>
                         <View style={styles.btnCtnTxt}>
-                            <TouchableOpacity style={styles.btnCtn}>
+                            <TouchableOpacity style={styles.btnCtn} onPress={this.nav}>
                                 <Text style={styles.btn}>Soluções</Text>
                             </TouchableOpacity>
                         </View>
@@ -94,7 +99,7 @@ const styles = StyleSheet.create({
 
         justifyContent: 'center',
         alignItems: 'center',
-        opacity: '80%',
+        opacity: 1,
     },
 
     txtBanner: {
@@ -272,5 +277,6 @@ const styles = StyleSheet.create({
     ideia: {
         width: '90%',
         height: '90%',
+        opacity: 1,
     },
 })

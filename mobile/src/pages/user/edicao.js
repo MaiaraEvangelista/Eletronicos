@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     },  
 
     btnTxt: {
-        fontSize: 10,
+        fontSize: 15,
         fontFamily: 'Arial',
     },
 });

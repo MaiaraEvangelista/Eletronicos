@@ -24,6 +24,8 @@ export default class Lista extends Component {
 
           const dadosApi = resposta.data;
           this.setState({ lista : dadosApi });
+
+          console.warn('ta funfando')
     }
 
     componentDidMount() {
@@ -37,14 +39,54 @@ export default class Lista extends Component {
         return(
          <View style={styles.container}>
 
-             <FlatList 
+             {/* <FlatList 
 
                 contentContainerStyle={styles.mainBody}
                 data={this.state.lista}
                 keyExtractor={item => item.idLoja.id}
                 renderItem={this.renderItem}
 
-             />
+             /> */}
+
+               <View style={styles.listaDesc}>
+
+                <View style={styles.listaCtn}>
+
+                    <View style={styles.imgCtn}>
+                        <View style={styles.img}>
+                        </View>
+                    </View>
+
+                    <View style={styles.arrow}>
+
+                        {/* <TouchableOpacity style={styles.arrowCtn}>
+                            <Image style={styles.arrowDown} source={require('../../../assets/flecha_baixo.png')}/>
+                        </TouchableOpacity> */}
+
+                    </View>
+
+                    <View style={styles.infsCtn}>
+                        <View style={styles.img}>
+                            <View style={styles.h1Ctn}>
+                                <Text style={styles.h1}>Nome da loja</Text>
+                            </View>
+                            <View style={styles.txtCtn}>
+                                <Text style={styles.txt}>3,5 estrelas</Text>
+                                <Text style={styles.txt}>Https://siteEx.com.br</Text>
+                                <Text style={styles.txt}>(11)98764-1243</Text>
+                            </View>
+                        </View>
+                    </View>
+
+                </View>
+                    <View style={styles.ctnDesc}>
+                    <Text style={styles.txtDesc}>Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</Text>
+
+                        <TouchableOpacity style={styles.tchDesc}>
+                        <Text style={styles.txtBtnDesc}>Localização</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
 
          </View>
         )
@@ -186,7 +228,7 @@ const styles = StyleSheet.create({
 
         justifyContent: 'space-around',
         // backgroundColor: 'orange',
-        flexWrap: 'wrap ',
+        flexWrap: 'wrap',
 
     },
 

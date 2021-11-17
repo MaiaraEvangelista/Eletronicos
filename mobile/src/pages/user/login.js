@@ -55,7 +55,7 @@ export default class Login extends Component {
 
     navegacao = () =>
     {
-        this.props.navigation.navigate('drawer')
+        this.props.navigation.navigate('Home')
     }
 
     navegacaoCad = () => 

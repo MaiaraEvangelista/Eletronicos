@@ -16,7 +16,7 @@ export default class cadastroUser extends Component{
 
     navegacao = () =>
     {
-        this.props.navigation.navigate('drawer')
+        this.props.navigation.navigate('Home')
     }
 
     render()
