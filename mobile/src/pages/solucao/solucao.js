@@ -182,7 +182,7 @@ export default class Solucao extends Component {
                             <View style={styles.btnSolucao}>
                                 <TouchableOpacity 
                                 onPress={() => this.setState({modalVisible1 : true})}>
-                                    <Image style={{height: 90, width: 70}} source={require('../../../assets/flechas.svg')}/>
+                                    <Image style={{height: 60, width: 50}} source={require('../../../assets/flechas.svg')}/>
                                 </TouchableOpacity>
                              </View>
 
@@ -197,7 +197,7 @@ export default class Solucao extends Component {
                             <View style={styles.btnSolucao}>
                                 <TouchableOpacity 
                                 onPress={() => this.setState({modalVisible2 : true})}>
-                                    <Image style={{height: 90, width: 90}} source={require('../../../assets/mob.svg')}/>
+                                    <Image style={{height: 60, width: 60}} source={require('../../../assets/mob.svg')}/>
                                 </TouchableOpacity>
                             </View>
 
@@ -217,7 +217,7 @@ export default class Solucao extends Component {
                             <View style={styles.btnSolucao}>
                                 <TouchableOpacity 
                                 onPress={() => this.setState({modalVisible3 : true})}>
-                                    <Image style={{height: 90, width: 90}} source={require('../../../assets/montagem.svg')}/>
+                                    <Image style={{height: 60, width: 60}} source={require('../../../assets/montagem.svg')}/>
                                 </TouchableOpacity>
                              </View>
 
@@ -232,7 +232,7 @@ export default class Solucao extends Component {
                             <View style={styles.btnSolucao}>
                                 <TouchableOpacity 
                                 onPress={() => this.setState({modalVisible4 : true})}>
-                                    <Image style={{height: 90, width: 90}} source={require('../../../assets/venda.svg')}/>
+                                    <Image style={{height: 60, width: 60}} source={require('../../../assets/venda.svg')}/>
                                 </TouchableOpacity>
                             </View>
 
@@ -250,7 +250,7 @@ export default class Solucao extends Component {
                             <View style={styles.btnSolucao2}>
                                 <TouchableOpacity 
                                 onPress={() => this.setState({modalVisible5 : true})}>
-                                    <Image style={{height: 90, width: 95}} source={require('../../../assets/recolhimento.svg')}/>
+                                    <Image style={{height: 60, width: 65}} source={require('../../../assets/recolhimento.svg')}/>
                                 </TouchableOpacity>
                              </View>
 
@@ -278,7 +278,7 @@ const styles = StyleSheet.create({
     },
 
     ctnModal: {
-        height: '30%',
+        height: '40%',
         width: '60%',
         backgroundColor: '#008763',
 
@@ -326,7 +326,7 @@ const styles = StyleSheet.create({
         width: '100%',
 
         flexDirection: 'row',
-        marginTop: 70,
+        marginTop: 40,
         //backgroundColor: 'black',
     },
 
@@ -337,7 +337,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
 
-        marginTop: 70,
+        // backgroundColor: 'black',
+
+        marginTop: 30,
     },
 
     linhaMeio : {
@@ -350,8 +352,8 @@ const styles = StyleSheet.create({
     },  
 
     btnSolucao: {
-        height: '80%',
-        width: '70%',
+        height: '60%',
+        width: '50%',
         backgroundColor: '#00873B',
 
         borderRadius: 10,
@@ -361,8 +363,8 @@ const styles = StyleSheet.create({
     },
 
     btnSolucao2: {
-        height: '80%',
-        width: '35%',
+        height: '60%',
+        width: '30%',
 
         backgroundColor: '#00873B',
 

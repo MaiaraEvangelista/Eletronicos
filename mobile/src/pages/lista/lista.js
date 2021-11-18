@@ -239,7 +239,7 @@ const styles = StyleSheet.create({
 
     ctnDesc: {
         width: '85%',
-        height: '50%',
+        height: '70%',
         backgroundColor: '#004F22',
 
         borderBottomEndRadius: 10,

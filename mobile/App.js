@@ -24,16 +24,16 @@ export default function Stack() {
       >
 
         <AuthSatck.Screen name = 'drawer' component={Drawer}/>
+        <AuthSatck.Screen name = 'login' component={Login} />
         <AuthSatck.Screen name ='perfilCm' component={perfilCm}/>
+        <AuthSatck.Screen name = 'Solucao' component={Solucao}/>
         <AuthSatck.Screen name ='SaibaMais' component={SaibaMais}/>
         <AuthSatck.Screen name = 'lista' component={lista}/>
         <AuthSatck.Screen name = 'cadastroUser' component={cadastroUser} />
-        <AuthSatck.Screen name = 'login' component={Login} />
         <AuthSatck.Screen name = 'Trouble' component={Trouble}/>
         <AuthSatck.Screen name = 'cadastroLoja' component={cadastroLoja}/>
         <AuthSatck.Screen name = 'formCad' component={formCad}/>
         <AuthSatck.Screen name = 'edicao' component={edicao}/>
-        <AuthSatck.Screen name = 'Solucao' component={Solucao}/>
 
       </AuthSatck.Navigator>
     </NavigationContainer>

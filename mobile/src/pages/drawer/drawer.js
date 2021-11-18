@@ -44,7 +44,7 @@ export default class drawer extends Component{
                 drawerStyle : {
                   backgroundColor :'#00873B',
                   borderRadius : 20,
-                  height: '50%',
+                  height: '70%',
                   width: '50%',
                 },
             }}> 
@@ -55,7 +55,7 @@ export default class drawer extends Component{
                 <Drawer.Screen name="Lojas" component={Lista}/>
                 <Drawer.Screen name="Editar Perfil" component={Edicao}/>
                 <Drawer.Screen name="Perfil comerciante" component={perfilCm}/>
-                <Drawer.Screen name="Saiba" component={SaibaMais}/>
+                <Drawer.Screen name="Divulgação" component={SaibaMais}/>
             </Drawer.Navigator>
         )
     }
