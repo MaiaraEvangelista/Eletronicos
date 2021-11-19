@@ -39,9 +39,9 @@ namespace eletronicos_WebAPI.Repositories
             }
 
 
-            if (lojaAtualizada.Nº != null)
+            if (lojaAtualizada.Uf != null)
             {
-                lojaBuscada.Nº = lojaAtualizada.Nº;
+                lojaBuscada.Uf = lojaAtualizada.Uf;
             }
 
             if (lojaAtualizada.Rua != null)

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "fRu51I1Kbq/wxUWreTJ8Bh0HL/vYUMLoyyZDFD0vyTOPlAdmJw50ubcAyKunK9glZJ1FyCozHWpCUD+DCYb50w==",
+  "dgSpecHash": "oWTejD9X5+r+LC2hWWjWmuW81q6G1FZXYswLPyOEBpGfWF+KfHgoccTUc7Qy3iRcawOHVr6wb28hdUr7F+pnSQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jhony\\Desktop\\repositório\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
+  "projectFilePath": "C:\\Users\\jhony\\Desktop\\repositorio_API\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\jhony\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\jhony\\.nuget\\packages\\entityframework\\6.3.0\\entityframework.6.3.0.nupkg.sha512",
     "C:\\Users\\jhony\\.nuget\\packages\\gmap.net.core\\2.0.2\\gmap.net.core.2.0.2.nupkg.sha512",
     "C:\\Users\\jhony\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
@@ -192,12 +193,5 @@
     "C:\\Users\\jhony\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\jhony\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema ao ler o arquivo de cache C:\\Users\\jhony\\Desktop\\repositório\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

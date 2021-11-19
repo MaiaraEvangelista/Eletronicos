@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     "net5.0": {
+      "BCrypt.Net-Core/1.6.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/BCrypt.Net-Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/BCrypt.Net-Core.dll": {}
+        }
+      },
       "EntityFramework/6.3.0": {
         "type": "package",
         "dependencies": {
@@ -3003,6 +3012,29 @@
     }
   },
   "libraries": {
+    "BCrypt.Net-Core/1.6.0": {
+      "sha512": "hsKiHGjrnlDW05MzuzzlD9gNP8YOW2KbZ+FbvISrilsKJJ76tXKhWey6psZX5sd7DczNpSU2U6ldjPoblk8BLw==",
+      "type": "package",
+      "path": "bcrypt.net-core/1.6.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "bcrypt.net-core.1.6.0.nupkg.sha512",
+        "bcrypt.net-core.nuspec",
+        "lib/net40/BCrypt.Net-Core.dll",
+        "lib/net40/BCrypt.Net-Core.pdb",
+        "lib/net45/BCrypt.Net-Core.dll",
+        "lib/net45/BCrypt.Net-Core.pdb",
+        "lib/net451/BCrypt.Net-Core.dll",
+        "lib/net451/BCrypt.Net-Core.pdb",
+        "lib/net452/BCrypt.Net-Core.dll",
+        "lib/net452/BCrypt.Net-Core.pdb",
+        "lib/netstandard1.3/BCrypt.Net-Core.dll",
+        "lib/netstandard1.3/BCrypt.Net-Core.pdb",
+        "lib/netstandard2.0/BCrypt.Net-Core.dll",
+        "lib/netstandard2.0/BCrypt.Net-Core.pdb"
+      ]
+    },
     "EntityFramework/6.3.0": {
       "sha512": "mEvhoXscTyLFMcnbLzKlbWdx6N8fCY2IMe4drjUTMFqOqI4KThnTPXr1m50oXDJAn5PvCy2e90IcwN/OxkJUjg==",
       "type": "package",
@@ -9717,6 +9749,7 @@
   },
   "projectFileDependencyGroups": {
     "net5.0": [
+      "BCrypt.Net-Core >= 1.6.0",
       "GMap.NET.Core >= 2.0.2",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.11",
       "Microsoft.AspNetCore.Cors >= 2.2.0",
@@ -9737,11 +9770,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jhony\\Desktop\\repositório\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\jhony\\Desktop\\repositorio_API\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
       "projectName": "eletronicos_WebAPI",
-      "projectPath": "C:\\Users\\jhony\\Desktop\\repositório\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
+      "projectPath": "C:\\Users\\jhony\\Desktop\\repositorio_API\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
       "packagesPath": "C:\\Users\\jhony\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jhony\\Desktop\\repositório\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\obj\\",
+      "outputPath": "C:\\Users\\jhony\\Desktop\\repositorio_API\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\jhony\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -9770,6 +9803,10 @@
       "net5.0": {
         "targetAlias": "net5.0",
         "dependencies": {
+          "BCrypt.Net-Core": {
+            "target": "Package",
+            "version": "[1.6.0, )"
+          },
           "GMap.NET.Core": {
             "target": "Package",
             "version": "[2.0.2, )"
@@ -9842,13 +9879,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema ao ler o arquivo de cache C:\\Users\\jhony\\Desktop\\repositório\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

@@ -19,6 +19,8 @@ namespace eletronicos_WebAPI.Interfaces
         /// </summary>
         Usuario BuscarPorId(int id);
 
+        Usuario BuscarPorEmail(string email);
+
         /// <summary>
         /// Cadastra um novo usuário
         /// </summary>
@@ -38,5 +40,9 @@ namespace eletronicos_WebAPI.Interfaces
         /// Valida o usuário
         /// </summary>
         Usuario Login(string email, string senha);
+
+        bool VerificarHashes(string senha, string hash);
+
+        string criptografar(string senha);
     }
 }

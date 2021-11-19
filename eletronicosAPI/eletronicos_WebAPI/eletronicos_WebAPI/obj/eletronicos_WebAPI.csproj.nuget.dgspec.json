@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jhony\\Desktop\\repositório\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj": {}
+    "C:\\Users\\jhony\\Desktop\\repositorio_API\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jhony\\Desktop\\repositório\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj": {
+    "C:\\Users\\jhony\\Desktop\\repositorio_API\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jhony\\Desktop\\repositório\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\jhony\\Desktop\\repositorio_API\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
         "projectName": "eletronicos_WebAPI",
-        "projectPath": "C:\\Users\\jhony\\Desktop\\repositório\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
+        "projectPath": "C:\\Users\\jhony\\Desktop\\repositorio_API\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\eletronicos_WebAPI.csproj",
         "packagesPath": "C:\\Users\\jhony\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jhony\\Desktop\\repositório\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\obj\\",
+        "outputPath": "C:\\Users\\jhony\\Desktop\\repositorio_API\\Eletronicos\\eletronicosAPI\\eletronicos_WebAPI\\eletronicos_WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\jhony\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,10 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "dependencies": {
+            "BCrypt.Net-Core": {
+              "target": "Package",
+              "version": "[1.6.0, )"
+            },
             "GMap.NET.Core": {
               "target": "Package",
               "version": "[2.0.2, )"

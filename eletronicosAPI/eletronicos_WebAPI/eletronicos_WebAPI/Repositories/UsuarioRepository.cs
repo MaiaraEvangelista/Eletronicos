@@ -40,6 +40,11 @@ namespace eletronicos_WebAPI.Repositories
             ctx.SaveChanges();
         }
 
+        public Usuario BuscarPorEmail(string email)
+        {
+            return ctx.Usuarios.FirstOrDefault(u => u.Email.ToLower() == email.ToLower());
+        }
+
         public Usuario BuscarPorId(int id)
         {
             return ctx.Usuarios
@@ -61,9 +66,16 @@ namespace eletronicos_WebAPI.Repositories
 
         public void Cadastrar(Usuario novoUsuario)
         {
+            novoUsuario.Senha = criptografar(novoUsuario.Senha);
+
             ctx.Usuarios.Add(novoUsuario);
 
             ctx.SaveChanges();
+        }
+
+        public string criptografar(string senha)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(senha);
         }
 
         public void Deletar(int id)
@@ -94,7 +106,14 @@ namespace eletronicos_WebAPI.Repositories
 
         public Usuario Login(string email, string senha)
         {
-            return ctx.Usuarios.FirstOrDefault(u => u.Email == email && u.Senha == senha);
+            Usuario usuarioBuscado = BuscarPorEmail(email);
+
+            return ctx.Usuarios.FirstOrDefault(u => u.Email == email && VerificarHashes(senha, usuarioBuscado.Senha));
+        }
+
+        public bool VerificarHashes(string senha, string hash)
+        {
+            return BCrypt.Net.BCrypt.Verify(senha, hash);
         }
     }
 }
