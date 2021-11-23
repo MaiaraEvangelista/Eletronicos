@@ -1,14 +1,58 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from 'axios';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Modal, ScrollView, FlatList, ImageBackground } from 'react-native';
+import jwtDecode from 'jwt-decode';
 
 export default class perfilCm extends Component {
     constructor(props)
     {
         super(props)
         this.state = {
-            modalVisible1 : false
+            modalVisible1 : false,
+            dadosLista : {},
+            
         }
     }
+
+    // decode = () => 
+    // {
+    //     try {
+
+    //         var Storage = AsyncStorage.setItem('userToken');
+
+    //         var token = Storage.data.token;
+
+    //         var decoded = jwtDecode(token).role;
+
+    //         console.warn(decoded)
+            
+    //     } catch (error) {
+    //         console.warn(error)
+    //     }
+    // };
+
+    // listarLoja = () => 
+    // {
+
+    //     try {
+            
+    //         const resp = axios.get('http://localhost:5000/api/Usuario/'+this.decode);
+    
+    //         this.setState({dadosLista : resp})
+
+    //     } catch (error) {
+    //         console.warn(error)
+
+    //         console.warn(decode)
+    //     }
+
+    // }
+
+     componentDidMount()
+     {
+         this.decode()
+     }
 
     nav = () => {
         this.props.navigation.navigate('lista')

@@ -14,7 +14,7 @@ export default class Trouble extends Component{
 
     nav = () => 
     {
-        this.props.navigation.navigate('Solucao')
+        this.props.navigation.navigate('Soluções')
     }
 
     render()
@@ -65,9 +65,9 @@ export default class Trouble extends Component{
                             <Text style={styles.txtEdit}>Veja todas as nossas soluções para um futuro ao seu smartphone !</Text>
                         </View>
                         <View style={styles.btnCtnTxt}>
-                            <TouchableOpacity style={styles.btnCtn} onPress={this.nav}>
-                                <Text style={styles.btn}>Soluções</Text>
-                            </TouchableOpacity>
+                                <TouchableOpacity style={styles.btnCtn} onPress={this.nav}>
+                                        <Text style={styles.btn}>Soluções</Text>
+                                </TouchableOpacity>
                         </View>
                     </View>
                     <View style={styles.imgTxtCtn}>

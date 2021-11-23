@@ -1,4 +1,5 @@
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import React, { Component } from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
@@ -19,10 +20,30 @@ export default class drawer extends Component{
     {
         super(props);
         this.state = {
-            nomePag : ''
+            nomePag : '',
+            userToken : null,
+            Token : '',
         }
     }
 
+    
+    token = () => {
+        const x = AsyncStorage.getItem()
+
+        this.setState({Token : x})
+
+        if (this.state.Token === null) {
+            return this.setState({userToken : null})
+        }
+        if (this.state.Token !== null) {
+            return this.setState({userToken : true})
+        }
+    }
+
+    componentDidMount()
+    {
+        this.token()
+    }
 
     render()
     {
@@ -48,14 +69,37 @@ export default class drawer extends Component{
                   width: '50%',
                 },
             }}> 
-                <Drawer.Screen name="Home" component={Home}/>
+                {/* <Drawer.Screen name="Home" component={Home}/>
                 <Drawer.Screen  options={({headerShown : false})} name="Login" component={Login}/>
                 <Drawer.Screen  options={({headerShown : true})}  name ="Soluções" component={Solucao}/>
                 <Drawer.Screen name ="Verificação" component={Trouble}/>
                 <Drawer.Screen name="Lojas" component={Lista}/>
                 <Drawer.Screen name="Editar Perfil" component={Edicao}/>
                 <Drawer.Screen name="Perfil comerciante" component={perfilCm}/>
-                <Drawer.Screen name="Divulgação" component={SaibaMais}/>
+                <Drawer.Screen name="Divulgação" component={SaibaMais}/> */}
+
+                    {
+                        this.state.userToken === null ? (
+                            <>
+                              <Drawer.Screen name="Home" component={Home} />
+                              <Drawer.Screen options={({headerShown : false})} name="Login" component={Login} />
+                              <Drawer.Screen name="Lojas" component={Lista}/>
+                              <Drawer.Screen name="Divulgação" component={SaibaMais}/>
+                            </>
+                          ) : (
+                            <>
+                              <Drawer.Screen name="Home" component={Home}/>
+                              <Drawer.Screen  options={({headerShown : false})} name="Login" component={Login}/>
+                              <Drawer.Screen  options={({headerShown : true})}  name ="Soluções" component={Solucao}/>
+                              <Drawer.Screen  options={{headerShown: true}} name ="Verificação" component={Trouble}/>
+                              <Drawer.Screen name="Lojas" component={Lista}/>
+                              <Drawer.Screen name="Editar Perfil" component={Edicao}/>
+                              <Drawer.Screen name="Perfil comerciante" component={perfilCm}/>
+                              <Drawer.Screen name="Divulgação" component={SaibaMais}/>
+                            </>
+                          )
+                    }
+
             </Drawer.Navigator>
         )
     }

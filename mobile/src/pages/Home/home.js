@@ -4,23 +4,12 @@ import { StyleSheet, View, Text, Image, ScrollView, Dimensions, ImageBackground 
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 const {width} = Dimensions.get("window");
-const height = width * 100 / 160
+const height = width * 100 / 140
 
 const imagem = [
-    '../../../assets/BannerHome.jpg',
-    '../../../assets/BannerHome.jpg',
-    '../../../assets/BannerHome.jpg',
-]
-const txt= [
-    {
-        a : 'titulo1'
-    },
-    {
-        b : 'titulo2'
-    },
-    {
-        c : 'titulo3'
-    },
+    'https://ibb.co/vktxSsJ',
+    'https://ibb.co/N3vtdjG',
+    'https://ibb.co/GnSMmL9',
 ]
 
 
@@ -30,6 +19,26 @@ export default class Home extends Component{
         super(props);
         this.state={
         }
+    }
+
+    saibaMais = () => 
+    {
+        this.props.navigation.navigate('Divulgação')
+    }
+
+    verif = () =>
+    {
+        this.props.navigation.navigate('Verificação')
+    }
+
+    solucoes = () =>
+    {
+        this.props.navigation.navigate('Soluções')
+    }
+
+    list = () =>
+    {
+        this.props.navigation.navigate('Lojas')
     }
 
     render()
@@ -43,11 +52,11 @@ export default class Home extends Component{
                     // showsHorizontalScrollIndicator={false}
                     style={{width, height}} >
                         {
-                            imagem.map((index) => (
+                            imagem.map((imagem, index) => (
                                 <ImageBackground
                                 key={index} 
                                 style={{width, height, resizeMode: 'cover'}} 
-                                source={require('../../../assets/BannerHome.jpg')} 
+                                source={{uri : imagem}} 
                                 >
                                 </ImageBackground>
                             ))
@@ -55,7 +64,7 @@ export default class Home extends Component{
                     </ScrollView>
                 </View>
                     
-                <View style={{height: '60%', width: '100%'}}>
+                <View style={{height: '55%', width: '100%'}}>
                     <ScrollView>
                         <View 
                         style={{height: 230, width: '100%', justifyContent: 'space-around', alignItems: 'center'}}
@@ -64,7 +73,7 @@ export default class Home extends Component{
                                 Deseja divulgar os seus negócios ?
                             </Text>
 
-                            <TouchableOpacity style={styles.btnCtn}>
+                            <TouchableOpacity style={styles.btnCtn} onPress={() => this.saibaMais()}>
                                 <Text style={{fontSize: 17, fontWeight: 'bold'}}>Saiba mais !!</Text>
                             </TouchableOpacity>
                         </View>
@@ -81,13 +90,13 @@ export default class Home extends Component{
                                 </View>
 
                                 <View style={styles.ctnOp1_2}>
-                                    <TouchableOpacity style={styles.btn}>
+                                    <TouchableOpacity style={styles.btn} onPress={() => this.verif()}>
                                         <Text style={styles.txtOp1_2}>Verificação</Text>
                                     </TouchableOpacity>
 
                                         <Text style={styles.txtOp1_2}>ou</Text>
 
-                                    <TouchableOpacity style={styles.btn}>
+                                    <TouchableOpacity style={styles.btn} onPress={() => this.solucoes()}>
                                         <Text style={styles.txtOp1_2}>Soluções</Text>
                                     </TouchableOpacity>
                                 </View>
@@ -105,7 +114,7 @@ export default class Home extends Component{
                                 </View>
 
                                 <View style={styles.ctnOp1_2}>
-                                    <TouchableOpacity style={styles.btn}>
+                                    <TouchableOpacity style={styles.btn} onPress={() => this.list()}>
                                         <Text style={styles.txtOp1_2}>Recicle já !!</Text>
                                     </TouchableOpacity>
                                 </View>

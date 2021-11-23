@@ -38,13 +38,13 @@ export default class Login extends Component {
 
         if (decoded === '2') {
 
-          this.props.navigation.navigate('drawer')
+          this.props.navigation.navigate('Perfil comerciante')
 
         }
 
-        if (decoded === '1') {
+        if (decoded === '3') {
           
-          this.props.navigation.navigate('home')
+          this.props.navigation.navigate('Home')
 
         }
 

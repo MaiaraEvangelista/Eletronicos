@@ -67,7 +67,7 @@ export default class cadastroUser extends Component{
 
     navegacao = () => 
     {
-      this.props.navigation.navigate('login')
+      this.props.navigation.navigate('Login')
     }
 
     componentDidMount(){

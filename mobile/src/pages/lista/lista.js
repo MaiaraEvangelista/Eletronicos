@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView, FlatList } from 'react-native';
+import api from '../../services/api';
 
 
 export default class Lista extends Component {
@@ -14,124 +15,75 @@ export default class Lista extends Component {
 
     buscarLojas = async () => {
 
-        const valorToken = await AsyncStorage.getItem('userToken')
-        
-        const resposta = await api.get('', {
-            headers : {
-              'Authorization' : 'Bearer ' + valorToken
-            }
-          });
+        const resposta = await api.get('Loja');
 
-          const dadosApi = resposta.data;
-          this.setState({ lista : dadosApi });
+        const dadosApi = resposta.data;
+        this.setState({ lista : dadosApi });
 
-          console.warn('ta funfando')
+        console.warn('ta funfando')
     }
 
     componentDidMount() {
 
-        // this.buscarLojas()
+        this.buscarLojas()
         
     }
 
     render()
     {
         return(
+    <ScrollView>
          <View style={styles.container}>
 
-             {/* <FlatList 
+            <View style={styles.lista}>
+             <FlatList 
 
                 contentContainerStyle={styles.mainBody}
                 data={this.state.lista}
                 keyExtractor={item => item.idLoja.id}
                 renderItem={this.renderItem}
-
-             /> */}
-
-               <View style={styles.listaDesc}>
-
-                <View style={styles.listaCtn}>
-
-                    <View style={styles.imgCtn}>
-                        <View style={styles.img}>
-                        </View>
-                    </View>
-
-                    <View style={styles.arrow}>
-
-                        {/* <TouchableOpacity style={styles.arrowCtn}>
-                            <Image style={styles.arrowDown} source={require('../../../assets/flecha_baixo.png')}/>
-                        </TouchableOpacity> */}
-
-                    </View>
-
-                    <View style={styles.infsCtn}>
-                        <View style={styles.img}>
-                            <View style={styles.h1Ctn}>
-                                <Text style={styles.h1}>Nome da loja</Text>
-                            </View>
-                            <View style={styles.txtCtn}>
-                                <Text style={styles.txt}>3,5 estrelas</Text>
-                                <Text style={styles.txt}>Https://siteEx.com.br</Text>
-                                <Text style={styles.txt}>(11)98764-1243</Text>
-                            </View>
-                        </View>
-                    </View>
-
-                </View>
-                    <View style={styles.ctnDesc}>
-                    <Text style={styles.txtDesc}>Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</Text>
-
-                        <TouchableOpacity style={styles.tchDesc}>
-                        <Text style={styles.txtBtnDesc}>Localização</Text>
-                        </TouchableOpacity>
-                    </View>
-                </View>
+             />
+            </View>
 
          </View>
+    </ScrollView>
         )
     }
 
     renderItem = ({item}) => (
+
         <View style={styles.listaDesc}>
 
                 <View style={styles.listaCtn}>
 
                     <View style={styles.imgCtn}>
                         <View style={styles.img}>
+                            <Image style={{height: '100%', width: '100%'}} source={item.imagem} />
                         </View>
-                    </View>
-
-                    <View style={styles.arrow}>
-
-                        {/* <TouchableOpacity style={styles.arrowCtn}>
-                            <Image style={styles.arrowDown} source={require('../../../assets/flecha_baixo.png')}/>
-                        </TouchableOpacity> */}
-
                     </View>
 
                     <View style={styles.infsCtn}>
                         <View style={styles.img}>
                             <View style={styles.h1Ctn}>
-                                <Text style={styles.h1}>Nome da loja</Text>
+                                <Text style={styles.h1}>{item.nomeComercio}</Text>
                             </View>
                             <View style={styles.txtCtn}>
-                                <Text style={styles.txt}>3,5 estrelas</Text>
-                                <Text style={styles.txt}>Https://siteEx.com.br</Text>
-                                <Text style={styles.txt}>(11)98764-1243</Text>
+                                <Text style={styles.txt}>{item.UF}</Text>
+                                <Text style={styles.txt}>{item.rua}</Text>
+                                <Text style={styles.txt}>{item.telefone}</Text>
                             </View>
                         </View>
                     </View>
 
                 </View>
                     <View style={styles.ctnDesc}>
-                    <Text style={styles.txtDesc}>Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</Text>
+                        <Text style={styles.txtDesc}>Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</Text>
 
                         <TouchableOpacity style={styles.tchDesc}>
                         <Text style={styles.txtBtnDesc}>Localização</Text>
                         </TouchableOpacity>
                     </View>
-                </View>
+        </View>
     )
 }
 
@@ -139,14 +91,21 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
+        backgroundColor: 'red',
+    },
+
+    lista: {
+        flex : 4,
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-around',
+
+        backgroundColor: 'black'
     },
 
     listaDesc: {
         width: '80%',
-        height: '35%',
+        height: '100%',
         // backgroundColor: 'gray',
 
         alignItems: 'center',
@@ -256,7 +215,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
 
         color: 'white',
-        fontSize: 14,
+        fontSize: 13,
     },
 
     tchDesc: {
