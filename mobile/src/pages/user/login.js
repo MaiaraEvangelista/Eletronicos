@@ -11,6 +11,7 @@ export default class Login extends Component {
         this.state = {
             email : '',
             senha : '',
+            display : 'none',
         }
     }
 
@@ -50,6 +51,7 @@ export default class Login extends Component {
 
       } catch (error) {
         console.warn(error)
+        this.setState({display : 'flex'})
       }
     }
 
@@ -60,7 +62,7 @@ export default class Login extends Component {
 
     navegacaoCad = () => 
     {
-      this.props.navigation.navigate('cadastroUser')
+      this.props.navigation.navigate('cadaUser')
     }
 
     render()
@@ -97,6 +99,13 @@ export default class Login extends Component {
                   <TouchableOpacity style={styles.btnLogin} onPress={this.login}>
                     <Text style={styles.textBtn}>Login</Text>
                   </TouchableOpacity>
+
+                  <Text style={{display : this.state.display,
+                                color : 'red',
+                                fontWeight: 'bold',
+                                fontSize : '15',
+                              }}>Erro no login!! senha ou email incorretos</Text>
+
 
                 <TouchableOpacity style={styles.ctnCadastro} onPress={this.navegacaoCad}>
                   <Text style={styles.textCadastro}>Não tem uma conta? cadastre-se</Text>
@@ -187,6 +196,14 @@ const styles = StyleSheet.create({
   textBtn : {
     fontSize : 25,
     fontFamily : 'Arial'
+  },
+
+  txtError : {
+    display : 'flex',
+    color : 'red',
+
+    fontSize : '15',
+    fontWeight: 'bold',
   },
 
   ctnCadastro : {

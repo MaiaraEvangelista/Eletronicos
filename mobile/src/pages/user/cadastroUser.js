@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Style, TouchableOpacity, ImageBackground, Image } from "react-native";
+import { View, Text, StyleSheet, Style, TouchableOpacity, ImageBackground, Image, Modal } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { TextInputMask } from 'react-native-masked-text'
 
@@ -11,18 +11,23 @@ export default class cadastroUser extends Component{
         super(props);
         this.state =
         {
-            nomeCompleto : '',
+            idUsuario : 0,
+            idTipoUsuario : 3,
+            cnpj : '',
+
+            nomeCompleto: '',
             celular: '',
-            email : '',
-            senha : '',
+            email: '',
+            senha: '',
+            cpf : '',
             CEP: '',
             UF : '',
-            endereco : '',
-            complemento : '',
-            idTipo : 1,
-            cpf : 'teste',
+            endereco2 : '',
+            complemento: '',
 
-            endereco: []
+            endereco: [],
+
+            visible : false
         }
         
     }
@@ -31,38 +36,40 @@ export default class cadastroUser extends Component{
     {
       try {
 
-        fetch('http://localhost:5000/api/Usuario',
-        {
-          method : 'POST',
-  
-          body : JSON.stringify({
-            idTiposUsuario: this.state.idTipo,
-            nomeCompleto  : this.state.nomeCompleto,
-            celular       : this.state.celular,
-            email         : this.state.email,
-            senha         : this.state.senha,
-            cep           : this.state.CEP,
-            cpf           : this.state.cpf,
-            rua           : this.state.UF,
-            nº            : this.state.endereco,
-            complemento   : this.state.complemento,
-          }),
-        })
+       axios.post('http://localhost:5000/api/Usuario',
+       {
+         idUsuarios : this.state.idUsuario,
+         idTiposUsuario : this.state.idTipoUsuario,
+         email : this.state.email,
+         senha : this.state.senha,
+         cpf : this.state.cpf,
+         cnpj : this.state.cnpj,
+         nomeCompleto : this.state.nomeCompleto,
+         rua : this.state.endereco2,
+         uf : this.state.UF,
+         complemento : this.state.complemento,
+         cep : this.state.CEP,
+         celular : this.state.celular,
+       })
+
+       this.setState({visible : false})
 
       } catch (error) {
         console.warn(error)
+        console.warn('ta dando erro')
       }
     
     }
+
 
     buscarCep = () => {
       axios(`https://viacep.com.br/ws/${this.state.CEP}/json/`)
       .then(resposta => {
         this.setState({endereco: resposta.data})
-        console.log(resposta.data)
+        console.warn(resposta.data)
       })
 
-      .catch(erro => console.log(erro))
+      .catch(erro => console.warn(erro))
     }
 
     navegacao = () => 
@@ -78,6 +85,26 @@ export default class cadastroUser extends Component{
     {
         return(
             <View style={styles.container}>
+
+              <Modal
+                transparent={true}
+                visible={this.state.visible}
+                animationType="slide"
+              >
+                <View style={{flex : 1, justifyContent: 'center', alignItems: 'center'}}>
+                  <View style={{height: '30%', width: '55%', 
+                  backgroundColor: 'white', borderRadius: 10, alignItems: 'center', 
+                  justifyContent: 'space-around', flexDirection: 'column'}}>
+                    <Image style={{height: '20%', width: '19%'}} source={require('./../../../assets/check.png')}/>
+                    
+                    <Text style={styles.CadSus}>Cadastro bem sucedido</Text>
+
+                    <TouchableOpacity style={styles.btnCad}>
+                      <Text style={{color: 'white', fontSize: 16}}>Prosseguir</Text>
+                    </TouchableOpacity>
+                  </View>
+                </View>
+              </Modal>
 
               <View style={styles.ctnH1}>
                 <TouchableOpacity style={styles.TouchH1} onPress={this.navegacao}>
@@ -107,13 +134,8 @@ export default class cadastroUser extends Component{
                     withDDD: true,
                     dddMask: '(99) '
                   }}
-                  value={this.state.celular}
-                  onChangeText={ x =>
-                  {
-                    this.setState({
-                      celular : x
-                    })
-                  }}
+                    value={this.state.celular}
+                    onChangeText={celular => this.setState({celular})}
                     style={styles.TxtInput}
                     placeholder="Celular"
                     placeholderTextColor="black"
@@ -141,6 +163,19 @@ export default class cadastroUser extends Component{
                   />
                 </View>
 
+                <View style={styles.inputStyle}>
+                  <TextInputMask
+                  type={'custom'}
+                  options={{
+                    mask : '999-999-999-99'
+                  }}
+                    value={this.state.cpf}
+                    onChangeText={cpf => this.setState({cpf})}
+                    style={styles.TxtInput}
+                    placeholder='CPF'
+                    placeholderTextColor="black"                   
+                  />
+                </View>
 
                 <View style={styles.inputStyle}>
                 <TextInputMask
@@ -148,16 +183,11 @@ export default class cadastroUser extends Component{
                 options={{
                   mask : '99999-999'
                 }}
-                value={this.state.CEP}
-                onChangeText={ x => {
-                  this.setState({
-                    CEP : x
-                  })
-                }}
+                    onChangeText={CEP => this.setState({CEP})}
+                    value={this.state.CEP} id="cep" name="cep"
                     style={styles.TxtInput}
                     placeholder=' CEP'
                     onBlur={this.buscarCep}
-                    value={this.state.CEP} id="cep" name="cep"
                     placeholderTextColor="black"                   
                   />
 
@@ -179,7 +209,7 @@ export default class cadastroUser extends Component{
                     editable={false}
                     placeholderTextColor="black"
                     value={this.state.endereco.logradouro}
-                    onChangeText={endereco => this.setState({endereco})}
+                    onChangeText={endereco2 => this.setState({endereco2})}
                   />
                    <TextInput
                     style={styles.TxtInput}
@@ -189,15 +219,13 @@ export default class cadastroUser extends Component{
                   />
                 </View>
 
-                
-
                 <View style={styles.btnInput}>
-                  <TouchableOpacity style={styles.btnCtn} onPress={this.cadastrarUser}>
+                  <TouchableOpacity style={styles.btnCtn} onPress={this.cadastrarUser()}>
                     <Text style={styles.txtBtn}>Cadastrar</Text>
                   </TouchableOpacity>
+                </View>
+              </View>|
             </View>
-                </View>|
-              </View>
 
             </View>
         )
@@ -207,6 +235,24 @@ const styles = StyleSheet.create({
     container: {
     flex: 1,
 
+  },
+
+  CadSus: {
+    color : 'green',
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
+
+  btnCad: {
+    width: '40%',
+    height: '15%',
+
+    backgroundColor: '#4D65BD',
+
+    borderRadius: 10,
+
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   imgH1: {

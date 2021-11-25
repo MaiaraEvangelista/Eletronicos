@@ -90,17 +90,18 @@ export default class Lista extends Component {
 const styles = StyleSheet.create({
 
     container: {
-        flex: 1,
-        backgroundColor: 'red',
+        height: 1000,
+        width: '100%',
     },
 
     lista: {
-        flex : 4,
+        height: '100%',
+        width: '100%',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-around',
 
-        backgroundColor: 'black'
+        // backgroundColor: 'black'
     },
 
     listaDesc: {
@@ -219,6 +220,7 @@ const styles = StyleSheet.create({
     },
 
     tchDesc: {
+       marginTop: 5,
        width: '35%',
        height: '25%',
     //    backgroundColor: 'red',

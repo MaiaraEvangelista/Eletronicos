@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Style, TouchableOpacity, ImageBackground, Image } from "react-native";
+import { View, Text, StyleSheet, Style, TouchableOpacity, ImageBackground, Image, Modal } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { TextInputMask } from 'react-native-masked-text'
+import axios from "axios";
+import { color } from "react-native-reanimated";
 
 export default class cadastroUser extends Component{
     constructor(props)
@@ -9,8 +11,17 @@ export default class cadastroUser extends Component{
         super(props);
         this.state =
         {
+            NomeLoja: '',
             cnpj: '',
+            UF : '',
+            endereco1: '',
             CEP: '',
+            complemento: '',
+
+            endereco : [],
+
+            ModalVisible : false,
+            sucesso: '',
         }
     }
 
@@ -19,10 +30,92 @@ export default class cadastroUser extends Component{
         this.props.navigation.navigate('Home')
     }
 
+    TurnModalVisible = () =>
+    {
+      if (this.state.NomeLoja == ''  || 
+          this.state.cnpj == ''      ||
+          this.state.UF == ''        ||
+          this.state.endereco1 == '' ||
+          this.state.CEP == ''
+          ) {
+        this.setState({sucesso : 'Alguns campos estão vazios!!'})
+        console.warn(this.state.NomeLoja,
+                    this.state.cnpj,
+                    this.state.UF,
+                    this.state.endereco1,
+                    this.state.CEP,
+                    this.state.complemento,)
+      } 
+      if (this.state.NomeLoja != ''  && 
+          this.state.cnpj != ''      &&
+          this.state.UF != ''        &&
+          this.state.endereco1 != '' &&
+          this.state.CEP != ''       
+          ) {
+        this.setState({sucesso : ''})
+        this.setState({ModalVisible : true})
+        console.warn('ta indo ss 2')
+      }
+
+    }
+
+    buscarCep = () => {
+      axios(`https://viacep.com.br/ws/${this.state.CEP}/json/`)
+      .then(resposta => {
+        this.setState({endereco: resposta.data})
+        console.warn(resposta.data)
+      })
+
+      .catch(erro => console.warn(erro))
+    }
+
+    componentDidMount()
+    {
+      this.buscarCep()
+    }
+
     render()
     {
         return(
             <View style={styles.container}>
+
+              <Modal
+                transparent={true}
+                visible={this.state.ModalVisible}
+                animationType='slide'
+              >
+                <View style={styles.conatinerModal}>
+                  <View style={styles.ctnInputsModal}>
+
+                    <View style={styles.ctnModal}>
+                        <Text style={{textAlign : 'center', fontSize: 18, width: '60%'}}
+                        >Selecione uma imagem para a sua loja</Text>
+
+                        <TextInput
+                        style={styles.InputImg}
+                          placeholder='Imagem'
+                        />
+
+                    </View>
+
+
+                    <View style={styles.ctnModal}>
+                      <TextInput
+                        style={styles.inputDesc}
+                        placeholder='Faça uma descrição curta da sua loja'
+                        multiline
+                      />
+                    </View>
+
+                    <View style={styles.btnModalCtn}>
+                      <TouchableOpacity style={styles.btnModal}>
+                        <Text style={{color: 'white', fontSize: 17}}>Cadastre-se</Text>
+                      </TouchableOpacity>
+                    </View>
+
+                  </View>
+                </View>
+              </Modal>
 
               <View style={styles.ctnH1}>
                 <TouchableOpacity style={styles.TouchH1} onPress={this.navegacao}>
@@ -42,17 +135,13 @@ export default class cadastroUser extends Component{
                     placeholder="Nome da loja"
                     placeholderTextColor="black"
                     keyboardType="default"
+                    onChangeText={NomeLoja => this.setState({NomeLoja})}
                   />
 
                   <TextInputMask
                   type={'cnpj'}
                   value={this.state.cnpj}
-                  onChangeText={ x =>
-                  {
-                    this.setState({
-                      cnpj : x
-                    })
-                  }}
+                  onChangeText={cnpj => this.setState({cnpj})}
                     style={styles.TxtInput}
                     placeholder="CNPJ"
                     placeholderTextColor="black"
@@ -66,20 +155,20 @@ export default class cadastroUser extends Component{
                   mask : '99999-999'
                 }}
                 value={this.state.CEP}
-                onChangeText={ x => {
-                  this.setState({
-                    CEP : x
-                  })
-                }}
+                  onChangeText={CEP => this.setState({CEP})}
                     style={styles.TxtInput}
                     placeholder="CEP"
                     placeholderTextColor="black"
+                    onBlur={this.buscarCep}
+                    value={this.state.CEP} id="cep" name="cep"
                   />
 
                   <TextInput
                     style={styles.TxtInput}
-                    placeholder="Rua"
+                    placeholder="UF"
                     placeholderTextColor="black"
+                    value={this.state.endereco.uf}
+                    onChangeText={UF => this.setState({UF})}
                   />
                 </View>
 
@@ -89,31 +178,21 @@ export default class cadastroUser extends Component{
                     style={styles.TxtInput}
                     placeholder="Endereço"
                     placeholderTextColor="black"
+                    value={this.state.endereco.logradouro}
+                    onChangeText={endereco1 => this.setState({endereco1})}
                   />
                    <TextInput
                     style={styles.TxtInput}
                     placeholder="Complemento"
                     placeholderTextColor="black"
+                    onChangeText={complemento => this.setState({complemento})}
                   />
                 </View>
-
-                <View style={styles.inputBig}>
-                  <TextInput style={styles.inputDesc}
-                    placeholder="Descrição"
-                    placeholderTextColor="black"
-                    multiline="true"
-                  />
-
-                    <TextInput style={styles.InputImg}
-                      placeholder='Selecione uma imagem da loja'
-                      placeholderTextColor="black"
-                      multiline="true"
-                    />
-
-                </View>
+                
 
                 <View style={styles.btnInput}>
-                  <TouchableOpacity style={styles.btnCtn}>
+                  <Text style={{color: 'red', fontSize: 17}}>{this.state.sucesso}</Text>
+                  <TouchableOpacity style={styles.btnCtn} onPress={this.TurnModalVisible}>
                     <Text style={styles.txtBtn}>Cadastrar</Text>
                   </TouchableOpacity>
             </View>
@@ -129,6 +208,49 @@ const styles = StyleSheet.create({
     container: {
     flex: 1,
 
+  },
+
+  conatinerModal: {
+    flex: 1,
+    backgroundColor: 'rgba(200, 199, 199, 0.9)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  ctnInputsModal: {
+    width: '80%',
+    height: '70%',
+    backgroundColor: 'white',
+    borderRadius: 10,
+  },
+
+  ctnModal: {
+    width: '100%',
+    height: '40%',
+    // backgroundColor: 'red',
+
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+
+  btnModalCtn : {
+    width: '100%',
+    height: '20%',
+    // backgroundColor: 'red'
+
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  btnModal: {
+    width: '50%',
+    height: '40%',
+    backgroundColor: '#4D65BD',
+
+    borderRadius: 7,
+
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 
   imgH1: {
@@ -174,7 +296,7 @@ const styles = StyleSheet.create({
   },
 
   inputStyle: {
-    flex: 0.12,
+    flex: 0.135,
     // backgroundColor: 'yellow',
 
     flexDirection: 'row',
@@ -196,16 +318,17 @@ const styles = StyleSheet.create({
   },
 
   btnInput: {
-    flex: 0.1,
+    flex: 0.2,
     // backgroundColor: 'orange',
 
-    justifyContent: 'center',
+    justifyContent: 'space-around',
     alignItems: 'center',
+    flexDirection: 'column'
   },
 
   btnCtn: {
     width: '35%',
-    height: '80%',
+    height: '50%',
     backgroundColor: '#008763',
 
     justifyContent: 'center',
@@ -236,8 +359,8 @@ const styles = StyleSheet.create({
   },
 
   inputDesc: {
-    height: '100%',
-    width: '40%',
+    height: '50%',
+    width: '50%',
 
     borderColor: '#00873B',
     borderWidth: 4,
@@ -251,8 +374,8 @@ const styles = StyleSheet.create({
   },
 
   InputImg: {
-    height: '80%',
-    width: '40%',
+    height: '50%',
+    width: '50%',
 
     borderColor: '#00873B',
     borderWidth: 4,

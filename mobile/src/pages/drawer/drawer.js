@@ -12,6 +12,7 @@ import Trouble from '../troubleshooting/troubleshooting'
 import Solucao from '../solucao/solucao'
 import SaibaMais from '../saiba/saibaMais';
 import perfilCm from '../user/perfilCm';
+import cadastroUser from '../user/cadastroUser';
 
 const Drawer = createDrawerNavigator()
 
