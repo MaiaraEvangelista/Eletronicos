@@ -26,83 +26,74 @@ export default class Lista extends Component {
     componentDidMount() {
 
         this.buscarLojas()
-        
+
     }
 
     render()
     {
         return(
-    <ScrollView>
-         <View style={styles.container}>
+             <FlatList
 
-            <View style={styles.lista}>
-             <FlatList 
-
-                contentContainerStyle={styles.mainBody}
+                contentContainerStyle={styles.container}
                 data={this.state.lista}
                 keyExtractor={item => item.idLoja.id}
                 renderItem={this.renderItem}
              />
-            </View>
 
-         </View>
-    </ScrollView>
         )
     }
 
     renderItem = ({item}) => (
 
-        <View style={styles.listaDesc}>
+        <View style={styles.container}>
+            <View style={styles.listaDesc}>
 
-                <View style={styles.listaCtn}>
+                    <View style={styles.listaCtn}>
 
-                    <View style={styles.imgCtn}>
-                        <View style={styles.img}>
-                            <Image style={{height: '100%', width: '100%'}} source={item.imagem} />
-                        </View>
-                    </View>
-
-                    <View style={styles.infsCtn}>
-                        <View style={styles.img}>
-                            <View style={styles.h1Ctn}>
-                                <Text style={styles.h1}>{item.nomeComercio}</Text>
-                            </View>
-                            <View style={styles.txtCtn}>
-                                <Text style={styles.txt}>{item.UF}</Text>
-                                <Text style={styles.txt}>{item.rua}</Text>
-                                <Text style={styles.txt}>{item.telefone}</Text>
+                        <View style={styles.imgCtn}>
+                            <View style={styles.img}>
+                                <Image style={{height: '100%', width: '100%'}} source={item.imagem} />
                             </View>
                         </View>
-                    </View>
 
-                </View>
-                    <View style={styles.ctnDesc}>
-                        <Text style={styles.txtDesc}>Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</Text>
+                        <View style={styles.infsCtn}>
+                            <View style={styles.img}>
+                                <View style={styles.h1Ctn}>
+                                    <Text style={styles.h1}>{item.nomeComercio}</Text>
+                                </View>
+                                <View style={styles.txtCtn}>
+                                    <Text style={styles.txt}>{item.UF}</Text>
+                                    <Text style={styles.txt}>{item.rua}</Text>
+                                    <Text style={styles.txt}>{item.telefone}</Text>
+                                </View>
+                            </View>
+                        </View>
 
-                        <TouchableOpacity style={styles.tchDesc}>
-                        <Text style={styles.txtBtnDesc}>Localização</Text>
-                        </TouchableOpacity>
                     </View>
+                        <View style={styles.ctnDesc}>
+                            <Text style={styles.txtDesc}>Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged</Text>
+
+                            <TouchableOpacity style={styles.tchDesc}>
+                            <Text style={styles.txtBtnDesc}>Localização</Text>
+                            </TouchableOpacity>
+                        </View>
+            </View>
         </View>
+
     )
 }
 
 const styles = StyleSheet.create({
 
     container: {
-        height: 1000,
-        width: '100%',
-    },
+        flex: 1,
+        // backgroundColor: 'black',
 
-    lista: {
-        height: '100%',
-        width: '100%',
+        justifyContent: 'space-around',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'space-around',
-
-        // backgroundColor: 'black'
     },
+
 
     listaDesc: {
         width: '80%',

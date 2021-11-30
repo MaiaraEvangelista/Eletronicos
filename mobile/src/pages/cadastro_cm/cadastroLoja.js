@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Style, TouchableOpacity, ImageBackground, Image
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { TextInputMask } from 'react-native-masked-text'
 import axios from "axios";
-import { color } from "react-native-reanimated";
+
 
 export default class cadastroUser extends Component{
     constructor(props)
@@ -17,6 +17,8 @@ export default class cadastroUser extends Component{
             endereco1: '',
             CEP: '',
             complemento: '',
+            imagem : '',
+            desc : '',
 
             endereco : [],
 
@@ -32,11 +34,11 @@ export default class cadastroUser extends Component{
 
     TurnModalVisible = () =>
     {
-      if (this.state.NomeLoja == ''  || 
-          this.state.cnpj == ''      ||
-          this.state.UF == ''        ||
-          this.state.endereco1 == '' ||
-          this.state.CEP == ''
+      if (this.state.NomeLoja == ''   || 
+          this.state.cnpj == ''       ||
+          this.state.CEP == ''        ||
+          this.state.UF == ''         ||
+          this.state.endereco1 == ''
           ) {
         this.setState({sucesso : 'Alguns campos estão vazios!!'})
         console.warn(this.state.NomeLoja,
@@ -46,15 +48,21 @@ export default class cadastroUser extends Component{
                     this.state.CEP,
                     this.state.complemento,)
       } 
-      if (this.state.NomeLoja != ''  && 
-          this.state.cnpj != ''      &&
-          this.state.UF != ''        &&
-          this.state.endereco1 != '' &&
-          this.state.CEP != ''       
+      if (this.state.NomeLoja != ''   && 
+          this.state.cnpj != ''       &&
+          this.state.CEP != ''        &&   
+          this.state.UF != ''         &&
+          this.state.endereco1 != ''     
           ) {
         this.setState({sucesso : ''})
         this.setState({ModalVisible : true})
         console.warn('ta indo ss 2')
+        console.warn(this.state.NomeLoja,
+          this.state.cnpj,
+          this.state.UF,
+          this.state.endereco1,
+          this.state.CEP,
+          this.state.complemento,)
       }
 
     }
@@ -95,7 +103,6 @@ export default class cadastroUser extends Component{
                         style={styles.InputImg}
                           placeholder='Imagem'
                         />
-
                     </View>
 
 
@@ -158,6 +165,7 @@ export default class cadastroUser extends Component{
                   onChangeText={CEP => this.setState({CEP})}
                     style={styles.TxtInput}
                     placeholder="CEP"
+                    editable={true}
                     placeholderTextColor="black"
                     onBlur={this.buscarCep}
                     value={this.state.CEP} id="cep" name="cep"
@@ -167,8 +175,9 @@ export default class cadastroUser extends Component{
                     style={styles.TxtInput}
                     placeholder="UF"
                     placeholderTextColor="black"
-                    value={this.state.endereco.uf}
-                    onChangeText={UF => this.setState({UF})}
+                    editable={true}
+                    value={this.state.endereco.uf} id="uf" name="uf"
+                    onChangeText={(UF) => this.setState({UF})}
                   />
                 </View>
 
@@ -178,7 +187,7 @@ export default class cadastroUser extends Component{
                     style={styles.TxtInput}
                     placeholder="Endereço"
                     placeholderTextColor="black"
-                    value={this.state.endereco.logradouro}
+                    value={this.state.endereco.logradouro} id="logradouro" name="logradouro"
                     onChangeText={endereco1 => this.setState({endereco1})}
                   />
                    <TextInput
@@ -321,7 +330,7 @@ const styles = StyleSheet.create({
     flex: 0.2,
     // backgroundColor: 'orange',
 
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     alignItems: 'center',
     flexDirection: 'column'
   },
@@ -351,7 +360,7 @@ const styles = StyleSheet.create({
 
   inputBig: {
     flex: 0.25,
-    // backgroundColor: 'red',
+    backgroundColor: 'red',
 
     flexDirection: 'row',
     justifyContent: 'space-around',

@@ -22,30 +22,39 @@ export default class drawer extends Component{
         super(props);
         this.state = {
             nomePag : '',
-            userToken : null,
+            userToken : '',
             Token : '',
         }
     }
 
     
-    token = () => {
-        const x = AsyncStorage.getItem()
+    token = async () => {
+        const x = await AsyncStorage.getItem('userToken')
 
-        this.setState({Token : x})
+        await this.setState({Token : x})
 
         if (this.state.Token === null) {
-            return this.setState({userToken : null})
+            this.setState({userToken : false})
+            console.warn('ta falso')
+
+            const teste = await AsyncStorage.getItem('userToken')
+            console.warn(teste)
         }
-        if (this.state.Token !== null) {
-            return this.setState({userToken : true})
+        if(this.state.Token !== null){
+            this.setState({userToken : true})
+            console.warn('ta true')
+
+            const teste = await AsyncStorage.getItem('userToken')
+            console.warn(teste)
         }
     }
+
 
     componentDidMount()
     {
         this.token()
     }
-
+    
     render()
     {
         return(
@@ -80,20 +89,21 @@ export default class drawer extends Component{
                 <Drawer.Screen name="Divulgação" component={SaibaMais}/> */}
 
                     {
-                        this.state.userToken === null ? (
+                        this.state.userToken === false ? (
                             <>
                               <Drawer.Screen name="Home" component={Home} />
                               <Drawer.Screen options={({headerShown : false})} name="Login" component={Login} />
                               <Drawer.Screen name="Lojas" component={Lista}/>
+                              <Drawer.Screen  options={({headerShown : true})}  name ="Soluções" component={Solucao}/>
                               <Drawer.Screen name="Divulgação" component={SaibaMais}/>
                             </>
                           ) : (
                             <>
                               <Drawer.Screen name="Home" component={Home}/>
                               <Drawer.Screen  options={({headerShown : false})} name="Login" component={Login}/>
+                              <Drawer.Screen name="Lojas" component={Lista}/>
                               <Drawer.Screen  options={({headerShown : true})}  name ="Soluções" component={Solucao}/>
                               <Drawer.Screen  options={{headerShown: true}} name ="Verificação" component={Trouble}/>
-                              <Drawer.Screen name="Lojas" component={Lista}/>
                               <Drawer.Screen name="Editar Perfil" component={Edicao}/>
                               <Drawer.Screen name="Perfil comerciante" component={perfilCm}/>
                               <Drawer.Screen name="Divulgação" component={SaibaMais}/>

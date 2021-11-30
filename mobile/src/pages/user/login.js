@@ -24,12 +24,12 @@ export default class Login extends Component {
           senha : this.state.senha
         });
 
-        console.warn(this.state.email);
-        console.warn(this.state.senha);
+        // console.warn(this.state.email);
+        // console.warn(this.state.senha);
 
         const token = resp.data.token;
 
-        console.warn(token);
+        // console.warn(token);
 
         await AsyncStorage.setItem('userToken', token)
 

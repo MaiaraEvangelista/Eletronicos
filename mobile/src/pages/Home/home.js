@@ -7,9 +7,9 @@ const {width} = Dimensions.get("window");
 const height = width * 100 / 140
 
 const imagem = [
-    'https://ibb.co/vktxSsJ',
-    'https://ibb.co/N3vtdjG',
-    'https://ibb.co/GnSMmL9',
+    'https://image.shutterstock.com/image-vector/3d-abstract-digital-technology-background-600w-1931157161.jpg',
+    'https://image.shutterstock.com/image-vector/abstract-lines-dots-connect-background-600w-1492332182.jpg',
+    'https://image.shutterstock.com/image-vector/abstract-gradient-wave-particles-big-600w-1930623710.jpg'
 ]
 
 
@@ -49,14 +49,14 @@ export default class Home extends Component{
                     <ScrollView 
                     pagingEnabled 
                     horizontal 
-                    // showsHorizontalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={true}
                     style={{width, height}} >
                         {
                             imagem.map((imagem, index) => (
                                 <ImageBackground
                                 key={index} 
                                 style={{width, height, resizeMode: 'cover'}} 
-                                source={{uri : imagem}} 
+                                source={{uri : imagem}}
                                 >
                                 </ImageBackground>
                             ))
@@ -119,6 +119,9 @@ export default class Home extends Component{
                                     </TouchableOpacity>
                                 </View>
                             </ImageBackground>
+                        </View>
+
+                        <View style={styles.footer}>
                         </View>
                     </ScrollView>
                 </View>
@@ -187,5 +190,13 @@ const styles = StyleSheet.create({
     txtOp1_2: {
         fontSize: 17,
         color: 'white',
+    },
+
+    footer: {
+        marginTop: 40,
+        width: '100%',
+        height: 70,
+
+        backgroundColor: '#3D3D3D',
     },
 });

@@ -11,7 +11,7 @@ export default class SaibaMais extends Component {
 
     nav = () =>
     {
-        this.props.navigation.navigate('cadastroLoja')
+        this.props.navigation.navigate('cadaLoja')
     }
 
     render()
