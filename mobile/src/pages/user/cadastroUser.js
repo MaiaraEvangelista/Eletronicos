@@ -66,6 +66,8 @@ export default class cadastroUser extends Component{
       axios(`https://viacep.com.br/ws/${this.state.CEP}/json/`)
       .then(resposta => {
         this.setState({endereco: resposta.data})
+        this.setState({UF : resposta.data.uf})
+        this.setState({endereco2 : resposta.data.longradouro})
         console.warn(resposta.data)
       })
 

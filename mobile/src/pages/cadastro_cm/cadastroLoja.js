@@ -41,12 +41,6 @@ export default class cadastroUser extends Component{
           this.state.endereco1 == ''
           ) {
         this.setState({sucesso : 'Alguns campos estão vazios!!'})
-        console.warn(this.state.NomeLoja,
-                    this.state.cnpj,
-                    this.state.UF,
-                    this.state.endereco1,
-                    this.state.CEP,
-                    this.state.complemento,)
       } 
       if (this.state.NomeLoja != ''   && 
           this.state.cnpj != ''       &&
@@ -56,13 +50,6 @@ export default class cadastroUser extends Component{
           ) {
         this.setState({sucesso : ''})
         this.setState({ModalVisible : true})
-        console.warn('ta indo ss 2')
-        console.warn(this.state.NomeLoja,
-          this.state.cnpj,
-          this.state.UF,
-          this.state.endereco1,
-          this.state.CEP,
-          this.state.complemento,)
       }
 
     }
@@ -72,6 +59,8 @@ export default class cadastroUser extends Component{
       .then(resposta => {
         this.setState({endereco: resposta.data})
         console.warn(resposta.data)
+        this.setState({endereco1: resposta.data.logradouro})
+        this.setState({UF: resposta.data.uf})
       })
 
       .catch(erro => console.warn(erro))
@@ -172,12 +161,12 @@ export default class cadastroUser extends Component{
                   />
 
                   <TextInput
+                    onChangeText={UF => this.setState({UF})}
                     style={styles.TxtInput}
                     placeholder="UF"
                     placeholderTextColor="black"
                     editable={true}
-                    value={this.state.endereco.uf} id="uf" name="uf"
-                    onChangeText={(UF) => this.setState({UF})}
+                    value={this.state.UF} id="uf" name="uf"
                   />
                 </View>
 
@@ -187,7 +176,7 @@ export default class cadastroUser extends Component{
                     style={styles.TxtInput}
                     placeholder="Endereço"
                     placeholderTextColor="black"
-                    value={this.state.endereco.logradouro} id="logradouro" name="logradouro"
+                    value={this.state.endereco1} id="logradouro" name="logradouro"
                     onChangeText={endereco1 => this.setState({endereco1})}
                   />
                    <TextInput
