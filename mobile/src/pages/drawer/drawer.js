@@ -22,7 +22,7 @@ export default class drawer extends Component{
         super(props);
         this.state = {
             nomePag : '',
-            userToken : '',
+            userToken : Boolean,
             Token : '',
         }
     }
@@ -75,18 +75,10 @@ export default class drawer extends Component{
                 drawerStyle : {
                   backgroundColor :'#00873B',
                   borderRadius : 20,
-                  height: '70%',
+                  height: '60%',
                   width: '50%',
                 },
             }}> 
-                {/* <Drawer.Screen name="Home" component={Home}/>
-                <Drawer.Screen  options={({headerShown : false})} name="Login" component={Login}/>
-                <Drawer.Screen  options={({headerShown : true})}  name ="Soluções" component={Solucao}/>
-                <Drawer.Screen name ="Verificação" component={Trouble}/>
-                <Drawer.Screen name="Lojas" component={Lista}/>
-                <Drawer.Screen name="Editar Perfil" component={Edicao}/>
-                <Drawer.Screen name="Perfil comerciante" component={perfilCm}/>
-                <Drawer.Screen name="Divulgação" component={SaibaMais}/> */}
 
                     {
                         this.state.userToken === false ? (
@@ -99,23 +91,19 @@ export default class drawer extends Component{
                             </>
                           ) : (
                             <>
-                              <Drawer.Screen name="Home" component={Home}/>
-                              <Drawer.Screen  options={({headerShown : false})} name="Login" component={Login}/>
-                              <Drawer.Screen name="Lojas" component={Lista}/>
                               <Drawer.Screen  options={({headerShown : true})}  name ="Soluções" component={Solucao}/>
+                              <Drawer.Screen name="Home" component={Home}/>
+                              {/* <Drawer.Screen  options={({headerShown : false})} name="Login" component={Login}/> */}
+                              <Drawer.Screen name="Lojas" component={Lista}/>
                               <Drawer.Screen  options={{headerShown: true}} name ="Verificação" component={Trouble}/>
                               <Drawer.Screen name="Editar Perfil" component={Edicao}/>
                               <Drawer.Screen name="Perfil comerciante" component={perfilCm}/>
                               <Drawer.Screen name="Divulgação" component={SaibaMais}/>
                             </>
-                          )
+                          ) 
                     }
 
             </Drawer.Navigator>
         )
     }
 }
-
-const styles = StyleSheet.create({
-
-});

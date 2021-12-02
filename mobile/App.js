@@ -23,8 +23,8 @@ export default function Stack() {
         headerMode='none'
       >
 
-        <AuthSatck.Screen name = 'cadaUser' component={cadastroUser}/>
         <AuthSatck.Screen name = 'drawer' component={Drawer}/>
+        <AuthSatck.Screen name = 'cadaUser' component={cadastroUser}/>
         <AuthSatck.Screen name = 'cadaLoja' component={cadastroLoja}/>
  
       </AuthSatck.Navigator>

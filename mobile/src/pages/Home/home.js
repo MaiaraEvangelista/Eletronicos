@@ -49,7 +49,7 @@ export default class Home extends Component{
                     <ScrollView 
                     pagingEnabled 
                     horizontal 
-                    showsHorizontalScrollIndicator={true}
+                    // showsHorizontalScrollIndicator={true}
                     style={{width, height}} >
                         {
                             imagem.map((imagem, index) => (

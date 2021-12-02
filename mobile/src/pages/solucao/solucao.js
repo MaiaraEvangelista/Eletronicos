@@ -5,12 +5,26 @@ export default class Solucao extends Component {
     constructor(props){
         super(props)
         this.state = {
-            modalVisible1 : false,
-            modalVisible2 : false,
-            modalVisible3 : false,
-            modalVisible4 : false,
-            modalVisible5 : false,
+            modalVisible1 : false,   
+
+            titulo : '',
+            txt : '',
         }
+    }
+
+    cloneModal = () => 
+    {
+        this.setState({modalVisible1 : false})
+    }
+
+    modalSistema = () =>
+    {
+        this.setState({
+            modalVisible1 : true,
+            titulo : 'Sistema de troca',
+            txt: 'sistema de troca é legal'
+        })
+        
     }
 
     render()
@@ -18,246 +32,65 @@ export default class Solucao extends Component {
         return(
             <View style={styles.container}>
 
-                    <Modal 
-                    transparent={true}
-                    visible={this.state.modalVisible1}
-                    animationType="slide"
-                    >
-                        <View style={styles.containerModal}>
-                            <View style={styles.ctnModal}>
-                                <View style={styles.headModal}>
-                                    <Text 
-                                    style={{fontSize: 20, color: 'white'}}
-                                    >
-                                        Sistema de troca
-                                    </Text>
-                                    <TouchableOpacity 
-                                    // style={{height: '100%', width: '100%'}} 
-                                    onPress={() => this.setState({modalVisible1 : false})}
-                                    >
-                                        <Image style={styles.xImg} source={require('../../../assets/x.svg')} />
+                <Modal 
+                transparent={true}
+                visible={this.state.modalVisible1}
+                animationType='slide'
+                >
+                    <View style={styles.containerModal}>
+                        <View style={styles.ctnModal}>
+                            <View style={styles.ctnHeaderModal}>
+
+                                <View style={styles.headerModal}>
+                                    <Text style={styles.h1Modal}>{this.state.titulo}</Text>
+                                    <TouchableOpacity style={styles.btnArrow} onPress={this.cloneModal}>
+                                        <Image style={styles.arrowModal} source={require('./../../../assets/arrow2.svg')}/>
                                     </TouchableOpacity>
                                 </View>
 
-                                <View style={styles.txtModal}>
-
-                                    <Text style={{color : 'white', fontSize: 15, marginLeft: 10, marginRight: 10, textAlign: 'center'}}>
-                                        Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
-
-                                </View>
-
                             </View>
+                                <View style={styles.txtCtnModal}>
+                                    <ScrollView>
+                                        <Text style={styles.txtModal}>
+                                            {this.state.txt}
+                                        </Text>
+                                    </ScrollView>
+                                </View>
                         </View>
-                    </Modal>
-
-                    <Modal 
-                    transparent={true}
-                    visible={this.state.modalVisible2}
-                    animationType="slide"
-                    >
-                        <View style={styles.containerModal}>
-                            <View style={styles.ctnModal}>
-                                <View style={styles.headModal}>
-                                    <Text style={{fontSize: 20, color: 'white'}}>Desmontagem</Text>
-                                    <TouchableOpacity 
-                                    // style={{height: '100%', width: '100%'}} 
-                                    onPress={() => this.setState({modalVisible2 : false})}
-                                    >
-                                        <Image style={styles.xImg} source={require('../../../assets/x.svg')} />
-                                    </TouchableOpacity>
-                                </View>
-
-                                <View style={styles.txtModal}>
-
-                                    <Text style={{color : 'white', fontSize: 15, marginLeft: 10, marginRight: 10, textAlign: 'center'}}>
-                                        Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
-
-                                </View>
-
-                            </View>
-                        </View>
-                    </Modal>
-
-                    <Modal 
-                    transparent={true}
-                    visible={this.state.modalVisible3}
-                    animationType="slide"
-                    >
-                        <View style={styles.containerModal}>
-                            <View style={styles.ctnModal}>
-                                <View style={styles.headModal}>
-                                    <Text style={{fontSize: 20, color: 'white'}}>Montagem</Text>
-                                    <TouchableOpacity 
-                                    // style={{height: '100%', width: '100%'}} 
-                                    onPress={() => this.setState({modalVisible3 : false})}
-                                    >
-                                        <Image style={styles.xImg} source={require('../../../assets/x.svg')} />
-                                    </TouchableOpacity>
-                                </View>
-
-                                <View style={styles.txtModal}>
-
-                                    <Text style={{color : 'white', fontSize: 15, marginLeft: 10, marginRight: 10, textAlign: 'center'}}>
-                                        Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
-
-                                </View>
-
-                            </View>
-                        </View>
-                    </Modal>
-
-                    <Modal 
-                    transparent={true}
-                    visible={this.state.modalVisible4}
-                    animationType="slide"
-                    >
-                        <View style={styles.containerModal}>
-                            <View style={styles.ctnModal}>
-                                <View style={styles.headModal}>
-                                    <Text style={{fontSize: 20, color: 'white'}}>Venda</Text>
-                                    <TouchableOpacity 
-                                    // style={{height: '100%', width: '100%'}} 
-                                    onPress={() => this.setState({modalVisible4 : false})}
-                                    >
-                                        <Image style={styles.xImg} source={require('../../../assets/x.svg')} />
-                                    </TouchableOpacity>
-                                </View>
-
-                                <View style={styles.txtModal}>
-
-                                    <Text style={{color : 'white', fontSize: 15, marginLeft: 10, marginRight: 10, textAlign: 'center'}}>
-                                        Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
-
-                                </View>
-
-                            </View>
-                        </View>
-                    </Modal>
-
-                    <Modal 
-                    transparent={true}
-                    visible={this.state.modalVisible5}
-                    animationType="slide"
-                    >
-                        <View style={styles.containerModal}>
-                            <View style={styles.ctnModal}>
-                                <View style={styles.headModal}>
-                                    <Text style={{fontSize: 20, color: 'white'}}>Recolhimento</Text>
-                                    <TouchableOpacity 
-                                    // style={{height: '100%', width: '100%'}} 
-                                    onPress={() => this.setState({modalVisible5 : false})}
-                                    >
-                                        <Image style={styles.xImg} source={require('../../../assets/x.svg')} />
-                                    </TouchableOpacity>
-                                </View>
-
-                                <View style={styles.txtModal}>
-
-                                    <Text style={{color : 'white', fontSize: 15, marginLeft: 10, marginRight: 10, textAlign: 'center'}}>
-                                        Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</Text>
-
-                                </View>
-
-                            </View>
-                        </View>
-                    </Modal>
-
-                    <View style={styles.bannerCtn}>
-                        <ImageBackground 
-                        resizeMode="cover" 
-                        style={{flex: 1, justifyContent: 'center', alignItems: 'center'}} 
-                        source={require('../../../assets/reparo.svg')}>
-                                <Text style={{color: 'white', fontSize: 18}}>
-                                    Veja a solução para o seu smartphone e resolva já !!   
-                                </Text>
-                        </ImageBackground>
                     </View>
+                </Modal>
 
-                    <View style={styles.linha1}>
+                <View style={styles.bannerCtn}>
+                    <Image style={styles.bannerImg} source={require('./../../../assets/bannerSolucao.svg')}/>
+                </View>
 
-                        <View style={styles.linhaMeio}>
+                <View style={styles.infsCtn}>
+                    <View style={styles.infsHeader}>
+                        <View style={styles.infsMiddle}>
+                            <TouchableOpacity style={styles.infsBtn} onPress={this.modalSistema}>
+                                <Image style={styles.infsImg} source={require('./../../../assets/sisTroca.svg')}/>
+                            </TouchableOpacity>
 
-                            <Text style={{marginBottom: 10, fontSize: 18}}>Sistema de</Text>
-
-                            <View style={styles.btnSolucao}>
-                                <TouchableOpacity 
-                                onPress={() => this.setState({modalVisible1 : true})}>
-                                    <Image style={{height: 60, width: 50}} source={require('../../../assets/flechas.svg')}/>
-                                </TouchableOpacity>
-                             </View>
-
-                             <Text style={{marginTop: 10, fontSize: 18}}>Troca</Text>
-
+                            <TouchableOpacity style={styles.infsBtn} onPress={this.openModal}>
+                                <Image style={styles.infsImg} source={require('./../../../assets/montagem.svg')}/>
+                            </TouchableOpacity>
                         </View>
+                        <View style={styles.infsMiddle}>
+                        <TouchableOpacity style={styles.infsBtn} onPress={this.openModal}>
+                                <Image style={styles.infsImg} source={require('./../../../assets/desmontagem.svg')}/>
+                            </TouchableOpacity>
 
-                        <View style={styles.linhaMeio}>
-
-                            <Text style={{marginBottom: 10, fontSize: 18}}>Desmontagem</Text>
-
-                            <View style={styles.btnSolucao}>
-                                <TouchableOpacity 
-                                onPress={() => this.setState({modalVisible2 : true})}>
-                                    <Image style={{height: 60, width: 60}} source={require('../../../assets/mob.svg')}/>
-                                </TouchableOpacity>
-                            </View>
-
-                            <Text style={{marginTop: 10, fontSize: 18, color: 'white'}}>.</Text>
-
+                            <TouchableOpacity style={styles.infsBtn} onPress={this.openModal}>
+                                <Image style={styles.infsImg} source={require('./../../../assets/venda.svg')}/>
+                            </TouchableOpacity>
                         </View>
-
-
                     </View>
-
-                    <View style={styles.linha1}>
-
-                        <View style={styles.linhaMeio}>
-
-                            <Text style={{marginBottom: 10, fontSize: 18}}>Montagem</Text>
-
-                            <View style={styles.btnSolucao}>
-                                <TouchableOpacity 
-                                onPress={() => this.setState({modalVisible3 : true})}>
-                                    <Image style={{height: 60, width: 60}} source={require('../../../assets/montagem.svg')}/>
-                                </TouchableOpacity>
-                             </View>
-
-                             <Text style={{marginTop: 10, fontSize: 18, color: 'white'}}>Troca</Text>
-
-                        </View>
-
-                        <View style={styles.linhaMeio}>
-
-                            <Text style={{marginBottom: 10, fontSize: 18}}>Venda</Text>
-
-                            <View style={styles.btnSolucao}>
-                                <TouchableOpacity 
-                                onPress={() => this.setState({modalVisible4 : true})}>
-                                    <Image style={{height: 60, width: 60}} source={require('../../../assets/venda.svg')}/>
-                                </TouchableOpacity>
-                            </View>
-
-                            <Text style={{marginTop: 10, fontSize: 18, color: 'white'}}>.</Text>
-
-                        </View>
-
-
+                    <View style={styles.infsFooter}>
+                        <TouchableOpacity style={styles.infsFooterBtn} onPress={this.openModal}>
+                                <Image style={styles.infsFooterImg} source={require('./../../../assets/recolhimento.svg')}/>
+                        </TouchableOpacity>
                     </View>
-
-                     <View style={styles.linha}>
-
-                            <Text style={{marginBottom: 10, fontSize: 18}}>Recolhimento</Text>
-
-                            <View style={styles.btnSolucao2}>
-                                <TouchableOpacity 
-                                onPress={() => this.setState({modalVisible5 : true})}>
-                                    <Image style={{height: 60, width: 65}} source={require('../../../assets/recolhimento.svg')}/>
-                                </TouchableOpacity>
-                             </View>
-
-                             <Text style={{marginTop: 10, fontSize: 18, color : 'white'}}>Troca</Text>
-
-                    </View>
-
+                </View>
 
             </View>
         )
@@ -270,107 +103,149 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
 
-    containerModal: {
-        flex : 1,
+    containerModal : {
+        flex: 1,
+        backgroundColor: 'rgba(200, 199, 199, 0.8)',
 
         justifyContent: 'center',
         alignItems: 'center',
     },
 
-    ctnModal: {
-        height: '40%',
-        width: '60%',
+    ctnModal : {
+        width: '70%',
+        height: '50%',
         backgroundColor: '#008763',
 
-        borderRadius: 8,
-
+        borderRadius: 7,
+        justifyContent: 'space-between',
         alignItems: 'center',
+        flexDirection: 'column',
     },
 
-    headModal: {
+    ctnHeaderModal : {
+        width: '100%',
         height: '20%',
-        width: '70%',
-
-        flexDirection : 'row',
-        justifyContent: 'space-around',
-        alignItems: 'center',
-
-        // backgroundColor: 'black'
-    },
-
-    bannerCtn: {
-        marginTop: 10,
-        
-        width: '100%',
-        height: '17%',
-
-        backgroundColor: 'black'
-    },
-
-    txtModal: {
-        height: '70%',
-        width: '100%',
-
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-
-    xImg: {
-        width: 30,
-        height: 30, 
-    },
-
-
-    linha1: {
-        height: '20%',
-        width: '100%',
-
-        flexDirection: 'row',
-        marginTop: 40,
-        //backgroundColor: 'black',
-    },
-
-    linha : {
-        height: '20%',
-        width: '100%',
-
-        justifyContent: 'center',
-        alignItems: 'center',
-
-        // backgroundColor: 'black',
-
-        marginTop: 30,
-    },
-
-    linhaMeio : {
-        width: '50%',
-        height: '100%',
         // backgroundColor: 'red',
 
         justifyContent: 'center',
         alignItems: 'center',
-    },  
+        flexDirection: 'row',
+    },
 
-    btnSolucao: {
-        height: '60%',
+    headerModal: {
+        height: '100%',
+        width: '70%',
+        // backgroundColor: 'green',
+
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexDirection: 'row',
+    },
+
+    h1Modal : {
+        fontSize: 17,
+        color: 'white',
+        fontWeight: 'bold',
+    },
+
+    btnArrow : {
+        height: '40%',
+        width: '22%',
+
+        // backgroundColor: 'blue'
+    },
+
+    arrowModal :{
+        width: '100%',
+        height: '100%'
+    },
+
+    txtCtnModal : {
+        width: '90%',
+        height: '71%',
+
+        backgroundColor: 'rgba(0, 197, 144, 0.5)',
+        borderRadius: 7,
+
+        marginBottom: 10,
+    },
+
+    txtModal : {
+        fontSize: 15,
+        color: 'white',
+        textAlign : 'center',
+    },
+
+    bannerCtn : {
+        width: '100%',
+        height: '25%',
+        // backgroundColor: 'black',
+
+        marginTop: 10,
+    },
+
+    bannerImg : {
+        width: '100%',
+        height: '100%'
+    },
+
+    infsCtn : {
+        width: '100%',
+        height: '70%',
+        // backgroundColor: 'black',
+
+        marginTop : 15,
+    },
+
+    infsHeader : {
+        width: '100%',
+        height: '70%',
+        // backgroundColor: 'red',
+
+        flexDirection: 'row'
+    },
+
+    infsMiddle : {
         width: '50%',
-        backgroundColor: '#00873B',
+        height: '100%',
+        // backgroundColor: 'green'
 
-        borderRadius: 10,
+        justifyContent: 'space-around',
+        alignItems: 'center',
+    },
+
+    infsBtn : {
+        width: '50%',
+        height: '45%',
+        // backgroundColor: 'red'
+    },
+
+    infsImg : {
+        width: '100%',
+        height: '100%'
+    },
+
+    infsFooter : {
+        width: '100%',
+        height: '30%',
+        // backgroundColor: 'blue',
 
         justifyContent: 'center',
         alignItems: 'center',
     },
 
-    btnSolucao2: {
-        height: '60%',
+    infsFooterBtn : {
         width: '30%',
-
-        backgroundColor: '#00873B',
-
-        borderRadius: 10,
+        height: '100%',
+        // backgroundColor: 'green',
 
         justifyContent: 'center',
         alignItems: 'center',
     },
+
+    infsFooterImg : {
+        width: '90%',
+        height: '90%',
+    },
+
 })
