@@ -51,7 +51,7 @@ export default class perfilCm extends Component {
 
      componentDidMount()
      {
-         this.decode()
+        //  this.decode()
      }
 
     nav = () => {
@@ -128,7 +128,7 @@ export default class perfilCm extends Component {
 
                     <View style={styles.txtCtn}>
 
-                        <Text style={{color: 'white', fontSize: 15, textAlign: 'center',}}>Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                        <Text style={{color: 'white', fontSize: 15, textAlign: 'center',}}>Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
                         </Text>
 
                         <TouchableOpacity>
@@ -215,9 +215,10 @@ const styles = StyleSheet.create({
         height: '60%',
         backgroundColor: 'white',
 
-        borderColor: 'black',
-        borderWidth: 3,
-        borderRadius: 10,
+        shadowColor: '#171717',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.5,
+        shadowRadius: 3,
 
         alignItems: 'center',
         paddingTop: 10,

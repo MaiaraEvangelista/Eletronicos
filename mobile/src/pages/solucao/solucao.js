@@ -12,7 +12,7 @@ export default class Solucao extends Component {
         }
     }
 
-    cloneModal = () => 
+    closeModal = () => 
     {
         this.setState({modalVisible1 : false})
     }
@@ -25,6 +25,42 @@ export default class Solucao extends Component {
             txt: 'sistema de troca é legal'
         })
         
+    }
+
+    modalDesmontagem = () => 
+    {
+        this.setState({
+            modalVisible1 : true,
+            titulo : 'Desmontagem',
+            txt: 'desmonatagem é legal'
+        })
+    }
+
+    modalMontagem = () =>
+    {
+        this.setState({
+            modalVisible1 : true,
+            titulo : 'Monategem',
+            txt : 'montagem é lgl'
+        })
+    }
+
+    modalVenda = () =>
+    {
+        this.setState({
+            modalVisible1 : true,
+            titulo : 'venda',
+            txt : 'venda é lgl'
+        })
+    }
+
+    modalRecolhimento = () =>
+    {
+        this.setState({
+            modalVisible1 : true,
+            titulo : 'Recolhimento',
+            txt : 'recolhimento é lgl'
+        })
     }
 
     render()
@@ -43,7 +79,7 @@ export default class Solucao extends Component {
 
                                 <View style={styles.headerModal}>
                                     <Text style={styles.h1Modal}>{this.state.titulo}</Text>
-                                    <TouchableOpacity style={styles.btnArrow} onPress={this.cloneModal}>
+                                    <TouchableOpacity style={styles.btnArrow} onPress={this.closeModal}>
                                         <Image style={styles.arrowModal} source={require('./../../../assets/arrow2.svg')}/>
                                     </TouchableOpacity>
                                 </View>
@@ -71,22 +107,22 @@ export default class Solucao extends Component {
                                 <Image style={styles.infsImg} source={require('./../../../assets/sisTroca.svg')}/>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.infsBtn} onPress={this.openModal}>
+                            <TouchableOpacity style={styles.infsBtn} onPress={this.modalMontagem}>
                                 <Image style={styles.infsImg} source={require('./../../../assets/montagem.svg')}/>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.infsMiddle}>
-                        <TouchableOpacity style={styles.infsBtn} onPress={this.openModal}>
+                        <TouchableOpacity style={styles.infsBtn} onPress={this.modalDesmontagem}>
                                 <Image style={styles.infsImg} source={require('./../../../assets/desmontagem.svg')}/>
                             </TouchableOpacity>
 
-                            <TouchableOpacity style={styles.infsBtn} onPress={this.openModal}>
+                            <TouchableOpacity style={styles.infsBtn} onPress={this.modalVenda}>
                                 <Image style={styles.infsImg} source={require('./../../../assets/venda.svg')}/>
                             </TouchableOpacity>
                         </View>
                     </View>
                     <View style={styles.infsFooter}>
-                        <TouchableOpacity style={styles.infsFooterBtn} onPress={this.openModal}>
+                        <TouchableOpacity style={styles.infsFooterBtn} onPress={this.modalRecolhimento}>
                                 <Image style={styles.infsFooterImg} source={require('./../../../assets/recolhimento.svg')}/>
                         </TouchableOpacity>
                     </View>

@@ -3,347 +3,279 @@ import React, { Component } from "react";
 import { View, Text, StyleSheet, Style, TouchableOpacity, ImageBackground, Image, Modal } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { TextInputMask } from 'react-native-masked-text'
+import { block } from "react-native-reanimated";
 
 
 export default class cadastroUser extends Component{
-    constructor(props)
+  constructor(props)
+  {
+    super(props);
+    this.state =
     {
-        super(props);
-        this.state =
-        {
-            idUsuario : 0,
-            idTipoUsuario : 3,
-            cnpj : '',
-
-            nomeCompleto: '',
-            celular: '',
-            email: '',
-            senha: '',
-            cpf : '',
-            CEP: '',
-            UF : '',
-            endereco2 : '',
-            complemento: '',
-
-            endereco: [],
-
-            visible : false
-        }
-        
+      celular : '',
+      cpfField : Boolean,
+      CPF : '',
     }
+  }
 
-    cadastrarUser = () =>
-    {
-      try {
+  cpfIsValid = () =>
+  {
+    this.state.cpfField.isValid()
+    console.log(cpfIsValid)
+  }
 
-       axios.post('http://localhost:5000/api/Usuario',
-       {
-         idUsuarios : this.state.idUsuario,
-         idTiposUsuario : this.state.idTipoUsuario,
-         email : this.state.email,
-         senha : this.state.senha,
-         cpf : this.state.cpf,
-         cnpj : this.state.cnpj,
-         nomeCompleto : this.state.nomeCompleto,
-         rua : this.state.endereco2,
-         uf : this.state.UF,
-         complemento : this.state.complemento,
-         cep : this.state.CEP,
-         celular : this.state.celular,
-       })
+  returnToLogin = () =>
+  {
+    this.props.navigation.navigate('Login')
+  }
 
-       this.setState({visible : false})
-
-      } catch (error) {
-        console.warn(error)
-        console.warn('ta dando erro')
-      }
     
-    }
-
-
-    buscarCep = () => {
-      axios(`https://viacep.com.br/ws/${this.state.CEP}/json/`)
-      .then(resposta => {
-        this.setState({endereco: resposta.data})
-        this.setState({UF : resposta.data.uf})
-        this.setState({endereco2 : resposta.data.longradouro})
-        console.warn(resposta.data)
-      })
-
-      .catch(erro => console.warn(erro))
-    }
-
-    navegacao = () => 
+  
+  render()
     {
-      this.props.navigation.navigate('Login')
-    }
+      return(
+        <View style={styles.container}>
+            <View style={styles.headerCtn}>
+              <View style={styles.headerOpt}>
+                <View style={styles.headerOptCtn}>
+                  <TouchableOpacity style={styles.headerBtn} onPress={this.returnToLogin}>
+                    <Image style={styles.headerArrow} source={require('./../../../assets/arrow.svg')}/>
+                  </TouchableOpacity>
 
-    componentDidMount(){
-      this.buscarCep();
-    }
-    
-    render()
-    {
-        return(
-            <View style={styles.container}>
-
-              <Modal
-                transparent={true}
-                visible={this.state.visible}
-                animationType="slide"
-              >
-                <View style={{flex : 1, justifyContent: 'center', alignItems: 'center'}}>
-                  <View style={{height: '30%', width: '55%', 
-                  backgroundColor: 'white', borderRadius: 10, alignItems: 'center', 
-                  justifyContent: 'space-around', flexDirection: 'column'}}>
-                    <Image style={{height: '20%', width: '19%'}} source={require('./../../../assets/check.png')}/>
-                    
-                    <Text style={styles.CadSus}>Cadastro bem sucedido</Text>
-
-                    <TouchableOpacity style={styles.btnCad}>
-                      <Text style={{color: 'white', fontSize: 16}}>Prosseguir</Text>
-                    </TouchableOpacity>
-                  </View>
+                  <Text style={styles.headerTxt}>Cadastro</Text>
                 </View>
-              </Modal>
-
-              <View style={styles.ctnH1}>
-                <TouchableOpacity style={styles.TouchH1} onPress={this.navegacao}>
-                  <Image style={styles.imgH1} source={require('../../../assets/Arrow.svg')}/>
-                </TouchableOpacity>
-                <Text style={styles.txtH1}>Cadastro</Text>
               </View>
+            </View>
 
+            <View style={styles.main}>
+              <View style={styles.inputsCtn}>
 
-            <View style={styles.ctn}>
-
-              <View style={styles.ctnInput}>
-
-                <View style={styles.inputStyle}>
+                <View style={styles.firstInput}>
                   <TextInput
-                    style={styles.TxtInput}
+                    style={styles.firstInputEdit}
                     placeholder="Nome completo"
                     placeholderTextColor="black"
                     keyboardType="default"
-                    onChangeText={nomeCompleto => this.setState({nomeCompleto})}
-                  />
-
-                  <TextInputMask
-                  type={'cel-phone'}
-                  options={{
-                    maskType: 'BRL',
-                    withDDD: true,
-                    dddMask: '(99) '
-                  }}
-                    value={this.state.celular}
-                    onChangeText={celular => this.setState({celular})}
-                    style={styles.TxtInput}
-                    placeholder="Celular"
-                    placeholderTextColor="black"
                   />
                 </View>
 
+                <View style={styles.inputsLine}>
 
-                <View style={styles.inputStyle}>
-                <TextInput
-                    style={styles.TxtInput}
-                    placeholder="Email"
-                    placeholderTextColor="black"
-                    keyboardType="email-address"
-                    onChangeText={email => this.setState({email})}
-                  />
+                  <View style={styles.inputsMiddle}>
+                    <TextInput
+                      style={styles.inputsEdit}
+                      placeholder="Email"
+                      placeholderTextColor="black"
+                      keyboardType="email-address"
+                    />
+                  </View>
 
-                <TextInput
-                    style={styles.TxtInput}
-                    placeholder="Senha"
-                    placeholderTextColor="black"
-                    keyboardType="email-address"
-                    keyboardType="visible-password"
-                    secureTextEntry={true}
-                    onChangeText={senha => this.setState({senha})}
-                  />
+                  <View style={styles.inputsMiddle2}>
+                    <TextInput
+                      style={styles.inputsEdit}
+                      placeholder="Senha"
+                      placeholderTextColor="black"
+                      keyboardType="visible-password"
+                      secureTextEntry={true}
+                    />
+                  </View> 
+
                 </View>
 
-                <View style={styles.inputStyle}>
-                  <TextInputMask
-                  type={'custom'}
-                  options={{
-                    mask : '999-999-999-99'
-                  }}
-                    value={this.state.cpf}
-                    onChangeText={cpf => this.setState({cpf})}
-                    style={styles.TxtInput}
-                    placeholder='CPF'
-                    placeholderTextColor="black"                   
-                  />
+                 <View style={styles.inputsLine}>
+
+                  <View style={styles.inputsMiddle}>
+                    <TextInputMask
+                    type={'cel-phone'}
+                    options={{
+                      maskType: 'BRL',
+                      withDDD: true,
+                      dddMask: '(99)'
+                    }}
+                      value={this.state.celular}
+                      onChangeText={celular => this.setState({celular})}
+                      style={styles.inputsEdit}
+                      placeholder="Celular"
+                      placeholderTextColor="black"
+                    />
+                  </View>
+
+                  <View style={styles.inputsMiddle2}>
+                    <TextInputMask
+                    type={'cpf'}
+                      value={this.state.CPF}
+                      onChangeText={CPF => this.setState({CPF})}
+                      style={styles.inputsEdit}
+                      ref={(ref) => this.state.cpfField = ref}
+                      placeholder="CPF"
+                      placeholderTextColor="black"
+                    />
+                  </View> 
+
                 </View>
 
-                <View style={styles.inputStyle}>
-                <TextInputMask
-                type={'custom'}
-                options={{
-                  mask : '99999-999'
-                }}
-                    onChangeText={CEP => this.setState({CEP})}
-                    value={this.state.CEP} id="cep" name="cep"
-                    style={styles.TxtInput}
-                    placeholder=' CEP'
-                    onBlur={this.buscarCep}
-                    placeholderTextColor="black"                   
-                  />
-
-                  <TextInput
-                    style={styles.TxtInput}
-                    placeholder="UF"
-                    editable={false}
-                    placeholderTextColor="black"
-                    value={this.state.endereco.uf}
-                    onChangeText={UF => this.setState({UF})}
-                  />
+                <View style={styles.btnCtn}>
+                    <TouchableOpacity style={styles.btnEdit}>
+                      <Text style={styles.txtBtn}>Prosseguir</Text>
+                    </TouchableOpacity>
                 </View>
-
-
-                <View style={styles.inputStyle}>
-                <TextInput
-                    style={styles.TxtInput}
-                    placeholder="Endereço"
-                    editable={false}
-                    placeholderTextColor="black"
-                    value={this.state.endereco.logradouro}
-                    onChangeText={endereco2 => this.setState({endereco2})}
-                  />
-                   <TextInput
-                    style={styles.TxtInput}
-                    placeholder="Complemento"
-                    placeholderTextColor="black"
-                    onChangeText={complemento => this.setState({complemento})}
-                  />
-                </View>
-
-                <View style={styles.btnInput}>
-                  <TouchableOpacity style={styles.btnCtn} onPress={this.cadastrarUser()}>
-                    <Text style={styles.txtBtn}>Cadastrar</Text>
-                  </TouchableOpacity>
-                </View>
-              </View>|
+              </View>
             </View>
-
-            </View>
-        )
+        </View>
+      )
     }
 }
 const styles = StyleSheet.create({
     container: {
-    flex: 1,
+      flex: 1,
+      backgroundColor : 'white',
 
+      justifyContent: 'space-between',
   },
 
-  CadSus: {
-    color : 'green',
-    fontSize: 15,
-    fontWeight: 'bold',
-  },
-
-  btnCad: {
-    width: '40%',
-    height: '15%',
-
-    backgroundColor: '#4D65BD',
-
-    borderRadius: 10,
+  headerCtn : {
+    width: '100%',
+    height: '30%',
+    backgroundColor: '#00873B',
 
     justifyContent: 'center',
-    alignItems: 'center',
   },
 
-  imgH1: {
-    width: '50%',
+  headerOpt : {
+    width: '100%',
+    height: '35%',
+    // backgroundColor: 'orange',
+
+    alignItems: 'flex-end'
+  },
+
+  headerOptCtn: {
+    width: '90%',
+    height: '100%',
+    // backgroundColor: 'blue',
+
+    alignItems: 'center',
+    flexDirection: 'row'
+  },
+
+  headerBtn: {
+    width: '15%',
+    height: '40%',
+    // backgroundColor: 'red',
+
+    marginRight: 15,
+  },
+
+  headerArrow : {
+    width: '100%',
     height: '100%',
   },
 
-  ctnH1: {
-    flex: 0.3,
-    backgroundColor: '#00873B',
-
-    alignItems: 'center',
-    flexDirection: 'row',
+  headerTxt : {
+    fontSize: 20,
+    color: 'white',
+    fontWeight: 'bold',
+    textTransform: 'uppercase',
   },
-  
-  TouchH1: {
-    width: '20%',
-    height: '10%',
-    // backgroundColor : 'blue',
+
+  main: {
+    width: '100%',
+    height: '65%',
+    // backgroundColor: 'red',
+
+    justifyContent: 'center',
+  },
+
+  inputsCtn : {
+    width: '100%',
+    height: '70%',
+    // backgroundColor: 'blue',
+  },
+
+  firstInput : {
+    width: '100%',
+    height: '25%',
 
     justifyContent: 'center',
     alignItems: 'center',
   },
 
-  txtH1: {
-    fontSize: 25,
-    fontWeight: 'bold',
-    color: 'white',
-  },
-
-  ctnInput : {
-    flex: 0.9,
-    // backgroundColor: 'blue',
-
-    justifyContent: 'space-around',
-  },
-
-  ctn: {
-    flex: 0.7,
-    // backgroundColor : 'blue',
-
-    justifyContent: 'center'
-  },
-
-  inputStyle: {
-    flex: 0.12,
-    // backgroundColor: 'yellow',
-
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-
-  },
-
-  TxtInput: {
-    width: '40%',
-    height: '70%',
+  firstInputEdit : {
+    width: '80%',
+    height: '55%',
 
     borderColor: '#00873B',
     borderWidth: 4,
-    borderRadius: 10,
+    borderRadius: 8,
 
-    fontSize: 17,
-    paddingLeft: 7,
+    paddingLeft: 10,
+
+    fontSize: 18,
   },
 
-  btnInput: {
-    flex: 0.1,
-    // backgroundColor: 'orange',
+  inputsLine : {
+    width: '100%',
+    height: '25%',
+    // backgroundColor: 'yellow',
+
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+
+  inputsMiddle : {
+    width: '40%',
+    height: '100%',
+    // backgroundColor: 'red',
 
     justifyContent: 'center',
-    alignItems: 'center',
   },
 
-  btnCtn: {
-    width: '35%',
-    height: '80%',
+  inputsMiddle2 : {
+    width: '40%',
+    height: '100%',
+    // backgroundColor: 'red',
+
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
+
+  inputsEdit : {
+    width: '90%',
+    height: '55%',
+
+    borderColor: '#00873B',
+    borderWidth: 4,
+    borderRadius: 8,
+
+    paddingLeft: 10,
+
+    fontSize: 18,
+  },
+
+  btnCtn : {
+    width: '100%',
+    height: '20%',
+    // backgroundColor: 'red',
+
+    marginTop: 20,
+
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  btnEdit : {
+    width: '30%',
+    height: '60%',
     backgroundColor: '#008763',
 
-    justifyContent: 'center',
+    borderRadius: 7,
+
+    justifyContent : 'center',
     alignItems: 'center',
-
-    borderRadius: 10,
   },
 
-  txtBtn: {
+  txtBtn : {
     color: 'white',
-    fontSize: 20,
-    fontFamily : 'Arial',
+    fontSize: 18,
   },
-
 })

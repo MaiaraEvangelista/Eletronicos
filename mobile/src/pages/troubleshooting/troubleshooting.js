@@ -17,6 +17,11 @@ export default class Trouble extends Component{
         this.props.navigation.navigate('Soluções')
     }
 
+    toLista = () => 
+    {
+        this.props.navigation.navigate('Lojas')
+    }
+
     render()
     {
         return(
@@ -35,27 +40,9 @@ export default class Trouble extends Component{
 
                 <View style={styles.InfsCtn}>
                     <View style={styles.meioInfs}>
-                        <View style={styles.infs1}>
-                            <View style={styles.numInfs}>
-                                <Text style={styles.h3}>{this.state.tempBat} °C - temperatura da bateria</Text>
-                            </View>
-
-                            <View style={styles.corInfs}>
-                                <View style={styles.temp}>
-                                </View>
-                            </View>
-                        </View>
-                        <View style={styles.infs1}>
-                            <View style={styles.numInfs}>
-                                <Text style={styles.h3}>{this.state.tempCPU} °C - temperatura da CPU</Text>
-                            </View>
-
-                            <View style={styles.corInfs}>
-                                <View style={styles.temp}>
-                                </View>
-                            </View>
-                        </View>
-                        
+                        <TouchableOpacity style={styles.btnListaDeLojas} onPress={this.toLista}>
+                            <Text style={styles.txtBtn}>Ver lista de lojas</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
 
@@ -122,8 +109,8 @@ const styles = StyleSheet.create({
     },
 
     btnVerif: {
-        width: '25%',
-        height:'35%',
+        width: '35%',
+        height:'45%',
 
         borderWidth: 2,
         borderColor: 'black',
@@ -134,7 +121,7 @@ const styles = StyleSheet.create({
     },
 
     btnTxt: {
-        fontSize: '80%',
+        fontSize: 17,
     },
 
     InfsCtn: {
@@ -143,19 +130,34 @@ const styles = StyleSheet.create({
         backgroundColor: '#00873B',
 
         justifyContent: 'center',
+        alignItems: 'center',
 
         borderRadius: 13,
     },
 
     meioInfs: {
-        width: '100%',
+        width: '50%',
         height: '50%',
 
         // backgroundColor: 'red',
 
-        justifyContent: 'space-between',
+        justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'row'
+    },
+
+    btnListaDeLojas : {
+        width: '80%',
+        height: '70%',
+        backgroundColor: 'white',
+
+        borderRadius: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    txtBtn : {
+      fontSize : 17,
+      fontWeight: 'bold',  
     },
 
     infs1: {

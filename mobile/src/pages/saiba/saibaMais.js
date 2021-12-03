@@ -39,7 +39,7 @@ export default class SaibaMais extends Component {
                     <View style={styles.ctnTxt}>
 
                         <Text 
-                        style={{fontSize: 18, textAlign: 'center'}}>
+                        style={{fontSize: 16, textAlign: 'center'}}>
                             Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                         </Text>
 
@@ -50,7 +50,7 @@ export default class SaibaMais extends Component {
                 <View style={styles.txtCtn}>
 
                         <Text style={styles.txtValores}
-                         style={{fontSize: 18, textAlign: 'center', color: 'white', 
+                         style={{fontSize: 16, textAlign: 'center', color: 'white', 
                          width: '80%'}}>
                             Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                         </Text>

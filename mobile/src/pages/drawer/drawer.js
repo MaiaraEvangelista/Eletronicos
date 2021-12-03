@@ -83,19 +83,22 @@ export default class drawer extends Component{
                     {
                         this.state.userToken === false ? (
                             <>
-                              <Drawer.Screen name="Home" component={Home} />
-                              <Drawer.Screen options={({headerShown : false})} name="Login" component={Login} />
-                              <Drawer.Screen name="Lojas" component={Lista}/>
+                              <Drawer.Screen name="Home" component={Home}/>
+                              <Drawer.Screen  options={({headerShown : false})} name="Login" component={Login}/>
                               <Drawer.Screen  options={({headerShown : true})}  name ="Soluções" component={Solucao}/>
+                              <Drawer.Screen  options={{headerShown: true}} name ="Verificação" component={Trouble}/>
+                              <Drawer.Screen name="Lojas" component={Lista}/>
+                              <Drawer.Screen name="Editar Perfil" component={Edicao}/>
+                              <Drawer.Screen name="Perfil comerciante" component={perfilCm}/>
                               <Drawer.Screen name="Divulgação" component={SaibaMais}/>
                             </>
                           ) : (
                             <>
-                              <Drawer.Screen  options={({headerShown : true})}  name ="Soluções" component={Solucao}/>
                               <Drawer.Screen name="Home" component={Home}/>
-                              {/* <Drawer.Screen  options={({headerShown : false})} name="Login" component={Login}/> */}
-                              <Drawer.Screen name="Lojas" component={Lista}/>
+                              <Drawer.Screen  options={({headerShown : false})} name="Login" component={Login}/>
+                              <Drawer.Screen  options={({headerShown : true})}  name ="Soluções" component={Solucao}/>
                               <Drawer.Screen  options={{headerShown: true}} name ="Verificação" component={Trouble}/>
+                              <Drawer.Screen name="Lojas" component={Lista}/>
                               <Drawer.Screen name="Editar Perfil" component={Edicao}/>
                               <Drawer.Screen name="Perfil comerciante" component={perfilCm}/>
                               <Drawer.Screen name="Divulgação" component={SaibaMais}/>

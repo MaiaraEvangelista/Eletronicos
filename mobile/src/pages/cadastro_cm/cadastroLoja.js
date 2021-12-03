@@ -32,6 +32,11 @@ export default class cadastroUser extends Component{
         this.props.navigation.navigate('Home')
     }
 
+    closeModal = () =>
+    {
+      this.setState({ModalVisible : false})
+    }
+
     TurnModalVisible = () =>
     {
       if (this.state.NomeLoja == ''   || 
@@ -117,7 +122,7 @@ export default class cadastroUser extends Component{
                 <TouchableOpacity style={styles.TouchH1} onPress={this.navegacao}>
                   <Image style={styles.imgH1} source={require('../../../assets/Arrow.svg')}/>
                 </TouchableOpacity>
-                <Text style={styles.txtH1}>Loja</Text>
+                <Text style={styles.txtH1}>Cadastre a sua loja!!</Text>
               </View>
 
 
