@@ -1,6 +1,7 @@
 ﻿using eletronicos_WebAPI.Contexts;
 using eletronicos_WebAPI.Domains;
 using eletronicos_WebAPI.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -104,6 +105,11 @@ namespace eletronicos_WebAPI.Repositories
                 //.Include(l => l.IdUsuariosNavigation)
                 //.ToList();
             
+        }
+
+        public void SalvarImagem(IFormFile foto)
+        {
+            throw new NotImplementedException();
         }
     }
 }

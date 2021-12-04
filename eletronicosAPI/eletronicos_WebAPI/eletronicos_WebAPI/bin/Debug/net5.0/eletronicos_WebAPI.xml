@@ -4,26 +4,6 @@
         <name>eletronicos_WebAPI</name>
     </assembly>
     <members>
-        <member name="M:eletronicos_WebAPI.Controllers.ComentarioController.Get">
-            <summary>
-            Método get para a listagem de todos os comentários de uma loja 
-            </summary>
-            <returns>uma lista de comentarios</returns>
-        </member>
-        <member name="M:eletronicos_WebAPI.Controllers.ComentarioController.Post(eletronicos_WebAPI.Domains.Comentario)">
-            <summary>
-            método uitilizado para postar um comentário
-            </summary>
-            <param name="novoComentario">objeto que irá armazenar os dados do comentário</param>
-            <returns></returns>
-        </member>
-        <member name="M:eletronicos_WebAPI.Controllers.ComentarioController.Delete(System.Int32)">
-            <summary>
-            deleta um comentário passando um id pela url
-            </summary>
-            <param name="id">id do comentário que será excluido</param>
-            <returns></returns>
-        </member>
         <member name="M:eletronicos_WebAPI.Controllers.EspecialidadeController.Get">
             <summary>
             Faz a listagem das entidades
@@ -169,21 +149,6 @@
             </summary>
             <param name="id">id do usuário que será deletado</param>
             <returns>statusCode 204 - no content</returns>
-        </member>
-        <member name="M:eletronicos_WebAPI.Interfaces.IComentarioRepository.Listar">
-            <summary>
-            Lista todos os tipos de usuários
-            </summary>
-        </member>
-        <member name="M:eletronicos_WebAPI.Interfaces.IComentarioRepository.Cadastrar(eletronicos_WebAPI.Domains.Comentario)">
-            <summary>
-            Cadastra um novo tipo de usuário
-            </summary>
-        </member>
-        <member name="M:eletronicos_WebAPI.Interfaces.IComentarioRepository.Deletar(System.Int32)">
-            <summary>
-            Deleta um tipo de usuário existente
-            </summary>
         </member>
         <member name="M:eletronicos_WebAPI.Interfaces.IEspecialidadeRepository.Listar">
             <summary>

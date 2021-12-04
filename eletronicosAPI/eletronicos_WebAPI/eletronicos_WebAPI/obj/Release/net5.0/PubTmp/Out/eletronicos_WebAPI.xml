@@ -1,0 +1,409 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>eletronicos_WebAPI</name>
+    </assembly>
+    <members>
+        <member name="M:eletronicos_WebAPI.Controllers.ComentarioController.Get">
+            <summary>
+            Método get para a listagem de todos os comentários de uma loja 
+            </summary>
+            <returns>uma lista de comentarios</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.ComentarioController.Post(eletronicos_WebAPI.Domains.Comentario)">
+            <summary>
+            método uitilizado para postar um comentário
+            </summary>
+            <param name="novoComentario">objeto que irá armazenar os dados do comentário</param>
+            <returns></returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.ComentarioController.Delete(System.Int32)">
+            <summary>
+            deleta um comentário passando um id pela url
+            </summary>
+            <param name="id">id do comentário que será excluido</param>
+            <returns></returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.EspecialidadeController.Get">
+            <summary>
+            Faz a listagem das entidades
+            </summary>
+            <returns>As entidades com suas informações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.EspecialidadeController.BuscarPorId(System.Int32)">
+            <summary>
+            Faz a busca de entidades pelo identificador
+            </summary>
+            <param name="id">Identificador das entidades</param>
+            <returns>Entidades buscada com suas informações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.EspecialidadeController.Cadastrar(eletronicos_WebAPI.Domains.Especialidade)">
+            <summary>
+            Faz o cadastro de especialidade
+            </summary>
+            <param name="novaEspecialidade">Especialidade cadastrada</param>
+            <returns>Especialidade cadastrada</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.EspecialidadeController.Atualizar(System.Int32,eletronicos_WebAPI.Domains.Especialidade)">
+            <summary>
+            Faz a atualização da especialidade
+            </summary>
+            <param name="id">Identificador da especialidade atualizada</param>
+            <param name="especialidadeAtualizada">Nomenclatura da especialidade atualizada</param>
+            <returns>A especialidade atualizada com suas informações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.EspecialidadeController.Delete(System.Int32)">
+            <summary>
+            Faz a exclusão das entidades
+            </summary>
+            <param name="id">Identificador da especialidade deletada</param>
+            <returns>A especialidade deletada</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.FormularioController.Get">
+            <summary>
+            Faz a listagem
+            </summary>
+            <returns>Lista com os formulários</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.FormularioController.Cadastrar(eletronicos_WebAPI.Domains.Formulario)">
+            <summary>
+            Faz o cadastro 
+            </summary>
+            <param name="formularioCriado"> objeto que irá carregar a descrição do Formulário cadastrado</param>
+            <returns>Novo formulário com suas informações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.FormularioController.Atualizar(System.Int32,eletronicos_WebAPI.Domains.Formulario)">
+            <summary>
+            Faz atualização
+            </summary>
+            <param name="id">Identificador</param>
+            <param name="novoFormulario">Formulário atualizado</param>
+            <returns>Formulário atualizado com suas infrmações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.LoginController.#ctor">
+            <summary>
+            Instancia este objeto para que haja a referência aos métodos no repositório
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.LoginController.Post(WallFertas.ViewModels.LoginViewModel)">
+            <summary>
+            Valida o usuário
+            </summary>
+            <param name="login">Objeto login que contém o e-mail e a senha do usuário</param>
+            <returns>Retorna um token com as informações do usuário</returns>
+            dominio/api/Login
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.LojaController.Get">
+            <summary>
+            Faz a listagem das lojas
+            </summary>
+            <returns>Retorna a loja listada com suas informações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.LojaController.GetById(System.Int32)">
+            <summary>
+            Faz a busca pelo identificador da loja
+            </summary>
+            <param name="id">Identificador da loja</param>
+            <returns>Retorna as lojas procuradas pelo seu identificador</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.LojaController.Post(eletronicos_WebAPI.Domains.Loja)">
+            <summary>
+            Faz o cadastro de uma nova loja
+            </summary>
+            <param name="novaLoja">Nomenclatura de um cadastro de loja</param>
+            <returns>Loja cadastrada</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.LojaController.Put(eletronicos_WebAPI.Domains.Loja,System.Int32)">
+            <summary>
+            Faz a atualização de loja
+            </summary>
+            <param name="lojaAtualizada">Nomenclatura de loja atualizada</param>
+            <param name="id">Identificador da loja</param>
+            <returns>Loja atualizada com suas informações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.LojaController.Delete(System.Int32)">
+            <summary>
+            Faz a exclusão de uma loja
+            </summary>
+            <param name="id">Identificador da loja</param>
+            <returns>Loja deletada</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.TiposUsuarioController.Get">
+            <summary>
+            método utilizado para listar os tipos de usuário do banco de dados
+            </summary>
+            <returns>StatusCode 200 - ok</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.TiposUsuarioController.BuscarPorId(System.Int32)">
+            <summary>
+            Método utilizado para buscar um tipo de usuário atravez do seu id na URL da requisição  
+            </summary>
+            <param name="id">id do tipo de usuário que será utilizado</param>
+            <returns></returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.TiposUsuarioController.Cadastrar(eletronicos_WebAPI.Domains.TiposUsuario)">
+            <summary>
+            
+            </summary>
+            <param name="novoTipoUsuario"></param>
+            <returns></returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.UsuarioController.Post(eletronicos_WebAPI.Domains.Usuario)">
+            <summary>
+            método para cadastrar usuário
+            </summary>
+            <param name="novoUsuario">objeto que irá armazenar as informações do novo usuário</param>
+            <returns></returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.UsuarioController.Put(System.Int32,eletronicos_WebAPI.Domains.Usuario)">
+            <summary>
+            método para atualizar o usuário passando seu id pela URL
+            </summary>
+            <param name="id">id do usuário que será atualizado</param>
+            <param name="usuarioAtualizado">objeto que irá armazenar as novas informações do usuário</param>
+            <returns>StatusCode204- no content</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Controllers.UsuarioController.Delete(System.Int32)">
+            <summary>
+            Método utilizado para deletar um usuário passando seu id pela URL da requisição
+            </summary>
+            <param name="id">id do usuário que será deletado</param>
+            <returns>statusCode 204 - no content</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IComentarioRepository.Listar">
+            <summary>
+            Lista todos os tipos de usuários
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IComentarioRepository.Cadastrar(eletronicos_WebAPI.Domains.Comentario)">
+            <summary>
+            Cadastra um novo tipo de usuário
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IComentarioRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um tipo de usuário existente
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IEspecialidadeRepository.Listar">
+            <summary>
+            Lista todos os tipos de especialidades
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IEspecialidadeRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um tipo de especialidade através do ID
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IEspecialidadeRepository.Cadastrar(eletronicos_WebAPI.Domains.Especialidade)">
+            <summary>
+            Cadastra um novo tipo de especialidade
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IEspecialidadeRepository.Atualizar(System.Int32,eletronicos_WebAPI.Domains.Especialidade)">
+            <summary>
+            Atualiza um tipo de especialidade existente
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IEspecialidadeRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um tipo de especialidade existente
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IFormularioRepository.Atualizar(System.Int32,eletronicos_WebAPI.Domains.Formulario)">
+            <summary>
+            Faz a atualização dos formulários existentes
+            </summary>
+            <param name="id">Identificador do formulário</param>
+            <param name="novoFormulario">Formulário atualizado com suas informações</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IFormularioRepository.Create(eletronicos_WebAPI.Domains.Formulario)">
+            <summary>
+            Faz o cadastro de um formulário
+            </summary>
+            <param name="formularioCriado">Novo formulário criado com suas informações</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IFormularioRepository.Listar">
+            <summary>
+            Faz a listagem dos formulários
+            </summary>
+            <returns>Lista dos formulários com suas informações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.ILojaRepository.Listar">
+            <summary>
+            Faz a listagem das lojas
+            </summary>
+            <returns>As lojas listadas com suas informações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.ILojaRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Faz a busca das lojas por id
+            </summary>
+            <param name="id">Identificador das lojas</param>
+            <returns>A loja encontrada com seu id, e todas as suas informações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.ILojaRepository.Cadastrar(eletronicos_WebAPI.Domains.Loja)">
+            <summary>
+            faz o cadastro de uma nova loja
+            </summary>
+            <param name="novaLoja">A loja cadastrada </param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.ILojaRepository.Atualizar(eletronicos_WebAPI.Domains.Loja,System.Int32)">
+            <summary>
+            Faz a atualização da loja
+            </summary>
+            <param name="lojaAtualizada">Loja que acaba de ser atualizada</param>
+            <param name="id">Identificador</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.ILojaRepository.Deletar(System.Int32)">
+            <summary>
+            Faz a exclusão da loja
+            </summary>
+            <param name="id">Identificador da loja</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.ITiposUsuarioRepository.Listar">
+            <summary>
+            Lista todos os tipos de usuários
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.ITiposUsuarioRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um tipo de usuário através do ID
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.ITiposUsuarioRepository.Cadastrar(eletronicos_WebAPI.Domains.TiposUsuario)">
+            <summary>
+            Cadastra um novo tipo de usuário
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.ITiposUsuarioRepository.Atualizar(System.Int32,eletronicos_WebAPI.Domains.TiposUsuario)">
+            <summary>
+            Atualiza um tipo de usuário existente
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.ITiposUsuarioRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um tipo de usuário existente
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IUsuarioRepository.Listar">
+            <summary>
+            Lista todos os usuários
+            </summary>
+            <returns>Uma lista de usuários</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IUsuarioRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um usuário através do ID
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IUsuarioRepository.Cadastrar(eletronicos_WebAPI.Domains.Usuario)">
+            <summary>
+            Cadastra um novo usuário
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IUsuarioRepository.Atualizar(System.Int32,eletronicos_WebAPI.Domains.Usuario)">
+            <summary>
+            Atualiza um usuário existente
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IUsuarioRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um usuário 
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Interfaces.IUsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Valida o usuário
+            </summary>
+        </member>
+        <member name="F:eletronicos_WebAPI.Repositories.EspecialidadeRepository.ctx">
+            <summary>
+            Instânciando a ctx
+            </summary>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.EspecialidadeRepository.Atualizar(System.Int32,eletronicos_WebAPI.Domains.Especialidade)">
+            <summary>
+            Método de cadastro de especialidades
+            </summary>
+            <param name="id">Identificador da especialidade</param>
+            <param name="especialidadeAtualizada">Nome da entidade usada depois de atualizada</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.EspecialidadeRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Faz a busca de uma especialidade pelo seu identificador
+            </summary>
+            <param name="id">Identificador de uma especialidade</param>
+            <returns>Objeto buscado pelo identificador com suas informações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.EspecialidadeRepository.Cadastrar(eletronicos_WebAPI.Domains.Especialidade)">
+            <summary>
+            Faz o cadastro de especialidades
+            </summary>
+            <param name="novaEspecialidade">Especialidade cadastrada</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.EspecialidadeRepository.Deletar(System.Int32)">
+            <summary>
+            Faz a exclusão de especialidades
+            </summary>
+            <param name="id">Identificador da especialidade deletada</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.EspecialidadeRepository.Listar">
+            <summary>
+            Faz a listagem das especialidades
+            </summary>
+            <returns>Especialidades listadas com suas informações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.FormularioRepository.Atualizar(System.Int32,eletronicos_WebAPI.Domains.Formulario)">
+            <summary>
+            Faz a atuaização dos formulários
+            </summary>
+            <param name="id">Identificador do formulário</param>
+            <param name="novoFormulario">Formulário atualizado com suas informações</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.FormularioRepository.Create(eletronicos_WebAPI.Domains.Formulario)">
+            <summary>
+            Faz a criação do formulário
+            </summary>
+            <param name="formularioCriado">Novo formulário com suas informações</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.FormularioRepository.Listar">
+            <summary>
+            Faz a listagem dos formulários
+            </summary>
+            <returns>Listagem dos formulários com suas informações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.LojaRepository.Atualizar(eletronicos_WebAPI.Domains.Loja,System.Int32)">
+            <summary>
+            Faz a atualização das lojas
+            </summary>
+            <param name="lojaAtualizada">Nomenclatura após a atualização</param>
+            <param name="id">Identificador das loojas</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.LojaRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Faz a busca pelo identificador das lojas
+            </summary>
+            <param name="id">Identificador da loja</param>
+            <returns>A loja buscada com suas informações</returns>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.LojaRepository.Cadastrar(eletronicos_WebAPI.Domains.Loja)">
+            <summary>
+            Faz o cadastro de uma nova loja
+            </summary>
+            <param name="novaLoja">Nomeação de cadastro da loja</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.LojaRepository.Deletar(System.Int32)">
+            <summary>
+            Faz a exclusão de uma loja
+            </summary>
+            <param name="id">Identificador da loja</param>
+        </member>
+        <member name="M:eletronicos_WebAPI.Repositories.LojaRepository.Listar">
+            <summary>
+            Faz a listagem das lojas
+            </summary>
+            <returns>Lojas com suas informações</returns>
+        </member>
+    </members>
+</doc>

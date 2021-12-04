@@ -93,6 +93,7 @@ namespace eletronicos_WebAPI.Repositories
                 IdUsuarios = u.IdUsuarios,
                 NomeCompleto = u.NomeCompleto,
                 Email = u.Email,
+                Senha = u.Senha,
                 IdTiposUsuario = u.IdTiposUsuario,
 
                 IdTiposUsuarioNavigation = new TiposUsuario()

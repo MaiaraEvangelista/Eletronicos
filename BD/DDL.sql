@@ -24,20 +24,13 @@ CREATE TABLE Usuario (
     email VARCHAR (250) UNIQUE NOT NULL,
     senha VARCHAR (255) NOT NULL,
 	CPF VARCHAR (14) NOT NULL UNIQUE,
-	CNPJ VARCHAR(18),
     nomeCompleto VARCHAR (50),
     rua VARCHAR (100) NOT NULL,
+	N	VARCHAR(100) NOT NULL,
 	UF  VARCHAR (100) NOT NULL,
 	complemento VARCHAR (100),  
 	CEP VARCHAR (22) NOT NULL,
     celular VARCHAR(18) UNIQUE NOT NULL,
-);
-go
-
-CREATE TABLE Comentario(
-	idComentario INT PRIMARY KEY IDENTITY,
-	idUsuarios	INT FOREIGN KEY REFERENCES Usuario(idUsuarios),
-	comentario VARCHAR(300) NOT NULL
 );
 go
 
@@ -49,13 +42,15 @@ go
 
 CREATE TABLE Loja(
     idLoja INT PRIMARY KEY IDENTITY,
+	idUsuario INT FOREIGN KEY REFERENCES Usuario(idUsuarios),
     idEspecialidade INT FOREIGN KEY REFERENCES Especialidade(idEspecialidade),
 	idFormulario INT FOREIGN KEY REFERENCES Formulario(idFormulario),
-	idComentario INT FOREIGN KEY REFERENCES Comentario(idComentario),
 	imagem NVARCHAR(200) NOT NULL,
     nomeComercio VARCHAR (300) NOT NULL,
+	CNPJ VARCHAR(18),
     cidade VARCHAR(300) NOT NULL,
 	rua VARCHAR(100) NOT NULL,
+	N	VARCHAR(100) NOT NULL,
 	UF	VARCHAR(100) NOT NULL,
 	complemento VARCHAR (100),
     CEP VARCHAR (22) NOT NULL,

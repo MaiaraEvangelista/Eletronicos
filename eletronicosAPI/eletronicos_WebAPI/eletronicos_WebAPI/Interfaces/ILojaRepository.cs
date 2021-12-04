@@ -1,4 +1,5 @@
 ﻿using eletronicos_WebAPI.Domains;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,5 +40,7 @@ namespace eletronicos_WebAPI.Interfaces
         /// </summary>
         /// <param name="id">Identificador da loja</param>
         void Deletar(int id);
+
+        void SalvarImagem(IFormFile foto);
     }
 }
