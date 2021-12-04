@@ -4,6 +4,7 @@ import { View, Text, StyleSheet, Style, TouchableOpacity, ImageBackground, Image
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { TextInputMask, TextMask } from 'react-native-masked-text'
 import { block } from "react-native-reanimated";
+import api from "../../services/api";
 
 
 export default class cadastroUser extends Component{
@@ -12,6 +13,7 @@ export default class cadastroUser extends Component{
     super(props);
     this.state =
     {
+      idUser : 0,
       nomeCompleto : '',
       email : '',
       senha : '',
@@ -21,29 +23,40 @@ export default class cadastroUser extends Component{
 
       CEP : '',
 
+      valor : [],
+      UF : '',
+      endereco : '',
+      complemento : '',
+
       turnModal : false,
       sucesso : '',
       sucessoCad: '',
     }
   }
 
+
   onModal = () =>
   {
-    if (this.state.nomeCompleto !== '' ||
-        this.state.email !== '' ||
-        this.state.senha !== '' ||
-        this.state.celular !== '' ||
+    if (this.state.nomeCompleto !== '' &&
+        this.state.email !== '' &&
+        this.state.senha !== '' &&
+        this.state.celular !== '' &&
         this.state.CPF !== ''
     ) 
     {
       this.setState({turnModal : true})
       this.setState({sucesso : ''})
       console.warn('foi')
-    } else
+    } if (this.state.nomeCompleto === '' ||
+          this.state.email === '' ||
+          this.state.senha === '' ||
+          this.state.celular === '' ||
+          this.state.CPF === '') 
     {
       this.setState({sucesso : 'Alguns campos não foram preenchidos!!'})
       console.warn('n foi')
     }
+    
   }
 
   closeModal = () => 
@@ -62,7 +75,45 @@ export default class cadastroUser extends Component{
     this.props.navigation.navigate('Login')
   }
 
-    
+  buscarCep = () => {
+    axios(`https://viacep.com.br/ws/${this.state.CEP}/json/`)
+    .then(resposta => {
+      console.warn(resposta.data)
+      this.setState({valor: resposta.data})
+      this.setState({endereco: resposta.data.logradouro})
+      this.setState({UF: resposta.data.uf})
+    })
+
+    .catch(erro => console.warn(erro))
+  }
+
+    cadastrarUser = () =>
+    {
+      try {
+
+        api.post('Usuario',
+        {
+          idUsuarios : this.state.idUser,
+          idTiposUsuario : 2,
+          email : this.state.email,
+          senha : this.state.senha,
+          cpf : this.state.CPF,
+          cnpj : '',
+          nomeCompleto : this.state.nomeCompleto,
+          rua : this.state.endereco,
+          uf  : this.state.UF,
+          complemento : this.state.complemento,
+          cep : this.state.CEP,
+          celular : this.state.celular
+        })
+        .then(
+          this.props.navigation.navigate('Home')
+          )
+          
+        } catch (error) {
+          console.warn(error)
+      }
+    }
   
   render()
     {
@@ -91,23 +142,35 @@ export default class cadastroUser extends Component{
                        options={{
                          mask : '99999-999'
                        }}
-                      onChangeText={CEP => this.setState({CEP})}
-                      value={this.state.CEP}
-                      style={styles.inputsModalEdit}
-                      placeholder='CEP'
-                      placeholderTextColor='black'
+                       value={this.state.CEP}
+                         onChangeText={CEP => this.setState({CEP})}
+                           style={styles.inputsModalEdit}
+                           placeholder="CEP"
+                           editable={true}
+                           placeholderTextColor="black"
+                           onBlur={this.buscarCep}
+                           value={this.state.CEP} id="cep" name="cep"
                       />
 
                       <TextInput
                         style={styles.inputsModalEdit}
                         placeholder='UF'
                         placeholderTextColor='black'
+                        value={this.state.UF}
                       />
 
                       <TextInput
                         style={styles.inputsModalEdit}
                         placeholder='Endereço'
                         placeholderTextColor='black'
+                        value={this.state.endereco}
+                      />
+
+                      <TextInput
+                        style={styles.inputsModalEdit}
+                        placeholder='Complemento'
+                        placeholderTextColor='black'
+                        onChangeText={complemento => this.setState({complemento})}
                       />
 
                       <Text style={{color : 'red', fontWeight: 'bold'}}>
@@ -115,7 +178,7 @@ export default class cadastroUser extends Component{
                       </Text>
 
                       <View style={styles.btnCtn}>
-                          <TouchableOpacity style={styles.btnEdit}>
+                          <TouchableOpacity style={styles.btnEdit} onPress={this.cadastrarUser}>
                               <Text style={styles.txtBtn}>Cadastrar</Text>
                           </TouchableOpacity>
                       </View>

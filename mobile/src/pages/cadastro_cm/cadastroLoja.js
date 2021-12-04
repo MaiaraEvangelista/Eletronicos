@@ -62,8 +62,8 @@ export default class cadastroUser extends Component{
     buscarCep = () => {
       axios(`https://viacep.com.br/ws/${this.state.CEP}/json/`)
       .then(resposta => {
-        this.setState({endereco: resposta.data})
         console.warn(resposta.data)
+        this.setState({endereco: resposta.data})
         this.setState({endereco1: resposta.data.logradouro})
         this.setState({UF: resposta.data.uf})
       })
