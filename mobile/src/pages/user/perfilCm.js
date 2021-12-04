@@ -15,43 +15,43 @@ export default class perfilCm extends Component {
         }
     }
 
-    // decode = () => 
-    // {
-    //     try {
+     decode = () => 
+     {
+         try {
 
-    //         var Storage = AsyncStorage.setItem('userToken');
+             var Storage = AsyncStorage.getItem('userToken');
 
-    //         var token = Storage.data.token;
+             var token = Storage.data.token;
 
-    //         var decoded = jwtDecode(token).role;
+             var decoded = jwtDecode(token).role;
 
-    //         console.warn(decoded)
+             console.warn(decoded)
             
-    //     } catch (error) {
-    //         console.warn(error)
-    //     }
-    // };
+         } catch (error) {
+             console.warn(error)
+         }
+     };
 
-    // listarLoja = () => 
-    // {
+     listarLoja = () => 
+     {
 
-    //     try {
+         try {
             
-    //         const resp = axios.get('http://localhost:5000/api/Usuario/'+this.decode);
+             const resp = axios.get('http://localhost:5000/api/Usuario/'+this.decode);
     
-    //         this.setState({dadosLista : resp})
+             this.setState({dadosLista : resp})
 
-    //     } catch (error) {
-    //         console.warn(error)
+         } catch (error) {
+             console.warn(error)
+             console.warn(this.decode)
+         }
 
-    //         console.warn(decode)
-    //     }
-
-    // }
+     }
 
      componentDidMount()
      {
-        //  this.decode()
+          this.decode();
+          this.listarLoja();
      }
 
     nav = () => {

@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import React, { Component } from 'react';
 import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
+import jwtDecode from 'jwt-decode';
 
 import Home from '../Home/home'
 import Login from '../user/login'
@@ -16,95 +17,121 @@ import cadastroUser from '../user/cadastroUser';
 
 const Drawer = createDrawerNavigator()
 
-export default class drawer extends Component{
-    constructor(props)
-    {
+export default class drawer extends Component {
+    constructor(props) {
         super(props);
         this.state = {
-            nomePag : '',
-            userToken : Boolean,
-            Token : '',
+            nomePag: '',
+            userToken: '',
         }
     }
 
-    
+
     token = async () => {
-        const x = await AsyncStorage.getItem('userToken')
+        try {
+            const resp = await AsyncStorage.getItem('userToken');
 
-        await this.setState({Token : x})
+            console.log(resp)
 
-        if (this.state.Token === null) {
-            this.setState({userToken : false})
-            console.warn('ta falso')
+            var decode = jwtDecode(resp).role;
 
-            const teste = await AsyncStorage.getItem('userToken')
-            console.warn(teste)
+            console.log(decode)
+
+            if (decode === '2') {
+                return this.setState({ userToken: '2' })
+            }
+            if (decode === '3') {
+                return this.setState({ userToken: '3' })
+            }
+            if (decode !== '2' || decode !== '3') {
+                return this.setState({ userToken: '' })
+            }
+
+        } catch (error) {
+            console.warn(error)
         }
-        if(this.state.Token !== null){
-            this.setState({userToken : true})
-            console.warn('ta true')
 
-            const teste = await AsyncStorage.getItem('userToken')
-            console.warn(teste)
+    }
+
+    navegacao = () => {
+        switch (this.state.userToken) {
+            case '':
+                <>
+                    <Drawer.Screen name="Home" component={Home} />
+                    <Drawer.Screen options={({ headerShown: false })} name="Login" component={Login} />
+                    <Drawer.Screen options={({ headerShown: true })} name="Soluções" component={Solucao} />
+                    <Drawer.Screen name="Lojas" component={Lista} />
+                    <Drawer.Screen name="Divulgação" component={SaibaMais} />
+                </>
+                break;
+
+            case '2':
+                <>
+                    <Drawer.Screen name="Home" component={Home} />
+                    <Drawer.Screen options={({ headerShown: false })} name="Login" component={Login} />
+                    <Drawer.Screen options={({ headerShown: true })} name="Soluções" component={Solucao} />
+                    <Drawer.Screen options={{ headerShown: true }} name="Verificação" component={Trouble} />
+                    <Drawer.Screen name="Lojas" component={Lista} />
+                    <Drawer.Screen name="Editar Perfil" component={Edicao} />
+                    <Drawer.Screen name="Perfil comerciante" component={perfilCm} />
+                    <Drawer.Screen name="Divulgação" component={SaibaMais} />
+                </>
+                break;
+
+            case '3':
+                <>
+                    <Drawer.Screen name="Home" component={Home} />
+                    <Drawer.Screen options={({ headerShown: false })} name="Login" component={Login} />
+                    <Drawer.Screen options={({ headerShown: true })} name="Soluções" component={Solucao} />
+                    <Drawer.Screen options={{ headerShown: true }} name="Verificação" component={Trouble} />
+                    <Drawer.Screen name="Lojas" component={Lista} />
+                    <Drawer.Screen name="Editar Perfil" component={Edicao} />
+                    <Drawer.Screen name="Divulgação" component={SaibaMais} />
+                </>
+
+            default:
+                break;
         }
     }
 
 
-    componentDidMount()
-    {
+    componentDidMount() {
         this.token()
     }
-    
-    render()
-    {
-        return(
+
+    render() {
+        return (
             <Drawer.Navigator
-            options={({ route }) => ({ title: route.params.name })}
-            screenOptions={{
-                headerTintColor: 'white',
-                headerTitleAlign: 'center',
-                headerStyle : {
-                    backgroundColor : '#00873B',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                },
+                options={({ route }) => ({ title: route.params.name })}
+                screenOptions={{
+                    headerTintColor: 'white',
+                    headerTitleAlign: 'center',
+                    headerStyle: {
+                        backgroundColor: '#00873B',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                    },
 
-                drawerActiveTintColor : '#FFF',
-                drawerInactiveTintColor : '#FFF',
-                drawerPosition : 'left',
-                drawerStyle : {
-                  backgroundColor :'#00873B',
-                  borderRadius : 20,
-                  height: '60%',
-                  width: '50%',
-                },
-            }}> 
+                    drawerActiveTintColor: '#FFF',
+                    drawerInactiveTintColor: '#FFF',
+                    drawerPosition: 'left',
+                    drawerStyle: {
+                        backgroundColor: '#00873B',
+                        borderRadius: 20,
+                        height: '60%',
+                        width: '50%',
+                    },
+                }}>
 
-                    {
-                        this.state.userToken === false ? (
-                            <>
-                              <Drawer.Screen name="Home" component={Home}/>
-                              <Drawer.Screen  options={({headerShown : false})} name="Login" component={Login}/>
-                              <Drawer.Screen  options={({headerShown : true})}  name ="Soluções" component={Solucao}/>
-                              <Drawer.Screen  options={{headerShown: true}} name ="Verificação" component={Trouble}/>
-                              <Drawer.Screen name="Lojas" component={Lista}/>
-                              <Drawer.Screen name="Editar Perfil" component={Edicao}/>
-                              <Drawer.Screen name="Perfil comerciante" component={perfilCm}/>
-                              <Drawer.Screen name="Divulgação" component={SaibaMais}/>
-                            </>
-                          ) : (
-                            <>
-                              <Drawer.Screen name="Home" component={Home}/>
-                              <Drawer.Screen  options={({headerShown : false})} name="Login" component={Login}/>
-                              <Drawer.Screen  options={({headerShown : true})}  name ="Soluções" component={Solucao}/>
-                              <Drawer.Screen  options={{headerShown: true}} name ="Verificação" component={Trouble}/>
-                              <Drawer.Screen name="Lojas" component={Lista}/>
-                              <Drawer.Screen name="Editar Perfil" component={Edicao}/>
-                              <Drawer.Screen name="Perfil comerciante" component={perfilCm}/>
-                              <Drawer.Screen name="Divulgação" component={SaibaMais}/>
-                            </>
-                          ) 
-                    }
+                {/* <>
+                    <Drawer.Screen name="Home" component={Home} />
+                    <Drawer.Screen options={({ headerShown: false })} name="Login" component={Login} />
+                    <Drawer.Screen options={({ headerShown: true })} name="Soluções" component={Solucao} />
+                    <Drawer.Screen name="Lojas" component={Lista} />
+                    <Drawer.Screen name="Divulgação" component={SaibaMais} />
+                </> */}
+
+                { this.navegacao() }
 
             </Drawer.Navigator>
         )
