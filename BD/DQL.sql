@@ -8,4 +8,3 @@ SELECT * FROM especialidade;
 SELECT * FROM usuario;
 SELECT * FROM loja;
 SELECT * FROM Formulario;
-SELECT * FROM Comentario;

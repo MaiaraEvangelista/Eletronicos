@@ -45,7 +45,6 @@ CREATE TABLE Loja(
 	idUsuario INT FOREIGN KEY REFERENCES Usuario(idUsuarios),
     idEspecialidade INT FOREIGN KEY REFERENCES Especialidade(idEspecialidade),
 	idFormulario INT FOREIGN KEY REFERENCES Formulario(idFormulario),
-	imagem NVARCHAR(200) NOT NULL,
     nomeComercio VARCHAR (300) NOT NULL,
 	CNPJ VARCHAR(18),
     cidade VARCHAR(300) NOT NULL,
@@ -55,5 +54,16 @@ CREATE TABLE Loja(
 	complemento VARCHAR (100),
     CEP VARCHAR (22) NOT NULL,
     telefone VARCHAR(20) NOT NULL
+);
+go
+
+CREATE TABLE imagemLoja(
+	idImagem INT PRIMARY KEY IDENTITY,
+	idLoja INT NOT NULL UNIQUE FOREIGN KEY REFERENCES Loja(idLoja),
+	binario VARBINARY(MAX) NOT NULL,
+	mimeType VARCHAR(30) NOT NULL,
+	nomeArquivo	VARCHAR(250) NOT NULL,
+	dataInclusao DATETIME DEFAULT GETDATE() NULL,
+	
 );
 go
