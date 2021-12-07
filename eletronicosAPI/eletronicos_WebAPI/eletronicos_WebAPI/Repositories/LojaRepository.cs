@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,7 +27,7 @@ namespace eletronicos_WebAPI.Repositories
 
             if (lojaAtualizada.Cep != null)
             {
-               lojaBuscada.Cep = lojaAtualizada.Cep;
+                lojaBuscada.Cep = lojaAtualizada.Cep;
             }
 
             if (lojaAtualizada.Cidade != null)
@@ -83,6 +84,7 @@ namespace eletronicos_WebAPI.Repositories
             ctx.SaveChanges();
         }
 
+
         /// <summary>
         /// Faz a exclusão de uma loja
         /// </summary>
@@ -101,15 +103,73 @@ namespace eletronicos_WebAPI.Repositories
         public List<Loja> Listar()
         {
             return ctx.Lojas.ToList();
-                //.Include(l => l.IdEspecialidadeNavigation)
-                //.Include(l => l.IdUsuariosNavigation)
-                //.ToList();
-            
+            //.Include(l => l.IdEspecialidadeNavigation)
+            //.Include(l => l.IdUsuariosNavigation)
+            //.ToList();
+
         }
 
-        public void SalvarImagem(IFormFile foto)
+        public string ConsultarImagemBd(int idLoja)
+        {
+            ImagemLoja imagemLoja = new ImagemLoja();
+            ctx.ImagemLojas.FirstOrDefault(i => i.IdLoja == idLoja);
+            
+            if(imagemLoja != null)
+            {
+                return Convert.ToBase64String(imagemLoja.Binario);
+            }
+            return null;
+        }
+
+        public string consultarImagemDir(int idLoja)
+        {
+            throw new NotImplementedException();
+        }
+        public void SalvarImagemBd(IFormFile foto, int idLoja)
+        {
+            ImagemLoja imagemLoja = new ImagemLoja();
+
+            using (var ms = new MemoryStream())
+            {
+                foto.CopyTo(ms);
+                //toArry = byte de um elemento matriz
+                imagemLoja.Binario = ms.ToArray();
+
+                imagemLoja.NomeArquivo = foto.FileName;
+
+                imagemLoja.MimeType = foto.FileName.Split('.').Last();
+
+                imagemLoja.IdLoja = idLoja;
+
+            }
+
+            ImagemLoja imagemExistente = new ImagemLoja();
+            ctx.ImagemLojas.FirstOrDefault(l => l.IdLoja == idLoja);
+
+            if(imagemExistente != null)
+            {
+                imagemExistente.Binario = imagemLoja.Binario;
+                imagemExistente.NomeArquivo = imagemLoja.NomeArquivo;
+                imagemExistente.IdLoja = idLoja;
+
+
+                ctx.ImagemLojas.Update(imagemExistente);
+
+            }
+            else
+            {
+                ctx.ImagemLojas.Add(imagemLoja);
+            }
+
+            ctx.ImagemLojas.Add(imagemLoja);
+
+            ctx.SaveChanges();
+        }
+
+        public void SalvarImagemDir(IFormFile foto, int idLoja)
         {
             throw new NotImplementedException();
         }
     }
 }
+

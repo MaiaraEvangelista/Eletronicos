@@ -41,6 +41,14 @@ namespace eletronicos_WebAPI.Interfaces
         /// <param name="id">Identificador da loja</param>
         void Deletar(int id);
 
-        void SalvarImagem(IFormFile foto);
+
+        void SalvarImagemBd(IFormFile foto, int idLoja);
+
+        void SalvarImagemDir(IFormFile foto, int idLoja);
+
+        string ConsultarImagemBd(int idLoja);
+
+        string consultarImagemDir(int idLoja);
+
     }
 }

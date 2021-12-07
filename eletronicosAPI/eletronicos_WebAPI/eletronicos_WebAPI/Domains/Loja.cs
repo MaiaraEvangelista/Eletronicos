@@ -21,6 +21,7 @@ namespace eletronicos_WebAPI.Domains
         public string Cep { get; set; }
         public string Telefone { get; set; }
 
+
         public virtual Especialidade IdEspecialidadeNavigation { get; set; }
         public virtual Formulario IdFormularioNavigation { get; set; }
         public virtual Usuario IdUsuarioNavigation { get; set; }
