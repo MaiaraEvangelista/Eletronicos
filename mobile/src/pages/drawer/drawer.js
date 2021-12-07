@@ -37,13 +37,16 @@ export default class drawer extends Component {
 
             console.log(decode)
 
-            if (decode === '2') {
+            if (decode === '2') 
+            {
                 return this.setState({ userToken: '2' })
             }
-            if (decode === '3') {
+            if (decode === '3')
+             {
                 return this.setState({ userToken: '3' })
             }
-            if (decode !== '2' || decode !== '3') {
+            if (decode !== '2' || decode !== '3')
+            {
                 return this.setState({ userToken: '' })
             }
 
@@ -52,48 +55,6 @@ export default class drawer extends Component {
         }
 
     }
-
-    navegacao = () => {
-        switch (this.state.userToken) {
-            case '':
-                <>
-                    <Drawer.Screen name="Home" component={Home} />
-                    <Drawer.Screen options={({ headerShown: false })} name="Login" component={Login} />
-                    <Drawer.Screen options={({ headerShown: true })} name="Soluções" component={Solucao} />
-                    <Drawer.Screen name="Lojas" component={Lista} />
-                    <Drawer.Screen name="Divulgação" component={SaibaMais} />
-                </>
-                break;
-
-            case '2':
-                <>
-                    <Drawer.Screen name="Home" component={Home} />
-                    <Drawer.Screen options={({ headerShown: false })} name="Login" component={Login} />
-                    <Drawer.Screen options={({ headerShown: true })} name="Soluções" component={Solucao} />
-                    <Drawer.Screen options={{ headerShown: true }} name="Verificação" component={Trouble} />
-                    <Drawer.Screen name="Lojas" component={Lista} />
-                    <Drawer.Screen name="Editar Perfil" component={Edicao} />
-                    <Drawer.Screen name="Perfil comerciante" component={perfilCm} />
-                    <Drawer.Screen name="Divulgação" component={SaibaMais} />
-                </>
-                break;
-
-            case '3':
-                <>
-                    <Drawer.Screen name="Home" component={Home} />
-                    <Drawer.Screen options={({ headerShown: false })} name="Login" component={Login} />
-                    <Drawer.Screen options={({ headerShown: true })} name="Soluções" component={Solucao} />
-                    <Drawer.Screen options={{ headerShown: true }} name="Verificação" component={Trouble} />
-                    <Drawer.Screen name="Lojas" component={Lista} />
-                    <Drawer.Screen name="Editar Perfil" component={Edicao} />
-                    <Drawer.Screen name="Divulgação" component={SaibaMais} />
-                </>
-
-            default:
-                break;
-        }
-    }
-
 
     componentDidMount() {
         this.token()
@@ -123,17 +84,44 @@ export default class drawer extends Component {
                     },
                 }}>
 
-                {/* <>
+            {
+                this.state.userToken === '' ? (
+                <>
                     <Drawer.Screen name="Home" component={Home} />
                     <Drawer.Screen options={({ headerShown: false })} name="Login" component={Login} />
                     <Drawer.Screen options={({ headerShown: true })} name="Soluções" component={Solucao} />
                     <Drawer.Screen name="Lojas" component={Lista} />
                     <Drawer.Screen name="Divulgação" component={SaibaMais} />
-                </> */}
+                </>
+                ) : (
+                    this.state.userToken === '2' ? (
+                        <>
+                            <Drawer.Screen name="Home" component={Home} />
+                            <Drawer.Screen options={({ headerShown: true })} name="Soluções" component={Solucao} />
+                            <Drawer.Screen name="Lojas" component={Lista} />
+                            <Drawer.Screen name="Verificação" component={Trouble} />
+                            <Drawer.Screen name="Perfil da loja" component={perfilCm} />
+                            <Drawer.Screen name="Divulgação" component={SaibaMais} />
+                        </>
+                    ) : (
+                        <>
+                            <Drawer.Screen name="Home" component={Home} />
+                            <Drawer.Screen options={({ headerShown: true })} name="Soluções" component={Solucao} />
+                            <Drawer.Screen name="Lojas" component={Lista} />
+                            <Drawer.Screen name="Verificação" component={Trouble} />
+                            <Drawer.Screen name="Perfil" component={Edicao} />
+                            <Drawer.Screen name="Divulgação" component={SaibaMais} />
+                        </>
+                    )
+                )
+               
+            }
+            
 
-                { this.navegacao() }
-
+            
             </Drawer.Navigator>
         )
     }
 }
+
+

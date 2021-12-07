@@ -1,15 +1,18 @@
 import { Component } from "react";
 import React from "react";
-import { StyleSheet, View, Text, Image, ScrollView, Dimensions, ImageBackground } from 'react-native';
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { StyleSheet, View, Text, Image, ScrollView, Dimensions, ImageBackground, Modal, TouchableOpacity } from 'react-native';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import jwtDecode from "jwt-decode";
+import { color } from "react-native-reanimated";
+
 
 const {width} = Dimensions.get("window");
 const height = width * 100 / 140
 
 const imagem = [
-    'https://image.shutterstock.com/image-vector/3d-abstract-digital-technology-background-600w-1931157161.jpg',
-    'https://image.shutterstock.com/image-vector/abstract-lines-dots-connect-background-600w-1492332182.jpg',
-    'https://image.shutterstock.com/image-vector/abstract-gradient-wave-particles-big-600w-1930623710.jpg'
+    require('../../../assets/bannerHome.svg'),
+    require('../../../assets/bannerHome2.svg'),
+    require('../../../assets/bannerHome3.svg'),
 ]
 
 
@@ -18,6 +21,7 @@ export default class Home extends Component{
     {
         super(props);
         this.state={
+            setModal : false
         }
     }
 
@@ -26,9 +30,26 @@ export default class Home extends Component{
         this.props.navigation.navigate('Divulgação')
     }
 
-    verif = () =>
+    verif = async () =>
     {
-        this.props.navigation.navigate('Verificação')
+        try {
+            const resp = await AsyncStorage.getItem('userToken');
+
+            console.log(resp);
+
+            var decode = jwtDecode(resp).role;
+
+            console.log(decode)
+
+           if (decode === '2' || decode === '3') 
+           {
+            this.props.navigation.navigate('Verificação')
+           }
+
+        } catch (error) {
+            console.warn(error)
+            this.setState({setModal : true})
+        }
     }
 
     solucoes = () =>
@@ -41,22 +62,67 @@ export default class Home extends Component{
         this.props.navigation.navigate('Lojas')
     }
 
+    login = () =>
+    {
+        this.props.navigation.navigate('Login')
+        this.setState({setModal : false})
+    }
+
+    closeModal = () =>
+    {
+        this.setState({setModal : false})
+    }
+
     render()
     {
         return(
             <View style={styles.container}>
+                <Modal
+                    transparent={true}
+                    visible={this.state.setModal}
+                    animationType='slide'
+                >
+                    <View style={styles.modalContainer}>
+                        
+                        <View style={styles.modalCtn}>
+                            <View style={styles.closeCtnModal}>
+
+                                <TouchableOpacity style={styles.closeModal} onPress={this.closeModal}>
+                                    <Image style={{height: '100%', width: '100%'}}  source={require('./../../../assets/x.svg')}/>
+                                </TouchableOpacity>
+
+                            </View>
+
+                            <View style={styles.imgModal}>
+                                <Image style={styles.imgStyle} source={require('./../../../assets/wrong.png')}/>
+                            </View>
+
+                            <View style={styles.txtModalCtn}>
+                                <Text style={{fontSize: 20, fontWeight: "bold"}}>Acesso negado!!</Text>
+                                <Text style={{fontSize: 16, width: '70%', textAlign: 'center'}}>Opss.. Para acessar este conteúdo é necessario ter efetuado um login</Text>
+                            </View>
+
+                            <View style={styles.btnModalCtn}>
+                                <TouchableOpacity style={styles.btnCtnModal} onPress={this.login}>
+                                    <Text style={{fontSize: 20, color: 'white'}}>Login</Text>
+                                </TouchableOpacity>
+                            </View>
+                        </View>
+
+                    </View>
+                </Modal>
                 <View>
                     <ScrollView 
                     pagingEnabled 
                     horizontal 
-                    // showsHorizontalScrollIndicator={true}
+                    showsHorizontalScrollIndicator={true}
                     style={{width, height}} >
                         {
                             imagem.map((imagem, index) => (
                                 <ImageBackground
                                 key={index} 
                                 style={{width, height, resizeMode: 'cover'}} 
-                                source={{uri : imagem}}
+                                source={imagem}
                                 >
                                 </ImageBackground>
                             ))
@@ -79,7 +145,7 @@ export default class Home extends Component{
                         </View>
 
                         <View 
-                        style={{height: 250, width: '100%', backgroundColor: 'green', marginTop: 10, justifyContent: 'center', 
+                        style={{height: 250, width: '100%', backgroundColor: '#00873B', marginTop: 10, justifyContent: 'center', 
                         alignItems: 'center'}}
                         >
                             <ImageBackground style={{height: '100%', width: '100%'}} source={require('../../../assets/grup.svg')}>
@@ -136,6 +202,88 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: 'white',
     },
+
+    modalContainer : {
+        flex : 1,
+        backgroundColor : 'rgba(200, 199, 199, 0.9)',
+
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+
+    modalCtn : {
+        width : '80%',
+        height : '50%',
+        backgroundColor : 'white',
+
+        borderRadius : 8,
+        shadowColor: '#171717',
+        shadowOffset: {width: -2, height: 4},
+        shadowOpacity: 0.5,
+        shadowRadius: 3,
+    },
+
+    closeCtnModal : {
+        width: '100%',
+        height: '15%',
+        // backgroundColor: 'yellow',
+
+        justifyContent: 'center',
+    },
+
+    closeModal : {
+        width: '10%',
+        height: '50%',
+        // backgroundColor: 'green',
+
+        marginLeft: 20,
+    },
+
+    imgModal : {
+        width: '100%',
+        height: '35%',
+        // backgroundColor: 'green',
+
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    imgStyle : {
+        width: '41%',
+        height: '105%',
+    },
+
+    txtModalCtn : {
+        width: '100%',
+        height: '30%',
+        // backgroundColor: 'red',
+
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+
+        marginTop: 2,
+    },
+
+    btnModalCtn : {
+        width: '100%',
+        height: '20%',
+        // backgroundColor: 'red',
+
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
+    btnCtnModal : {
+        width: '40%',
+        height: '60%',
+        backgroundColor: '#00873B',
+
+        borderRadius : 8,
+
+        justifyContent: 'center',
+        alignItems: 'center'
+    },  
 
     txt : {
         width: '50%',

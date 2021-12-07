@@ -148,16 +148,18 @@ const styles = StyleSheet.create({
     btnListaDeLojas : {
         width: '80%',
         height: '70%',
-        backgroundColor: 'white',
 
         borderRadius: 8,
+        borderColor: 'white',
+        borderWidth: 3,
+
         justifyContent: 'center',
         alignItems: 'center',
     },
 
     txtBtn : {
       fontSize : 17,
-      fontWeight: 'bold',  
+      color: 'white'
     },
 
     infs1: {

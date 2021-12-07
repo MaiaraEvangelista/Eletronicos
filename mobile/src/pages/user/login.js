@@ -39,7 +39,7 @@ export default class Login extends Component {
 
         if (decoded === '2') {
 
-          this.props.navigation.navigate('Perfil comerciante')
+          this.props.navigation.navigate('Home')
 
         }
 
