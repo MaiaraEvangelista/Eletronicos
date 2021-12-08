@@ -14,6 +14,7 @@ export default class cadastroUser extends Component{
     this.state =
     {
       idUser : 0,
+      idTipo : 0,
       nomeCompleto : '',
       email : '',
       senha : '',
@@ -27,10 +28,12 @@ export default class cadastroUser extends Component{
       UF : '',
       endereco : '',
       complemento : '',
+      numero : '',
 
       turnModal : false,
       sucesso : '',
       sucessoCad: '',
+      turnCadModal : true,
     }
   }
 
@@ -94,15 +97,15 @@ export default class cadastroUser extends Component{
         api.post('Usuario',
         {
           idUsuarios : this.state.idUser,
-          idTiposUsuario : 2,
+          idTiposUsuario : this.state.idTipo,
           email : this.state.email,
           senha : this.state.senha,
           cpf : this.state.CPF,
-          cnpj : '',
           nomeCompleto : this.state.nomeCompleto,
           rua : this.state.endereco,
           uf  : this.state.UF,
           complemento : this.state.complemento,
+          n : this.state.numero,
           cep : this.state.CEP,
           celular : this.state.celular
         })
@@ -113,6 +116,24 @@ export default class cadastroUser extends Component{
         } catch (error) {
           console.warn(error)
       }
+    }
+
+    closeModal = () =>
+    {
+      this.props.navigation.navigate('Home')
+      this.setState({turnCadModal : false})
+    }
+
+    comerciante = () =>
+    {
+      this.setState({idTipo : 2})
+      this.setState({turnCadModal : false})
+    }
+
+    cliente = () =>
+    {
+      this.setState({idTipo : 3})
+      this.setState({turnCadModal : false})
     }
   
   render()
@@ -166,6 +187,13 @@ export default class cadastroUser extends Component{
                         value={this.state.endereco}
                       />
 
+                       <TextInput
+                        style={styles.inputsModalEdit}
+                        placeholder='Número'
+                        placeholderTextColor='black'
+                        onChangeText={numero => this.setState({numero})}
+                      />
+
                       <TextInput
                         style={styles.inputsModalEdit}
                         placeholder='Complemento'
@@ -185,6 +213,39 @@ export default class cadastroUser extends Component{
                   </View>
                 </View>
               </View>
+            </View>
+          </Modal>
+
+          <Modal
+            transparent={true}
+            visible={this.state.turnCadModal}
+            animationType='fade'
+          >
+            <View style={styles.containerModal}>
+
+                <View style={styles.modalCadCtn}>
+
+                    <View style={styles.goBackModalCtn}>
+                       <TouchableOpacity style={styles.goBackModal} onPress={this.closeModal}>
+                          <Image source={require('../../../assets/x.svg')} style={styles.btnModal}/>
+                       </TouchableOpacity>
+
+                          <Text style={{fontSize: 17}}>Selecione o seu usuário :</Text>
+                    </View>
+
+                    <View style={styles.modalBtnCtn}>
+                       <View style={styles.modalBtnMiddle1}>
+                            <TouchableOpacity style={styles.selectCtn} onPress={this.comerciante}>
+                                <Text style={{color: 'white', fontSize: 16,}}>Comerciante</Text>
+                            </TouchableOpacity>
+                       </View>
+                       <View style={styles.modalBtnMiddle1}>
+                            <TouchableOpacity style={styles.selectCtn} onPress={this.cliente}>
+                                <Text style={{color: 'white', fontSize: 16,}}>Cliente</Text>
+                            </TouchableOpacity>
+                       </View>
+                    </View>
+                </View>
             </View>
           </Modal>
 
@@ -343,7 +404,7 @@ const styles = StyleSheet.create({
 
   modalInputsCtn : {
     width: '100%',
-    height: '85%',
+    height: '95%',
     // backgroundColor: 'green',
 
     flexDirection: 'column',
@@ -353,7 +414,7 @@ const styles = StyleSheet.create({
 
   inputsModalEdit : {
     width : '70%',
-    height : '15%',
+    height : '13%',
 
     borderColor: '#00873B',
     borderWidth: 4,
@@ -362,6 +423,65 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
 
     fontSize: 18,
+  },
+
+  modalCadCtn : {
+    width: '80%',
+    height: '30%',
+    backgroundColor: 'white',
+
+    borderRadius: 8,
+  },
+
+  goBackModalCtn : {
+    width: '100%',
+    height: '25%',
+    // backgroundColor: 'red',
+
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    flexDirection : 'row'
+  },
+
+  goBackModal : {
+    width: '10%',
+    height: '70%',
+    // backgroundColor: 'green',
+
+    marginLeft: 10,
+  },
+
+  modalBtnCtn : {
+    width: '100%',
+    height: '75%',
+    // backgroundColor: 'red',
+
+    flexDirection: 'row'
+  },
+
+  modalBtnMiddle1 : {
+    width: '50%',
+    height: '100%',
+    // backgroundColor: 'blue',
+
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  selectCtn : {
+    width: '70%',
+    height: '25%',
+
+    backgroundColor: '#00873B',
+    borderRadius: 5,
+
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  btnModal : {
+    width: '100%',
+    height: '100%'
   },
 
   headerCtn : {

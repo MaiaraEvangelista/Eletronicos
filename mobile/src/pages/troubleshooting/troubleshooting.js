@@ -22,6 +22,11 @@ export default class Trouble extends Component{
         this.props.navigation.navigate('Lojas')
     }
 
+    verificacao = () =>
+    {
+        this.props.navigation.navigate('verif')
+    }
+
     render()
     {
         return(
@@ -33,7 +38,7 @@ export default class Trouble extends Component{
                 </View>
 
                 <View style={styles.btnCtnVerif}>
-                    <TouchableOpacity style={styles.btnVerif}>
+                    <TouchableOpacity style={styles.btnVerif} onPress={this.verificacao}>
                         <Text style={styles.btnTxt}>Verificação</Text>
                     </TouchableOpacity>
                 </View>

@@ -33,7 +33,6 @@ export default class Lista extends Component {
     {
         return(
              <FlatList
-
                 contentContainerStyle={styles.container}
                 data={this.state.lista}
                 keyExtractor={item => item.idLoja.id}
