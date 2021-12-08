@@ -8,56 +8,52 @@ import MapView,{Marker} from 'react-native-maps';
 import customStyle from './customStyle';
 import {Location, Permissions} from 'expo'
 
-state ={
-  errorMessage: ''
-}
+// state ={
+//   errorMessage: ''
+// }
 
-_getLocation = async () => {
-  const {status} = await Permissions.askAsync(Permissions.Location);
-  if (status !== 'granted') {
-    console.log('Permissão não concedida');
+// _getLocation = async () => {
+//   const {status} = await Permissions.askAsync(Permissions.Location);
+//   if (status !== 'granted') {
+//     console.log('Permissão não concedida');
 
-    this.SetState({
-      errorMessage: 'permissão não concedida'
-    })
+//     this.SetState({
+//       errorMessage: 'permissão não concedida'
+//     })
 
-    const userLocation = Location.getCurrentPositionAsync();
+//     const userLocation = Location.getCurrentPositionAsync();
 
-    this.setState
-  }
-}
+//     this.setState
+//   }
+// }
 
 export default function App() {
-  return (
+   let [regiao, setRegiao] = useState({
+      latitude : -23.53622471380559 ,
+      longitude :  -46.64623994371489,
+      latitudeDelta : 0.0922,
+      longitudeDelta: 0.0421
+      }
+    );    
+    useEffect(() =>{
+      navigator.geolocation.getCurrentPosition(posicao =>{
+      console.log(posicao.coords);
+        setRegiao({
+          latitude: posicao.coords.latitude,
+          longitude: posicao.coords.longitude,
+          latitudeDelta: 0.014,
+          longitudeDelta: 0.014
 
-    // state ={
-    //   errorMessage: ''
-    // }
-
-    // _getLocation = async () => {
-    //   const {status} = await Permissions.askAsync(Permissions.Location);
-    //   if (status !== 'granted') {
-    //     console.log('Permissão não concedida');
-
-    //     this.SetState({
-    //       errorMessage: 'permissão não concedida'
-    //     })
-    //   }
-    // }
-
-
-
-    <View style={styles.container}>
+        })
+      })
       
+    })
+    return (
+      
+      <View style= {styles.container}>
       <MapView
-          customMapStyle={customStyle}
-          style={styles.mapStyle}
-          initialRegion={{
-          latitude : -23.53622471380559 ,
-            longitude :  -46.64623994371489,
-            latitudeDelta : 0.0922,
-            longitudeDelta: 0.0421
-          }}
+        customMapStyle={customStyle}
+          style={styles.mapStyle} region={regiao} showsUserLocation
       >
         <Marker
           coordinate={{
