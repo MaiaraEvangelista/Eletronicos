@@ -7,8 +7,6 @@ export default class Trouble extends Component{
     {
         super(props);
         this.state = {
-            tempBat : 0,
-            tempCPU : 0,
         }
     }
 
@@ -24,7 +22,7 @@ export default class Trouble extends Component{
 
     verificacao = () =>
     {
-        this.props.navigation.navigate('verif')
+        this.props.navigation.navigate('teste')
     }
 
     render()

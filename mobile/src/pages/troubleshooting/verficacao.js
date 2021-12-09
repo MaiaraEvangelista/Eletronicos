@@ -4,7 +4,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { color } from "react-native-reanimated";
 
 
-export default class verif extends Component
+export default class Verificacao extends Component
 {
     constructor(props)
     {
@@ -187,11 +187,18 @@ export default class verif extends Component
     navLojas = () => 
     {
         this.props.navigation.navigate('Lojas')
+        this.setState({modalVisible : false})
     }
 
     navSolucao = () =>
     {
         this.props.navigation.navigate('Soluções')
+        this.setState({modalVisible : false})
+    }
+
+    back = () =>
+    {
+        this.props.navigation.navigate('Home')
     }
 
     render()
@@ -221,14 +228,14 @@ export default class verif extends Component
                                 <View style={styles.btnModalMiddle}>
                                     <TouchableOpacity 
                                     style={styles.btnModal}
-                                    onPress={this.navLojas()}>
+                                    onPress={this.navLojas}>
                                         <Text style={{color : 'white', fontSize: 17}}>Lojas</Text>
                                     </TouchableOpacity>
                                 </View>
                                 <View style={styles.btnModalMiddle}>
                                     <TouchableOpacity 
                                     style={styles.btnModal}
-                                    onPress={this.navSolucao()}>
+                                    onPress={this.navSolucao}>
                                         <Text style={{color : 'white', fontSize: 17}}>Soluções</Text>
                                     </TouchableOpacity>
                                 </View>
@@ -240,7 +247,7 @@ export default class verif extends Component
 
                     <View style={styles.header}>
 
-                        <TouchableOpacity style={styles.headerGoBack}>
+                        <TouchableOpacity style={styles.headerGoBack} onPress={this.back}>
                             <Image style={styles.imgHeader} source={require('../../../assets/arrow.svg')}/>
                         </TouchableOpacity>
 

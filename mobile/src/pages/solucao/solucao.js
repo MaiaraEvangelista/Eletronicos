@@ -123,7 +123,7 @@ export default class Solucao extends Component {
                     </View>
                     <View style={styles.infsFooter}>
                         <TouchableOpacity style={styles.infsFooterBtn} onPress={this.modalRecolhimento}>
-                                <Image style={styles.infsFooterImg} source={require('./../../../assets/recolhimento.svg')}/>
+                                <Image style={styles.infsFooterImg} source={require('./../../../assets/recolhimento.png')}/>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
 
     infsFooterImg : {
         width: '90%',
-        height: '90%',
+        height: '100%',
     },
 
 })

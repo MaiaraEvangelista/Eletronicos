@@ -23,9 +23,9 @@ export default class perfilCm extends Component {
 
              var token = Storage.data.token;
 
-             var decoded = jwtDecode(token).role;
+            return jwtDecode(token).jti;
 
-             console.warn(decoded)
+            //  console.warn(decoded)
             
          } catch (error) {
              console.warn(error)
@@ -37,25 +37,24 @@ export default class perfilCm extends Component {
 
          try {
             
-             const resp = axios.get('http://localhost:5000/api/Usuario/'+this.decode);
+             const resp = axios.get('http://localhost:5000/api/Usuario/7');
     
              this.setState({dadosLista : resp})
+             console.warn('foi bb')
 
          } catch (error) {
              console.warn(error)
-             console.warn(this.decode)
          }
 
      }
 
      componentDidMount()
      {
-          this.decode();
           this.listarLoja();
      }
 
     nav = () => {
-        this.props.navigation.navigate('lista')
+        this.props.navigation.navigate('Lojas')
     }
 
     render()
@@ -143,8 +142,7 @@ export default class perfilCm extends Component {
                             <View style={styles.meioList}>
                                 <TextInput
                                 style={styles.inputList}
-                                placeholder='Nome da loja'
-                                placeholderTextColor='black'
+                                placeholder={this.state.dadosLista.email }                       placeholderTextColor='black'
                                 editable={false}
                                 />
 

@@ -2,7 +2,6 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import React, { Component } from 'react';
-import { SafeAreaView, StyleSheet, View, Text } from 'react-native';
 import jwtDecode from 'jwt-decode';
 
 import Home from '../Home/home'
@@ -13,7 +12,7 @@ import Trouble from '../troubleshooting/troubleshooting'
 import Solucao from '../solucao/solucao'
 import SaibaMais from '../saiba/saibaMais';
 import perfilCm from '../user/perfilCm';
-import cadastroUser from '../user/cadastroUser';
+import Verificacao from '../troubleshooting/verficacao';
 
 const Drawer = createDrawerNavigator()
 
@@ -92,16 +91,19 @@ export default class drawer extends Component {
                     <Drawer.Screen options={({ headerShown: true })} name="Soluções" component={Solucao} />
                     <Drawer.Screen name="Lojas" component={Lista} />
                     <Drawer.Screen name="Divulgação" component={SaibaMais} />
+                    {/* <Drawer.Screen name='teste' component={Verificacao} /> */}
                 </>
                 ) : (
                     this.state.userToken === '2' ? (
                         <>
                             <Drawer.Screen name="Home" component={Home} />
+                            {/* <Drawer.Screen name='teste' component={Verificacao} /> */}
                             <Drawer.Screen options={({ headerShown: true })} name="Soluções" component={Solucao} />
                             <Drawer.Screen name="Lojas" component={Lista} />
                             <Drawer.Screen name="Verificação" component={Trouble} />
                             <Drawer.Screen name="Perfil da loja" component={perfilCm} />
                             <Drawer.Screen name="Divulgação" component={SaibaMais} />
+
                         </>
                     ) : (
                         <>
@@ -111,6 +113,7 @@ export default class drawer extends Component {
                             <Drawer.Screen name="Verificação" component={Trouble} />
                             <Drawer.Screen name="Perfil" component={Edicao} />
                             <Drawer.Screen name="Divulgação" component={SaibaMais} />
+                            <Drawer.Screen name='teste' component={Verificacao} />
                         </>
                     )
                 )

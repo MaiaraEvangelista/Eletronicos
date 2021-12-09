@@ -105,7 +105,7 @@ export default class SaibaMais extends Component {
 
                         <Text 
                         style={{fontSize: 15, textAlign: 'center'}}>
-                            Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            Nós somos a Recycle Tech e nossa missão é justamente fazer a preservação do meio ambiente, evitando que nossos problemas ambientais aumente como vem acontecendo atualmente com a evolução da tecnologia. E ainda trazer uma solução rápida e fácil para que nossos usuários possam ter soluções práticas e um bom serviço em relação ao serviço buscado por ambos. Queremos mostrar o quão fácil é dar um bom serviço, e ter uma boa ação, somos bem mais do que uma empresa, somos parceiros mútuos.
                         </Text>
 
                     </View>
@@ -117,12 +117,12 @@ export default class SaibaMais extends Component {
                         <Text style={styles.txtValores}
                          style={{fontSize: 15, textAlign: 'center', color: 'white', 
                          width: '80%'}}>
-                            Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                            Então, se você e a sua empresa se identificou com os nossos valores e metas, aproveite e cadastre gratuitamente sua loja para a divulgação e ajuda na acessibilidade da reciclagem para os nossos usuários 
                         </Text>
 
                         <TouchableOpacity style={styles.btnCtn}>
                             <Text 
-                                style={{color: 'white', fontSize: 20}}
+                                style={{color: 'white', fontSize: 16}}
                                 onPress={this.nav}
                             >Cadastre-se já !!</Text>
                         </TouchableOpacity>
@@ -230,7 +230,7 @@ const styles = StyleSheet.create({
 
     valoresCtn : {
         width: '100%',
-        height: '35%',
+        height: '45%',
         marginTop: 30,
 
         // backgroundColor: 'blue',
@@ -249,19 +249,20 @@ const styles = StyleSheet.create({
 
     ctnTxt: {
         width: '80%',
-        height: '80%',
+        height: '90%',
 
         justifyContent: 'center',
         alignItems: 'center',
 
+        // backgroundColor: 'red'
     },
 
 
     txtCtn: {
         width: '100%',
-        height: '35%',
+        height: '25%',
 
-        marginTop: 20,
+        marginTop: 33,
 
         backgroundColor: '#00873B',
 
@@ -270,8 +271,8 @@ const styles = StyleSheet.create({
     },
 
     btnCtn: {
-        width : '50%',
-        height: '15%',
+        width : '40%',
+        height: '25%',
 
         borderRadius: 10,
         borderWidth: 2,
