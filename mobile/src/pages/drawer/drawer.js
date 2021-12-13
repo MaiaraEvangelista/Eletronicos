@@ -113,7 +113,7 @@ export default class drawer extends Component {
                             <Drawer.Screen name="Verificação" component={Trouble} />
                             <Drawer.Screen name="Perfil" component={Edicao} />
                             <Drawer.Screen name="Divulgação" component={SaibaMais} />
-                            <Drawer.Screen name='teste' component={Verificacao} />
+                            {/* <Drawer.Screen name='teste' component={Verificacao} /> */}
                         </>
                     )
                 )

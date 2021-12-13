@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StyleSheet, View, TouchableOpacity, Image, Text, Modal } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { color } from "react-native-reanimated";
+
 
 
 export default class Verificacao extends Component

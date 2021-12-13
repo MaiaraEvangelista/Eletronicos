@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Style, TouchableOpacity, ImageBackground, Image, Modal } from "react-native";
+import { View, Text, StyleSheet, Style, TouchableOpacity, ImageBackground, Image, Modal, Picker } from "react-native";
 import { ScrollView, TextInput } from "react-native-gesture-handler";
 import { TextInputMask } from 'react-native-masked-text'
 import axios from "axios";
+import api from "../../services/api";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import jwtDecode from "jwt-decode";
 
 
 export default class cadastroUser extends Component{
@@ -11,13 +14,18 @@ export default class cadastroUser extends Component{
         super(props);
         this.state =
         {
-            NomeLoja: '',
+            idUser : 5,
+            idEsp : 0,
+            idForm : 1,
+            nomeComercio: '',
             cnpj: '',
-            UF : '',
-            endereco1: '',
-            CEP: '',
+            cidade : '',
+            rua: '',
+            n : '',
+            uf : '',
             complemento: '',
-            imagem : '',
+            CEP: '',
+            telefone : '',
             desc : '',
 
             endereco : [],
@@ -41,17 +49,17 @@ export default class cadastroUser extends Component{
     {
       if (this.state.NomeLoja == ''   || 
           this.state.cnpj == ''       ||
-          this.state.CEP == ''        ||
-          this.state.UF == ''         ||
-          this.state.endereco1 == ''
+          this.state.telefone == ''   ||
+          this.state.desc == ''       ||
+          this.state.idEsp == 0
           ) {
         this.setState({sucesso : 'Alguns campos estão vazios!!'})
       } 
       if (this.state.NomeLoja != ''   && 
           this.state.cnpj != ''       &&
-          this.state.CEP != ''        &&   
-          this.state.UF != ''         &&
-          this.state.endereco1 != ''     
+          this.state.telefone != ''   &&   
+          this.state.desc != ''       &&
+          this.state.idEsp != 0
           ) {
         this.setState({sucesso : ''})
         this.setState({ModalVisible : true})
@@ -64,8 +72,9 @@ export default class cadastroUser extends Component{
       .then(resposta => {
         console.warn(resposta.data)
         this.setState({endereco: resposta.data})
-        this.setState({endereco1: resposta.data.logradouro})
-        this.setState({UF: resposta.data.uf})
+        this.setState({rua: resposta.data.logradouro})
+        this.setState({uf: resposta.data.uf})
+        this.setState({cidade : resposta.data.localidade})
       })
 
       .catch(erro => console.warn(erro))
@@ -74,6 +83,37 @@ export default class cadastroUser extends Component{
     componentDidMount()
     {
       this.buscarCep()
+    }
+
+    listar = async () =>
+    {
+      console.warn(this.state.idUser)
+      console.warn(this.state.idEsp)
+    }
+
+    cadastrarLoja = async () =>
+    {
+
+      const resp = await AsyncStorage.getItem('userToken');
+      var decoded = jwtDecode(resp).jti;
+      this.setState({idUser : decoded})
+
+      api.post('Loja',{
+        idUsuario       : this.state.idUser,
+        idEspecialidade : this.state.idEsp,
+        idFormulario    : this.state.idForm,
+        nomeComercio    : this.state.nomeComercio,
+        cnpj            : this.state.cnpj,
+        cidade          : this.state.cidade,
+        rua             : this.state.rua,
+        n               : this.state.n,
+        uf              : this.state.uf,
+        complemento     : this.state.complemento,
+        cep             : this.state.CEP,
+        telefone        : this.state.telefone,
+      })
+
+      .catch(erro => console.warn(erro))
     }
 
     render()
@@ -89,27 +129,70 @@ export default class cadastroUser extends Component{
                 <View style={styles.conatinerModal}>
                   <View style={styles.ctnInputsModal}>
 
-                    <View style={styles.ctnModal}>
-                        <Text style={{textAlign : 'center', fontSize: 18, width: '60%'}}
-                        >Selecione uma imagem para a sua loja</Text>
+                  <View style={styles.ctnModal}>
+                      <Text style={{textAlign : 'center', fontSize: 18, width: '60%'}}
+                      >Adicione a localização do comércio</Text>
 
-                        <TextInput
-                        style={styles.InputImg}
-                          placeholder='Imagem'
-                        />
-                    </View>
+                    <TextInputMask
+                    type={'custom'}
+                    options={{
+                      mask : '99999-999'
+                    }}
+                    value={this.state.CEP}
+                    onChangeText={CEP => this.setState({CEP})}
+                    style={styles.TxtInputModal}
+                    placeholder="CEP"
+                    editable={true}
+                    placeholderTextColor="black"
+                    onBlur={this.buscarCep}
+                    value={this.state.CEP} id="cep" name="cep"
+                    />
 
+                    <TextInput
+                    onChangeText={uf => this.setState({uf})}
+                    style={styles.TxtInputModal}
+                    placeholder="Unidade Federal"
+                    placeholderTextColor="black"
+                    editable={true}
+                    value={this.state.uf} id="uf" name="uf"
+                    />
 
-                    <View style={styles.ctnModal}>
-                      <TextInput
-                        style={styles.inputDesc}
-                        placeholder='Faça uma descrição curta da sua loja'
-                        multiline
-                      />
-                    </View>
+                    <TextInput
+                      onChangeText={cidade => this.setState({cidade})}
+                      value={this.state.cidade}
+                      style={styles.TxtInputModal}
+                      placeholder="Cidade"
+                      placeholderTextColor="black"
+                      editable={true}
+                    />
+
+                    <TextInput
+                    style={styles.TxtInputModal}
+                    placeholder="Endereço"
+                    placeholderTextColor="black"
+                    value={this.state.rua} id="logradouro" name="logradouro"
+                    onChangeText={endereco1 => this.setState({endereco1})}
+                    />
+
+                    <TextInput
+                      onChangeText={n => this.setState({n})}
+                      style={styles.TxtInputModal}
+                      placeholder="Número"
+                      placeholderTextColor="black"
+                      editable={true}
+                    />
+
+                   <TextInput
+                    style={styles.TxtInputModal}
+                    placeholder="Complemento"
+                    placeholderTextColor="black"
+                    onChangeText={complemento => this.setState({complemento})}
+                    />
+                </View>
+                        
 
                     <View style={styles.btnModalCtn}>
-                      <TouchableOpacity style={styles.btnModal}>
+                      <TouchableOpacity style={styles.btnModal} onPress={this.listar}>
                         <Text style={{color: 'white', fontSize: 17}}>Cadastre-se</Text>
                       </TouchableOpacity>
                     </View>
@@ -132,71 +215,72 @@ export default class cadastroUser extends Component{
 
                 <View style={styles.inputStyle}>
                   <TextInput
-                    style={styles.TxtInput}
+                    style={styles.TxtInputNome}
                     placeholder="Nome da loja"
                     placeholderTextColor="black"
                     keyboardType="default"
-                    onChangeText={NomeLoja => this.setState({NomeLoja})}
+                    onChangeText={NomeComercio => this.setState({NomeComercio})}
                   />
 
-                  <TextInputMask
-                  type={'cnpj'}
-                  value={this.state.cnpj}
-                  onChangeText={cnpj => this.setState({cnpj})}
-                    style={styles.TxtInput}
-                    placeholder="CNPJ"
-                    placeholderTextColor="black"
-                  />
                 </View>
 
                 <View style={styles.inputStyle}>
-                <TextInputMask
-                type={'custom'}
-                options={{
-                  mask : '99999-999'
-                }}
-                value={this.state.CEP}
-                  onChangeText={CEP => this.setState({CEP})}
-                    style={styles.TxtInput}
-                    placeholder="CEP"
-                    editable={true}
-                    placeholderTextColor="black"
-                    onBlur={this.buscarCep}
-                    value={this.state.CEP} id="cep" name="cep"
-                  />
+                    <TextInputMask
+                      type={'cnpj'}
+                      value={this.state.cnpj}
+                      onChangeText={cnpj => this.setState({cnpj})}
+                      style={styles.TxtInput}
+                      placeholder="CNPJ"
+                      editable={true}
+                      placeholderTextColor="black"
+                    />
 
-                  <TextInput
-                    onChangeText={UF => this.setState({UF})}
-                    style={styles.TxtInput}
-                    placeholder="UF"
-                    placeholderTextColor="black"
-                    editable={true}
-                    value={this.state.UF} id="uf" name="uf"
-                  />
+                    <TextInputMask
+                      type={'cel-phone'}
+                      options={{
+                        maskType : 'BRL',
+                        widthDDD : true,
+                        dddMask : '(99) '
+                      }}
+                      value={this.state.telefone}
+                      onChangeText={telefone => this.setState({telefone})}
+                      style={styles.TxtInput}
+                      placeholder="Celular"
+                      editable={true}
+                      placeholderTextColor="black"
+                    />
                 </View>
 
-
                 <View style={styles.inputStyle}>
+                      <Picker
+                        selectedValue={this.state.idEsp}
+                        onValueChange={idEsp => this.setState({idEsp})}
+                        style={styles.pickerStyle}
+                      >
+                        <Picker.Item label='Selecione uma especialidade' value={0}/>
+                        <Picker.Item label='Troca de Smartphones' value={1}/>
+                        <Picker.Item label='Montagem/Desmontagem' value={2}/>
+                        <Picker.Item label='Descarte' value={3}/>
+                        <Picker.Item label='Venda' value={4}/>
+                      </Picker>
+                </View>
+
+                <View style={styles.inputStyleBig}>
                 <TextInput
-                    style={styles.TxtInput}
-                    placeholder="Endereço"
-                    placeholderTextColor="black"
-                    value={this.state.endereco1} id="logradouro" name="logradouro"
-                    onChangeText={endereco1 => this.setState({endereco1})}
-                  />
-                   <TextInput
-                    style={styles.TxtInput}
-                    placeholder="Complemento"
-                    placeholderTextColor="black"
-                    onChangeText={complemento => this.setState({complemento})}
-                  />
+                  style={styles.TxtInputDesc}
+                  placeholder='Breve descrição do seu comércio'
+                  placeholderTextColor='black'
+                  maxLength='100'
+                  multiline={true}
+                  onChangeText={desc => this.setState({desc})}
+                />
                 </View>
-                
+
 
                 <View style={styles.btnInput}>
                   <Text style={{color: 'red', fontSize: 17}}>{this.state.sucesso}</Text>
                   <TouchableOpacity style={styles.btnCtn} onPress={this.TurnModalVisible}>
-                    <Text style={styles.txtBtn}>Cadastrar</Text>
+                    <Text style={styles.txtBtn}>Proseguir</Text>
                   </TouchableOpacity>
             </View>
                 </View>
@@ -229,17 +313,29 @@ const styles = StyleSheet.create({
 
   ctnModal: {
     width: '100%',
-    height: '40%',
+    height: '85%',
     // backgroundColor: 'red',
 
     alignItems: 'center',
     justifyContent: 'space-around',
   },
 
+  TxtInputModal : {
+    width: '60%',
+    height: '10%',
+    
+    borderColor: '#00873B',
+    borderWidth: 4,
+    borderRadius: 7,
+
+    fontSize: 17,
+    paddingLeft: 7,
+  },
+
   btnModalCtn : {
     width: '100%',
-    height: '20%',
-    // backgroundColor: 'red'
+    height: '15%',
+    // backgroundColor: 'red',
 
     alignItems: 'center',
     justifyContent: 'center',
@@ -247,7 +343,7 @@ const styles = StyleSheet.create({
 
   btnModal: {
     width: '50%',
-    height: '40%',
+    height: '50%',
     backgroundColor: '#4D65BD',
 
     borderRadius: 7,
@@ -308,8 +404,51 @@ const styles = StyleSheet.create({
 
   },
 
+  pickerStyle : {
+    width : '90%',
+    height: '60%',
+
+    borderColor: '#00873B',
+    borderWidth: 4,
+    borderRadius: 7,
+
+    fontSize: 17,
+  },
+
+  inputStyleBig: {
+    flex : 0.270,
+    // backgroundColor : 'yellow',
+
+    justifyContent : 'center',
+    alignItems : 'center',
+  },
+
   TxtInput: {
     width: '40%',
+    height: '70%',
+
+    borderColor: '#00873B',
+    borderWidth: 4,
+    borderRadius: 10,
+
+    fontSize: 17,
+    paddingLeft: 7,
+  },
+
+  TxtInputNome : {
+    width: '90%',
+    height: '70%',
+
+    borderColor: '#00873B',
+    borderWidth: 4,
+    borderRadius: 10,
+
+    fontSize: 17,
+    paddingLeft: 7,
+  },
+
+  TxtInputDesc : {
+    width: '90%',
     height: '70%',
 
     borderColor: '#00873B',

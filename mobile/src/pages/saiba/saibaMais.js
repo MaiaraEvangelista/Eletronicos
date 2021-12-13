@@ -25,7 +25,7 @@ export default class SaibaMais extends Component {
 
            if (decode === '2') 
            {
-            return this.props.navigation.navigate('cadaLoja')
+            return this.props.navigation.navigate('formLoja')
            }
 
            if (decode === '3') {

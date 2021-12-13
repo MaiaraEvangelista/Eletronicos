@@ -175,7 +175,7 @@ export default class cadastroUser extends Component{
 
                       <TextInput
                         style={styles.inputsModalEdit}
-                        placeholder='UF'
+                        placeholder='Unidade Federal'
                         placeholderTextColor='black'
                         value={this.state.UF}
                       />

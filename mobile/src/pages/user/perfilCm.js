@@ -10,42 +10,40 @@ export default class perfilCm extends Component {
         super(props)
         this.state = {
             modalVisible1 : false,
-            dadosLista : {},
+            dadosLista : [],
             
         }
     }
 
-     decode = () => 
-     {
-         try {
+    //  decode = () => 
+    //  {
+    //      try {
 
-             var Storage = AsyncStorage.getItem('userToken');
+    //          var Storage = AsyncStorage.getItem('userToken');
 
-             var token = Storage.data.token;
+    //          var token = Storage.data.token;
 
-            return jwtDecode(token).jti;
+    //         return jwtDecode(token).jti;
 
-            //  console.warn(decoded)
+    //         //  console.warn(decoded)
             
-         } catch (error) {
-             console.warn(error)
-         }
-     };
+    //      } catch (error) {
+    //          console.warn(error)
+    //      }
+    //  };
 
      listarLoja = () => 
      {
-
-         try {
             
-             const resp = axios.get('http://localhost:5000/api/Usuario/7');
-    
-             this.setState({dadosLista : resp})
-             console.warn('foi bb')
+             fetch('http://localhost:5000/api/Loja/1')
 
-         } catch (error) {
-             console.warn(error)
-         }
+             .then((resposta) => resposta.json())
 
+             .then((dados) => this.setState({dadosLista : dados}))
+
+             .catch((erro) => console.warn(erro))
+
+             console.warn(this.state.dadosLista)
      }
 
      componentDidMount()
@@ -142,7 +140,8 @@ export default class perfilCm extends Component {
                             <View style={styles.meioList}>
                                 <TextInput
                                 style={styles.inputList}
-                                placeholder={this.state.dadosLista.email }                       placeholderTextColor='black'
+                                placeholder='aaa'                       
+                                placeholderTextColor='black'
                                 editable={false}
                                 />
 
@@ -192,6 +191,7 @@ export default class perfilCm extends Component {
         )
     }
 }
+
 
 const styles = StyleSheet.create({
 
