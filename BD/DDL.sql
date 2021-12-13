@@ -46,6 +46,7 @@ CREATE TABLE Loja(
     idEspecialidade INT FOREIGN KEY REFERENCES Especialidade(idEspecialidade),
 	idFormulario INT FOREIGN KEY REFERENCES Formulario(idFormulario),
     nomeComercio VARCHAR (300) NOT NULL,
+	descricao VARCHAR(300) NOT NULL,
 	CNPJ VARCHAR(18),
     cidade VARCHAR(300) NOT NULL,
 	rua VARCHAR(100) NOT NULL,

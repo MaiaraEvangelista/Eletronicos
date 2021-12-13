@@ -28,6 +28,6 @@ VALUES		('Aceito'),
 			('Recusado');
 go
 
-INSERT INTO Loja(IdUsuario, idEspecialidade, idFormulario, CNPJ, nomeComercio, cidade, rua, N, UF, CEP, telefone)
-VALUES            (2, 4, 1, '11.222.333/0001-15' ,'JohnnyStore', 'São Paulo', 'R. Gen Osório','172', 'SP', '01213-000', '11940023451');
+INSERT INTO Loja(IdUsuario, idEspecialidade, idFormulario, CNPJ, nomeComercio, descricao, cidade, rua, N, UF, CEP, telefone)
+VALUES            (2, 4, 1, '11.222.333/0001-15' ,'JohnnyStore','Loja voltada para o desmontagem de Smartphones', 'São Paulo', 'R. Gen Osório','172', 'SP', '01213-000', '11940023451');
 go
