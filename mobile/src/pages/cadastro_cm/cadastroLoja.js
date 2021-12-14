@@ -18,6 +18,7 @@ export default class cadastroUser extends Component{
             idEsp : 0,
             idForm : 1,
             nomeComercio: '',
+            desc : '',
             cnpj: '',
             cidade : '',
             rua: '',
@@ -26,7 +27,6 @@ export default class cadastroUser extends Component{
             complemento: '',
             CEP: '',
             telefone : '',
-            desc : '',
 
             endereco : [],
 
@@ -103,6 +103,7 @@ export default class cadastroUser extends Component{
         idEspecialidade : this.state.idEsp,
         idFormulario    : this.state.idForm,
         nomeComercio    : this.state.nomeComercio,
+        descricao       : this.state.desc,
         cnpj            : this.state.cnpj,
         cidade          : this.state.cidade,
         rua             : this.state.rua,
@@ -112,6 +113,10 @@ export default class cadastroUser extends Component{
         cep             : this.state.CEP,
         telefone        : this.state.telefone,
       })
+
+      .then(
+        this.props.navigation.navigate('Home')
+      )
 
       .catch(erro => console.warn(erro))
     }
@@ -192,7 +197,7 @@ export default class cadastroUser extends Component{
                         
 
                     <View style={styles.btnModalCtn}>
-                      <TouchableOpacity style={styles.btnModal} onPress={this.listar}>
+                      <TouchableOpacity style={styles.btnModal} onPress={this.cadastrarLoja}>
                         <Text style={{color: 'white', fontSize: 17}}>Cadastre-se</Text>
                       </TouchableOpacity>
                     </View>
@@ -219,7 +224,7 @@ export default class cadastroUser extends Component{
                     placeholder="Nome da loja"
                     placeholderTextColor="black"
                     keyboardType="default"
-                    onChangeText={NomeComercio => this.setState({NomeComercio})}
+                    onChangeText={nomeComercio => this.setState({nomeComercio})}
                   />
 
                 </View>

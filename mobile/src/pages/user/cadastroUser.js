@@ -135,6 +135,12 @@ export default class cadastroUser extends Component{
       this.setState({idTipo : 3})
       this.setState({turnCadModal : false})
     }
+
+    userD = () =>
+    {
+      this.props.navigation.navigate('userD')
+      this.setState({turnCadModal : false})
+    }
   
   render()
     {
@@ -244,6 +250,11 @@ export default class cadastroUser extends Component{
                                 <Text style={{color: 'white', fontSize: 16,}}>Cliente</Text>
                             </TouchableOpacity>
                        </View>
+                    </View>
+                    <View style={styles.optionCtnModal}>
+                        <TouchableOpacity onPress={this.userD}>
+                          <Text style={{fontSize : 16, fontWeight : 'bold'}}>Qual selecionar ?</Text>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
@@ -453,7 +464,7 @@ const styles = StyleSheet.create({
 
   modalBtnCtn : {
     width: '100%',
-    height: '75%',
+    height: '55%',
     // backgroundColor: 'red',
 
     flexDirection: 'row'
@@ -470,7 +481,7 @@ const styles = StyleSheet.create({
 
   selectCtn : {
     width: '70%',
-    height: '25%',
+    height: '35%',
 
     backgroundColor: '#00873B',
     borderRadius: 5,
@@ -482,6 +493,15 @@ const styles = StyleSheet.create({
   btnModal : {
     width: '100%',
     height: '100%'
+  },
+
+  optionCtnModal : {
+    width: '100%',
+    height : '20%',
+    // backgroundColor : 'green',
+
+    justifyContent: 'center',
+    alignItems : 'center',
   },
 
   headerCtn : {
