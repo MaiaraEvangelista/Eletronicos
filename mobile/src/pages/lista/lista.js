@@ -70,7 +70,7 @@ export default class Lista extends Component {
 
                         <View style={styles.txtCtn}>
                             <Text style={styles.listTxt}>Telefone -</Text>
-                            <Text style={styles.listTxt}>{item.telefone}</Text>
+                            <Text style={styles.listTxt}> {item.telefone}</Text>
                         </View>
                         
                     </View>

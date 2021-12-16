@@ -222,8 +222,8 @@ export default class form extends Component {
 
                           <View style={styles.txtModal}>
                             <Text 
-                            style={{fontSize : 15, textAlign : 'center'}}
-                            >vai ter loja aqui n fi KKKKK</Text>
+                            style={{fontSize : 15, textAlign : 'center', width : '90%'}}
+                            >Infelizmente sua loja não tem os requisitos para o cadastro dela em nosso sistema.</Text>
                           </View>
 
                           <View style={styles.btnModalCtn}>
@@ -248,16 +248,8 @@ export default class form extends Component {
                         <View style={styles.scrollCtn1}>
                             
                             <ScrollView style={styles.txtModalCtn1}>
-                                <Text>
-                                Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                                Lorem Ipsum  an unknowntype specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the releasop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                <Text style={{textAlign : 'center', paddingTop : 20}}>
+                                Termos Gerais: Ao se cadastrar em nosso programa, voçê está de acordo com nossos serviços, além de concordar com tudo oque é pedido nas perguntas abaixo, se você for aprovado, terá a divulgação de sua loja para várias pessoas da cidade de São Paulo. E caso percebemos que seu estabelecimento não esteja seguindo as normas corretamente, você estará sujeito a uma multa de 5% do lucro que sua loja teve no ultimo mês
                                 </Text>
                             </ScrollView>
                         </View>
@@ -301,7 +293,7 @@ export default class form extends Component {
 
                   <View style={styles.questCtn}>
                       <View style={styles.quest}>
-                          <Text style={{color: 'white', fontSize: 17, textAlign: 'center'}}>1- Seu aparelho tem descarregado rápido constantemente?</Text>
+                          <Text style={{color: 'white', fontSize: 17, textAlign: 'center'}}>1- Sua loja tem espaço para o descarte separado de aparelhos eletrônicos para seus clientes?</Text>
                       </View>
 
                       <View style={styles.questBtnCtn}>
@@ -343,7 +335,7 @@ export default class form extends Component {
                   </View>
                   <View style={styles.questCtn}>
                       <View style={styles.quest}>
-                          <Text style={{color: 'white', fontSize: 17, textAlign: 'center', width: '90%'}}>2- Seu aparelho aquece constantemente, durante o uso, fora do carregador?</Text>
+                          <Text style={{color: 'white', fontSize: 17, textAlign: 'center', width: '90%'}}>2- Sua loja terá o comprometimento com o nosso programa e manterá contato para futuras atualizações no sistema?</Text>
                       </View>
 
                       <View style={styles.questBtnCtn}>
@@ -385,7 +377,7 @@ export default class form extends Component {
                   </View>
                   <View style={styles.questCtn}>
                       <View style={styles.quest}>
-                          <Text style={{color: 'white', fontSize: 17, textAlign: 'center'}}>3- Seu aparelho anda travando muito?</Text>
+                          <Text style={{color: 'white', fontSize: 17, textAlign: 'center'}}>3- Sua loja vende aparelhos eletrônicos ou equipamentos relacionados a computadores?</Text>
                       </View>
 
                       <View style={styles.questBtnCtn}>
@@ -427,7 +419,7 @@ export default class form extends Component {
                   </View>
                   <View style={styles.questCtn}>
                       <View style={styles.quest}>
-                          <Text style={{color: 'white', fontSize: 17, textAlign: 'center'}}>4- Desligando repentinamente durante o uso, mesmo com a bateria completa?</Text>
+                          <Text style={{color: 'white', fontSize: 17, textAlign: 'center'}}>4- Sua loja se encontra em uma região de fácil acesso para a remoção de lixo acumulado?</Text>
                       </View>
 
                       <View style={styles.questBtnCtn}>

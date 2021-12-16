@@ -90,7 +90,7 @@ export default class drawer extends Component {
                     <Drawer.Screen options={({ headerShown: false })} name="Login" component={Login} />
                     <Drawer.Screen name="Lojas" component={Lista} />
                     <Drawer.Screen options={({ headerShown: true })} name="Soluções" component={Solucao} />
-                    <Drawer.Screen name="Divulgação" component={SaibaMais} />
+                    <Drawer.Screen name="Cadastrar sua loja" component={SaibaMais} />
                     {/* <Drawer.Screen name='teste' component={Verificacao} /> */}
                 </>
                 ) : (
@@ -102,7 +102,7 @@ export default class drawer extends Component {
                             <Drawer.Screen options={({ headerShown: true })} name="Soluções" component={Solucao} />
                             <Drawer.Screen name="Verificação" component={Trouble} />
                             {/* <Drawer.Screen name="Perfil da loja" component={perfilCm} /> */}
-                            <Drawer.Screen name="Divulgação" component={SaibaMais} />
+                            <Drawer.Screen name="Cadastrar sua loja" component={SaibaMais} />
 
                         </>
                     ) : (
@@ -111,8 +111,8 @@ export default class drawer extends Component {
                             <Drawer.Screen name="Lojas" component={Lista} />
                             <Drawer.Screen options={({ headerShown: true })} name="Soluções" component={Solucao} />
                             <Drawer.Screen name="Verificação" component={Trouble} />
-                            <Drawer.Screen name="Perfil" component={Edicao} />
-                            <Drawer.Screen name="Divulgação" component={SaibaMais} />
+                            {/* <Drawer.Screen name="Perfil" component={Edicao} /> */}
+                            <Drawer.Screen name="Cadastrar sua loja" component={SaibaMais} />
                             {/* <Drawer.Screen name='teste' component={Verificacao} /> */}
                         </>
                     )

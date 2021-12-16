@@ -177,7 +177,7 @@ export default class Verificacao extends Component
 
             if (this.state.totalValue < 0) {
                 this.setState({modalVisible : true})
-                this.setState({txt : 'boa'})
+                this.setState({txt : 'Bom, aparentemente seu celular está em boas condições, mas não se esqueça de sempre verificar como está o desempenho de seu celular pois sempre teremos a solução para algum problema que ele esteja tendo.'})
             }
         } catch (error) {
             console.warn(error)

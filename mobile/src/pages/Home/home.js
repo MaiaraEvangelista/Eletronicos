@@ -10,7 +10,7 @@ const {width} = Dimensions.get("window");
 const height = width * 100 / 140
 
 const imagem = [
-    require('../../../assets/bannerHome.svg'),
+    require('../../../assets/banner.svg'),
     require('../../../assets/bannerHome2.svg'),
     require('../../../assets/bannerHome3.svg'),
 ]
@@ -27,7 +27,7 @@ export default class Home extends Component{
 
     saibaMais = () => 
     {
-        this.props.navigation.navigate('Divulgação')
+        this.props.navigation.navigate('Cadastrar sua loja')
     }
 
     verif = async () =>

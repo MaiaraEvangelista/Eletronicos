@@ -16,19 +16,20 @@ export default class userDuvida extends Component
 
     returnToCad = () =>
     {
-        this.props.navigation.navigate('cadaUser')
+        this.props.navigation.navigate('Login')
     }
 
     comercianteTxt = () =>
     {
-        this.setState({txt : 'se tu é comerciante tu clica no COMERCIANTE NÉ O ANIMAL'})
+        this.setState({txt : 'Este usuário serve apenas para pessoas/comerciantes que possuem loja e queiram adicionar sua loja em nosso sistema para participar do nosso programa de reciclagem'})
+
         this.setState({backColor1 : 'blue'})
         this.setState({backColor2 : '#00873B'})
     }
 
     usuarioTxt = () =>
     {
-        this.setState({txt : 'se tu é cliente tu clica no CLIENTE NÉ O ANIMAL'})
+        this.setState({txt : 'Este é o usuário comum, onde você recebe um feedback do desempenho de seu celular, além de poder ver as lojas de eletrônicos que fazem parte de nosso sistema para que tenha um descarte devido.'})
         this.setState({backColor2 : 'blue'})
         this.setState({backColor1 : '#00873B'})
     }

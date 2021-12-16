@@ -22,7 +22,7 @@ export default class Solucao extends Component {
         this.setState({
             modalVisible1 : true,
             titulo : 'Sistema de troca',
-            txt: 'sistema de troca é legal'
+            txt: 'O sistema de troca é simples, você leva seu aparelho danificado para um ponto de troca e recebe uma porcentagem de desconto em um novo aparelho, ajudando assim a evitar um descarte inadequado.'
         })
         
     }
@@ -32,7 +32,7 @@ export default class Solucao extends Component {
         this.setState({
             modalVisible1 : true,
             titulo : 'Desmontagem',
-            txt: 'desmonatagem é legal'
+            txt: 'No sistema de desmontagem, você leva seu aparelho com mau funcionamento, onde eles vão retirar peças funcionais do seu aparelho, e reutilizar em outros aparelhos, como uma substituição, evitando o descarte inadequado.'
         })
     }
 
@@ -40,8 +40,8 @@ export default class Solucao extends Component {
     {
         this.setState({
             modalVisible1 : true,
-            titulo : 'Monategem',
-            txt : 'montagem é lgl'
+            titulo : 'Montagem',
+            txt : 'No sistema de montagem, é praticamente igual o sistema de desmontagem, todas as boas peças retiradas de aparelhos com problemas, vão ser unidas em um aparelho substituindo a peça que estava com problema para voltar a ter um bom funcionamento.'
         })
     }
 
@@ -50,7 +50,7 @@ export default class Solucao extends Component {
         this.setState({
             modalVisible1 : true,
             titulo : 'venda',
-            txt : 'venda é lgl'
+            txt : 'No sistema de venda você leva seu aparelho para ser revendido, com um preço mais acessível.'
         })
     }
 
@@ -59,7 +59,7 @@ export default class Solucao extends Component {
         this.setState({
             modalVisible1 : true,
             titulo : 'Recolhimento',
-            txt : 'recolhimento é lgl'
+            txt : 'No sistema de recolhimento, todas as partes que não possuam um bom funcionamento são recolhidas e "recicladas" ou "destruídas" para que não sejam descartados de forma inadequada no meio ambiente.'
         })
     }
 
@@ -204,12 +204,15 @@ const styles = StyleSheet.create({
         borderRadius: 7,
 
         marginBottom: 10,
+
     },
 
     txtModal : {
         fontSize: 15,
         color: 'white',
         textAlign : 'center',
+
+        marginTop : 10,
     },
 
     bannerCtn : {
